@@ -1,0 +1,50 @@
+name: Helm Chart Testing
+
+on:
+ pull_request:
+   paths:
+     - 'helm/**'
+     - 'ct.yaml'
+ push:
+   branches:
+     - main
+   paths:
+     - 'helm/**'
+     - 'ct.yaml'
+
+jobs:
+ helm-lint-test:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout
+       # v4.1.1 - https://github.com/actions/checkout/releases/tag/v4.1.1
+       uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+       with:
+         fetch-depth: 0
+
+     - name: Set up Helm
+       # v4.2.0 - https://github.com/Azure/setup-helm/releases/tag/v4.2.0
+       uses: azure/setup-helm@fe7b79cd5ee1e45176fcad797de68ecaf3ca4814
+       with:
+         version: 'latest'
+
+     - name: Add helm repositories
+       run: |
+         helm repo add pagopa-microservice https://pagopa.github.io/aks-microservice-chart-blueprint
+         helm repo update
+
+     - name: Set up chart-testing
+       # v2.6.1 - https://github.com/helm/chart-testing-action/releases/tag/v2.6.0
+       uses: helm/chart-testing-action@b43128a8b25298e1e7b043b78ea6613844e079b1
+
+     - name: List changed charts
+       id: list-changed
+       run: |
+         changed=$(ct list-changed --config ct.yaml)
+         if [[ -n "$changed" ]]; then
+           echo "changed=true" >> $GITHUB_OUTPUT
+           echo "Changed charts: $changed"
+         fi
+
+     - name: Run chart-testing (lint)
+       run: ct lint --config ct.yaml --all --lint-conf ct.yaml
