@@ -1,0 +1,106 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 35
+    failureThreshold: 15
+    periodSeconds: 10
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /idpayonboardingworkflow/(.*)
+    servicePort: 8080
+
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+  envConfig:
+    MONGODB_DBNAME: idpay
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpayonboardingworkflow"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    ENABLE_AUDIT_APPENDER: "TRUE"
+    DELETE_PAGINATION_SIZE: "100"
+    DELETE_DELAY_TIME: "1000"
+    HEALTH_MONGO_ENABLED: "false"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+    rest-client:
+      IDPAY_INITIATIVE_BASE_URL: initiative_ms_base_url
+      IDPAY_GROUP_BASE_URL: idpay_group_host
+      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
+      IDPAY_ADMISSIBILITY_BASE_URL: admissibility_ms_base_url
+    idpay-eventhub-00:
+      KAFKA_BINDER_BROKER_ENDPOINT_LIST: kafka_broker
+      KAFKA_ONBOARDING_SASL_MECHANISM: kafka_sasl_mechanism
+      KAFKA_ONBOARDING_SECURITY_PROTOCOL: kafka_security_protocol
+      KAFKA_TOPIC_ONBOARDING: idpay_onboarding_request_topic
+      KAFKA_TOPIC_OUTCOME: idpay_onboarding_outcome_topic
+      KAFKA_OUTCOME_GROUP_IN: idpay-onboarding-outcome-onboarding-consumer-group
+      KAFKA_TOPIC_ONBOARDING_NOTIFICATION: idpay_onboarding_notification_topic
+      KAFKA_ONBOARDING_NOTIFICATION_GROUP_IN: idpay-onboarding-notification-consumer-group
+    idpay-eventhub-01:
+      KAFKA_BINDER_BROKER_ENDPOINT_LIST_01: kafka_broker
+
+  envSecret:
+    MONGODB_URI: mongodb-connection-string
+    KAFKA_OUTCOME_SASL_JAAS_CONFIG: evh-idpay-onboarding-outcome-idpay-onboarding-outcome-consumer-jaas-config-idpay-00
+    KAFKA_OUTCOME_OUT_SASL_JAAS_CONFIG: evh-idpay-onboarding-outcome-idpay-onboarding-outcome-producer-jaas-config-idpay-00
+    KAFKA_ONBOARDING_NOTIFICATION_SASL_JAAS_CONFIG: evh-idpay-onboarding-notification-idpay-onboarding-notification-consumer-jaas-config-idpay-00
+    KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
+    SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-producer-sas-key
+    REDIS_CONNECTION_URL: idpay-redis-00-primary-connection-url
+    PDV_DECRYPT_API_KEY: pdv-api-key
+
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
