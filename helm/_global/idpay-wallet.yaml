@@ -106,3 +106,11 @@ microservice-chart:
   # nodeSelector: {}
 
   # tolerations: []
+
+  # affinity: {}
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
