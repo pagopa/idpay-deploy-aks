@@ -1,11 +1,11 @@
 microservice-chart:
   image:
-    repository: cstardcommonacr.azurecr.io/idpaytimeline
+    repository: cstarucommonacr.azurecr.io/idpaytimeline
     tag: latest
     pullPolicy: Always
 
   ingress:
-    host: "dev01.idpay.internal.dev.cstar.pagopa.it"
+    host: "uat01.idpay.internal.uat.cstar.pagopa.it"
 
   resources:
     requests:
@@ -34,28 +34,20 @@ microservice-chart:
       -XX:+UseG1GC
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
-      -Djava.util.concurrent.ForkJoinPool.common.parallelism=7 
-      -Dio.netty.eventLoopThreads=100 
       -javaagent:/app/applicationinsights-agent.jar 
-      -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json 
-      -agentlib:jdwp=transport=dt_socket,server=y,address=8001,suspend=n 
-      -Dcom.sun.management.jmxremote=true 
-      -Dcom.sun.management.jmxremote.port=3002 
-      -Dcom.sun.management.jmxremote.rmi.port=3003 
-      -Djava.rmi.server.hostname=127.0.0.1 
-      -Dcom.sun.management.jmxremote.authenticate=false 
-      -Dcom.sun.management.jmxremote.ssl=false
+      -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
 
   envSecret:
-    aks-api-url: cstar-d-weu-dev01-aks-apiserver-url
+    aks-api-url: cstar-u-weu-uat01-aks-apiserver-url
+    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
-    name: "cstar-d-idpay-kv"
+    name: "cstar-u-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
-  
+
   postman-test:
     run: true
     repoName: idpay-timeline
     dir: postman
     collectionName: "idpay-timeline-e2e.postman_collection.json"
-    envVariablesFile: "idpay_dev.postman_environment.json"
+    envVariablesFile: "idpay_uat.postman_environment.json"
