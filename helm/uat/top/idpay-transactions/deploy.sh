@@ -1,3 +1,3 @@
 #!/bin/bash
 
-../../../scripts/deploy.sh values.yaml idpay cstar-d-weu-dev01-aks idpay-transactions
+../../../scripts/deploy.sh values.yaml idpay cstar-u-weu-uat01-aks idpay-transactions
