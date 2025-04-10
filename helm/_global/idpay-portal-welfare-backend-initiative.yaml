@@ -1,0 +1,135 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 150
+    failureThreshold: 10
+    periodSeconds: 15
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 150
+    failureThreshold: 10
+    periodSeconds: 15
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /idpayportalwelfarebackendinitiative/(.*)
+    servicePort: 8080
+
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+  #  autoscaling:
+  #    enable: true
+  #    minReplica: 1
+  #    maxReplica: 2
+  #    pollingInterval: 30 # seconds
+  #    cooldownPeriod: 300 # seconds
+  #    triggers:
+  #      - type: azure-monitor
+  #        metadata:
+  #          tenantId: 7788edaf-0346-4068-9d79-c868aed15b3d
+  #          subscriptionId: ac17914c-79bf-48fa-831e-1359ef74c1d5
+  #          resourceGroupName: dvopla-d-sec-rg
+  #          resourceURI: Microsoft.KeyVault/vaults/dvopla-d-neu-kv
+  #          metricName: ServiceApiHit
+  #          # metricNamespace: Microsoft.KeyVault/vaults
+  #          # metricFilter: namespace eq 'default'
+  #          # metricAggregationInterval: "-1:1:0"
+  #          metricAggregationType: Count
+  #          targetValue: "30"
+
+
+  envConfig:
+    MONGODB_DBNAME: idpay
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpayportalwelfarebackendinitiative"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    APP_INITIATIVE_CONDITIONS_NOTIFY_RE: "true"
+    APP_INITIATIVE_CONDITIONS_NOTIFY_IO: "true"
+    IO_BACKEND_SERVICE_DEPARTMENT_NAME: IDPAY
+    LOG_LEVEL_INITIATIVE: INFO
+    FEIGN_CLIENT_CONFIG_IO_LOG_LEVEL: basic
+    SELC_UID: idpay
+    BLOB_STORAGE_CONTAINER_REFERENCE: $web
+    RANKING_GRACE_PERIOD: "10"
+    HEALTH_MONGO_ENABLED: "false"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+    rest-client:
+      IO_MANAGE_BACKEND_SERVICE_BASE_URL: io_manage_backend_base_url
+      GROUP_MS_HOST: idpay_group_host
+      EMAIL_NOTIFICATION_MS_HOST: email_notification_ms_host
+      SELC_BASE_URL: selc_base_url
+      PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
+      ONBOARDING_URI: idpay_onboarding_host
+      RANKING_URI: idpay_ranking_host
+      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
+    idpay-eventhub-01:
+      KAFKA_BINDER_BROKER_ENDPOINT_LIST: kafka_broker
+      KAFKA_INITIATIVE_SASL_MECHANISM: kafka_sasl_mechanism
+      KAFKA_INITIATIVE_SECURITY_PROTOCOL: kafka_security_protocol
+      KAFKA_INITIATIVE_OUTCOME_TOPIC: idpay_rule_update_topic
+
+  envSecret:
+    MONGODB_URI: mongodb-connection-string
+    KAFKA_INITIATIVE_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-producer-jaas-config-idpay-01
+    IO_BACKEND_SERVICE_SUBSCRIPTION_API_KEY: io-backend-manage-api-key
+    IO_BACKEND_SERVICE_AUTHORIZED_RECIPIENTS: io-backend-request-authorized-recipients
+    SELC_EXTERNAL_API_KEY: selc-external-api-key
+    UTIL_CRYPTO_AES_SECRET_TYPE_PBE_SALT: notification-token-salt
+    UTIL_CRYPTO_AES_SECRET_TYPE_PBE_PASSPHRASE: notification-token-passphrase
+    UTIL_CRYPTO_AES_MODE_GCM_IV: notification-token-iv
+    PDV_ENCRYPT_API_KEY: pdv-api-key
+    PDV_DECRYPT_API_KEY: pdv-api-key
+    BLOB_STORAGE_CONNECTION_STRING: web-storage-connection-string
+    KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-producer-jaas-config-idpay-01
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
+
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}
