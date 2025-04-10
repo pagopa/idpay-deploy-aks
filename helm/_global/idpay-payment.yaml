@@ -105,4 +105,3 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
-  
