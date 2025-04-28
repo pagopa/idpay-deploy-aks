@@ -1,0 +1,250 @@
+pr: none
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - 'helm/dev/**'
+
+schedules:
+- cron: "12 23 * * *"
+  displayName: Nightly batch run
+  branches:
+    include:
+    - main
+  always: true
+
+parameters:
+- name: ENV
+  displayName: Environment
+  type: string
+  default: dev
+  values:
+    - dev
+    - uat
+    - prod
+
+- name: APPS_TOP
+  displayName: Top ArgoCD Apps
+  type: object
+  default:
+    - idpay-onboarding-workflow
+
+- name: APPS_MID
+  displayName: Mid ArgoCD Apps
+  type: object
+  default:
+
+- name: APPS_EXT
+  displayName: Extra ArgoCD Apps
+  type: object
+  default:
+
+
+- name: POSTMAN_BRANCH
+  displayName: Postman branch
+  type: string
+  default: 'develop'
+
+- name: ARGOCD_TARGET_BRANCH
+  displayName: ArgoCD target branch
+  type: string
+  default: 'main'
+
+- name: TRIGGER_MESSAGE
+  displayName: Trigger Message
+  type: string
+  default: 'none'
+
+variables:
+  # Static variables
+  - name: directoryPattern
+    value: 'helm/${{ parameters.ENV }}'
+  - name: area
+    value: idpay
+  - name: sourceBranch
+    value: $[variables['Build.SourceBranch']]
+  - name: buildReason
+    value: $[variables['Build.Reason']]
+  - name: pipelineName
+    ${{ if eq(variables['Build.Reason'], 'Manual') }}:
+      ${{ if ne(parameters.TRIGGER_MESSAGE, 'none') }}:
+        value: '[Trigger-${{ parameters.TRIGGER_MESSAGE }}] [ENV-${{ parameters.ENV }}] [ArgoCD-${{ parameters.ARGOCD_TARGET_BRANCH }}] [Postman-${{ parameters.POSTMAN_BRANCH }}]'
+      ${{ if eq(parameters.TRIGGER_MESSAGE, 'none') }}:
+        value: '[ENV-${{ parameters.ENV }}] [ArgoCD-${{ parameters.ARGOCD_TARGET_BRANCH }}] [Postman-${{ parameters.POSTMAN_BRANCH }}]'
+
+
+  - ${{ if eq(parameters.ENV, 'dev') }}:
+    - name: argocdServer
+      value: $(DEV_ARGOCD_SERVER)
+    - name: argocdUsername
+      value: $(DEV_ARGOCD_USERNAME)
+    - name: argocdPassword
+      value: $(DEV_ARGOCD_PASSWORD)
+    - name: agentPoolName
+      value: $(DEV_AGENT_POOL)
+    - name: azureServiceConnectionName
+      value: $(DEV_AZURE_SERVICE_CONNECTION_NAME)
+    - name: postman_kv_name
+      value: $(DEV_POSTMAN_KV_NAME)
+    - name: postman_env_secret_name
+      value: $(DEV_POSTMAN_ENV_SECRET_NAME)
+
+  - ${{ if eq(parameters.ENV, 'uat') }}:
+    - name: argocdServer
+      value: $(UAT_ARGOCD_SERVER)
+    - name: argocdUsername
+      value: $(UAT_ARGOCD_USERNAME)
+    - name: argocdPassword
+      value: $(UAT_ARGOCD_PASSWORD)
+    - name: agentPoolName
+      value: $(UAT_AGENT_POOL)
+    - name: azureServiceConnectionName
+      value: $(UAT_AZURE_SERVICE_CONNECTION_NAME)
+    - name: postman_kv_name
+      value: $(UAT_POSTMAN_KV_NAME)
+    - name: postman_env_secret_name
+      value: $(UAT_POSTMAN_ENV_SECRET_NAME)
+
+  - ${{ if eq(parameters.ENV, 'prod') }}:
+    - name: argocdServer
+      value: $(PROD_ARGOCD_SERVER)
+    - name: argocdUsername
+      value: $(PROD_ARGOCD_USERNAME)
+    - name: argocdPassword
+      value: $(PROD_ARGOCD_PASSWORD)
+    - name: agentPoolName
+      value: $(PROD_AGENT_POOL)
+    - name: azureServiceConnectionName
+      value: $(PROD_AZURE_SERVICE_CONNECTION_NAME)
+    - name: postman_kv_name
+      value: $(PROD_POSTMAN_KV_NAME)
+    - name: postman_env_secret_name
+      value: $(PROD_POSTMAN_ENV_SECRET_NAME)
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: pagopa/azure-pipeline-templates
+      ref: refs/tags/v6.8.0
+      endpoint: 'idpay-bot-github-ro'
+
+pool:
+  vmImage: ubuntu-latest
+
+name: $(pipelineName)
+
+stages:
+  # Debug Steps
+  - stage: pre_steps
+    condition: succeeded()
+    jobs:
+    - job: legacy_debug_info
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+      - bash: |
+          echo "build reason: ${{variables['Build.Reason']}}"
+          echo "agentPoolName: ${{variables['agentPoolName']}}"
+          echo "argocdServer: ${{variables['argocdServer']}}"
+          echo "argocdTargetBranch: ${{parameters.ARGOCD_TARGET_BRANCH}}"
+          echo "postmanBranch: ${{parameters.POSTMAN_BRANCH}}"
+          echo "triggerMessage: ${{parameters.TRIGGER_MESSAGE}}"
+        displayName: 'Show Debug Information'
+
+  #
+  # ArgoCD
+  #
+  - stage: sync_argo_apps
+    condition: succeeded()
+    jobs:
+      # Top Apps
+      - ${{ if and(ne(length(parameters.APPS_TOP), 0), ne(parameters.APPS_TOP, '[]')) }}:
+        - template: templates/deploy-argo-template.yml
+          parameters:
+            applicationsList: ${{ parameters.APPS_TOP }}
+            deploymentType: 'top'
+            environment: ${{ parameters.ENV }}
+            argocdServerUrl: $(argocdServer)
+            argocdUserName: $(argocdUsername)
+            argocdUserPassword: $(argocdPassword)
+            agentPoolName: $(agentPoolName)
+            applicationPrefix: $(area)
+            targetBranch: ${{ parameters.ARGOCD_TARGET_BRANCH }}
+
+      # Mid Apps
+      - ${{ if and(ne(length(parameters.APPS_MID), 0), ne(parameters.APPS_MID, '[]')) }}:
+        - template: templates/deploy-argo-template.yml
+          parameters:
+            applicationsList: ${{ parameters.APPS_MID }}
+            deploymentType: 'mid'
+            environment: ${{ parameters.ENV }}
+            argocdServerUrl: $(argocdServer)
+            argocdUserName: $(argocdUsername)
+            argocdUserPassword: $(argocdPassword)
+            agentPoolName: $(agentPoolName)
+            applicationPrefix: $(area)
+            dependsOnJob: 'deploy_top'
+            targetBranch: ${{ parameters.ARGOCD_TARGET_BRANCH }}
+
+      # Ext Apps
+      - ${{ if and(ne(length(parameters.APPS_EXT), 0), ne(parameters.APPS_EXT, '[]')) }}:
+        - template: templates/deploy-argo-template.yml
+          parameters:
+            applicationsList: ${{ parameters.APPS_EXT }}
+            deploymentType: 'ext'
+            environment: ${{ parameters.ENV }}
+            argocdServerUrl: $(argocdServer)
+            argocdUserName: $(argocdUsername)
+            argocdUserPassword: $(argocdPassword)
+            agentPoolName: $(agentPoolName)
+            applicationPrefix: $(area)
+            dependsOnJob: 'deploy_mid'
+            targetBranch: ${{ parameters.ARGOCD_TARGET_BRANCH }}
+
+#  # Stage for Postman Tests
+#  - stage: run_postman_tests
+#    condition: and(succeeded(), or(${{eq(parameters.ENV, 'dev')}}, ${{eq(parameters.ENV, 'uat')}}))
+#    dependsOn: sync_argo_apps
+#    jobs:
+#      # Top Apps Tests
+#      - ${{ if and(ne(length(parameters.APPS_TOP), 0), ne(parameters.APPS_TOP, '[]')) }}:
+#        - template: templates/postman-tests-template.yml
+#          parameters:
+#            appsList: ${{ parameters.APPS_TOP }}
+#            appCategory: 'top'
+#            env: ${{ parameters.ENV }}
+#            agentPoolName: $(agentPoolName)
+#            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
+#            azureServiceConnection: $(azureServiceConnectionName)
+#            keyVaultName: $(postman_kv_name)
+#            secretName: $(postman_env_secret_name)
+#
+#      # Mid Apps Tests
+#      - ${{ if and(ne(length(parameters.APPS_MID), 0), ne(parameters.APPS_MID, '[]')) }}:
+#        - template: templates/postman-tests-template.yml
+#          parameters:
+#            appsList: ${{ parameters.APPS_MID }}
+#            appCategory: 'mid'
+#            env: ${{ parameters.ENV }}
+#            agentPoolName: $(agentPoolName)
+#            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
+#            azureServiceConnection: $(azureServiceConnectionName)
+#            keyVaultName: $(postman_kv_name)
+#            secretName: $(postman_env_secret_name)
+#
+#      # Ext Apps Tests
+#      - ${{ if and(ne(length(parameters.APPS_EXT), 0), ne(parameters.APPS_EXT, '[]')) }}:
+#        - template: templates/postman-tests-template.yml
+#          parameters:
+#            appsList: ${{ parameters.APPS_EXT }}
+#            appCategory: 'ext'
+#            env: ${{ parameters.ENV }}
+#            agentPoolName: $(agentPoolName)
+#            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
+#            azureServiceConnection: $(azureServiceConnectionName)
+#            keyVaultName: $(postman_kv_name)
+#            secretName: $(postman_env_secret_name)
