@@ -130,7 +130,7 @@ resources:
       type: github
       name: pagopa/azure-pipeline-templates
       ref: refs/tags/v6.8.0
-      endpoint: 'azure-devops-github-ro'
+      endpoint: 'idpay-bot-github-ro'
 
 pool:
   vmImage: ubuntu-latest
