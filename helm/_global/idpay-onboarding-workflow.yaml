@@ -30,11 +30,6 @@ microservice-chart:
     ports:
       - 8080
 
-  ingress:
-    create: true
-    path: /idpayonboardingworkflow/(.*)
-    servicePort: 8080
-
   serviceAccount:
     create: false
     annotations: {}
