@@ -1,7 +1,7 @@
 microservice-chart:
   image:
-    repository: cstardcommonacr.azurecr.io/idpayonboardingworkflow
-    tag: latest
+    repository: ghcr.io/pagopa/idpayonboardingworkflow
+    tag: snapshot-IDP-2675-update-workflows-github
     pullPolicy: Always
 
   ingress:
@@ -47,10 +47,10 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   envSecret:
-    aks-api-url: cstar-d-weu-dev01-aks-apiserver-url
+    aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
   keyvault:
-    name: "cstar-d-idpay-kv"
+    name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 postman-test:
   run: true
