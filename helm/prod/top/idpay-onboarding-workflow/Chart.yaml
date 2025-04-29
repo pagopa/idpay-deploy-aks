@@ -8,3 +8,4 @@ dependencies:
   - name: microservice-chart
     version: 7.4.0
     repository: "https://pagopa.github.io/aks-microservice-chart-blueprint"
+

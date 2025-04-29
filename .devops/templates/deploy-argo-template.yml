@@ -1,0 +1,224 @@
+# 🎯 Template for deploying applications through ArgoCD with graceful error handling
+# and branch targeting capabilities
+
+parameters:
+  # 📋 List of applications to deploy
+  - name: applicationsList
+    displayName: 'Applications List'
+    type: object
+    default: []
+    # List of applications to be deployed through ArgoCD
+    # Example: ['app1', 'app2', 'app3']
+
+  # 🎯 Target branch configuration
+  - name: targetBranch
+    displayName: 'Target Branch'
+    type: string
+    # The target branch to deploy (e.g., main, develop, feature/*)
+
+  # 🌍 Target environment
+  - name: environment
+    displayName: 'Target Environment'
+    type: string
+    # The environment to deploy to (dev, uat, prod)
+
+  # 🔐 ArgoCD server connection details
+  - name: argocdServerUrl
+    displayName: 'ArgoCD Server URL'
+    type: string
+    # The URL of the ArgoCD server
+
+  - name: argocdUserName
+    displayName: 'ArgoCD Username'
+    type: string
+    # Username for ArgoCD authentication
+
+  - name: argocdUserPassword
+    displayName: 'ArgoCD Password'
+    type: string
+    # Password for ArgoCD authentication
+
+  # 🤖 Azure DevOps agent configuration
+  - name: agentPoolName
+    displayName: 'Agent Pool Name'
+    type: string
+    # The name of the Azure DevOps agent pool to use
+
+  # 📝 Application prefix for ArgoCD
+  - name: applicationPrefix
+    displayName: 'Application Name Prefix'
+    type: string
+    # Prefix used for ArgoCD application names (e.g., 'p4pa-payhub')
+
+  # 🏷️ Job identifier
+  - name: deploymentType
+    displayName: 'Deployment Type'
+    type: string
+    # Type of deployment
+
+  # 🔄 Dependency configuration
+  - name: dependsOnJob
+    displayName: 'Depends On Job'
+    type: string
+    default: ''
+    # Name of the job this deployment depends on
+
+  # ⚙️ Configuration for health checks and retries
+  - name: healthCheckRetries
+    displayName: 'Health Check Retries'
+    type: number
+    default: 30
+    # Number of retries for health checks
+
+  - name: healthCheckInterval
+    displayName: 'Health Check Interval'
+    type: number
+    default: 10
+    # Interval in seconds between health checks
+
+  - name: syncTimeout
+    displayName: 'Sync Timeout'
+    type: number
+    default: 180
+    # Timeout in seconds for sync operations
+
+jobs:
+- job: deploy_${{ parameters.deploymentType }}
+  displayName: '🚀 ${{ parameters.deploymentType }}'
+  dependsOn: ${{ parameters.dependsOnJob }}
+  condition: succeeded()
+  strategy:
+    matrix:
+      ${{ each item in parameters.applicationsList }}:
+        ${{ replace(item, '-', '_') }}:
+          appName: ${{ item }}
+  pool:
+    name: ${{ parameters.agentPoolName }}
+  steps:
+  # 📢 Display initial deployment information
+  - bash: |
+      echo "🚀 Starting deployment for: $(appName)"
+      echo "🌍 Environment: ${{ parameters.environment }}"
+      echo "📦 Deployment Type: ${{ parameters.deploymentType }}"
+      echo "🎯 Target Branch: ${{ parameters.targetBranch }}"
+    name: displayDeploymentInfo
+    displayName: '📋 Display Deployment Information'
+
+  # 🔄 Main deployment script
+  - bash: |
+      # 🚨 Function to handle errors gracefully
+      function handle_error() {
+        local error_message=$1
+        echo "⚠️ $error_message"
+        echo "##vso[task.logissue type=warning]$error_message"
+        echo "##vso[task.complete result=SucceededWithIssues;]"
+        return 0
+      }
+
+      # 🔐 Function to handle ArgoCD login
+      function login_argocd() {
+          echo "🔑 Attempting to login to ArgoCD..."
+          if ! argocd login "$ARGOCD_SERVER" --username "$ARGOCD_USERNAME" --password "$ARGOCD_PASSWORD" --insecure --grpc-web; then
+              handle_error "Failed to login to ArgoCD"
+              return 1
+          fi
+          echo "✅ Successfully logged in to ArgoCD"
+          return 0
+      }
+
+      # 🎯 Function to update application target branch
+      function update_app_branch() {
+          local app_name=$1
+          local target_branch=$2
+
+          echo "🔄 Updating application target branch to: $target_branch"
+          if ! argocd app set "$app_name" --revision "$target_branch"; then
+              handle_error "Failed to update target branch for $app_name"
+              return 1
+          fi
+          echo "✅ Successfully updated target branch"
+          return 0
+      }
+
+      # 🏥 Function to check application health
+      function check_app_health() {
+          local app_name=$1
+          local max_retries=${{ parameters.healthCheckRetries }}
+          local retry_count=0
+          local wait_seconds=${{ parameters.healthCheckInterval }}
+
+          while [ $retry_count -lt $max_retries ]; do
+              if health_status=$(argocd app get "$app_name" -o json | jq -r '.status.health.status') && \
+                 sync_status=$(argocd app get "$app_name" -o json | jq -r '.status.sync.status'); then
+
+                  if [ "$health_status" = "Healthy" ] && [ "$sync_status" = "Synced" ]; then
+                      echo "✅ Application $app_name is healthy and synced"
+                      return 0
+                  fi
+
+                  echo "📊 Current Status - Health: ${health_status}, Sync: ${sync_status}"
+              else
+                  echo "⚠️ Failed to get application status"
+              fi
+
+              echo "⏳ Attempt $((retry_count + 1)) of $max_retries. Waiting ${wait_seconds}s before retry..."
+              sleep $wait_seconds
+              ((retry_count++))
+          done
+
+          handle_error "❌ Health check timed out for $app_name"
+          return 1
+      }
+
+      # 🚀 Main execution block
+      set +e  # Don't exit on error
+      app_name="${ARGOCD_APP_NAME}"
+      target_branch="${TARGET_BRANCH}"
+
+      echo "🔨 Starting deployment process for $app_name..."
+
+      # 🔐 Step 1: Login to ArgoCD
+      echo "🔐 Step 1: Login to ArgoCD..."
+      if ! login_argocd; then
+          handle_error "ArgoCD login failed for $app_name"
+          exit 0
+      fi
+
+      # 🎯 Step 2: Update target branch
+      echo "🔄 Update app target branch..."
+      if ! update_app_branch "$app_name" "$target_branch"; then
+          handle_error "Failed to update target branch for $app_name"
+          exit 0
+      fi
+
+      # 🔄 Step 3: Sync application
+      echo "🔄 Syncing application..."
+      if ! argocd app sync "$app_name" --prune --timeout ${{ parameters.syncTimeout }}; then
+          handle_error "Sync failed for $app_name"
+          exit 0
+      fi
+
+      # 🏥 Step 4: Check application health
+      echo "🏥 Checking application health..."
+      if ! check_app_health "$app_name"; then
+          handle_error "Health check failed for $app_name"
+          exit 0
+      fi
+
+      # 🔄 Step 5: Restart deployments
+      echo "🔄 Restarting deployments..."
+      if ! argocd app actions run "$app_name" restart --kind Deployment --all --grpc-web; then
+          handle_error "Failed to restart deployments for $app_name"
+          exit 0
+      fi
+
+      echo "✨ Deployment completed successfully for $app_name"
+    name: syncArgoApp
+    displayName: '🔄 Sync ArgoCD App: $(appName)'
+    env:
+      ARGOCD_SERVER: ${{ parameters.argocdServerUrl }}
+      ARGOCD_USERNAME: ${{ parameters.argocdUserName }}
+      ARGOCD_PASSWORD: ${{ parameters.argocdUserPassword }}
+      ARGOCD_APP_NAME: "$(appName)"
+      TARGET_BRANCH: ${{ parameters.targetBranch }}
+    continueOnError: true
