@@ -35,6 +35,7 @@ parameters:
     - idpay-reward-calculator
     - idpay-merchant
     - idpay-transactions
+    - idpay-timeline
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps

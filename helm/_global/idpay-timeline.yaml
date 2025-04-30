@@ -74,7 +74,7 @@ microservice-chart:
       KAFKA_GROUP_IN: idpay-timeline-consumer-group
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
+    MONGODB_URI: mongodb-primary-connection-string
     KAFKA_TIMELINE_OUT_SASL_JAAS_CONFIG: evh-idpay-timeline-idpay-timeline-producer-jaas-config-idpay-01
     KAFKA_TIMELINE_IN_SASL_JAAS_CONFIG: evh-idpay-timeline-idpay-timeline-consumer-jaas-config-idpay-01
     KAFKA_COMMANDS_IN_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
