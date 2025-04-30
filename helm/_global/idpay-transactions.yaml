@@ -83,7 +83,7 @@ microservice-chart:
       PDV_BASE_URL: pdv_decrypt_base_url
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
+    MONGODB_URI: mongodb-primary-connection-string
     EVH_CONNECTION_REWARD_RESPONSE: evh-idpay-transaction-idpay-transaction-consumer-jaas-config-idpay-00
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
     KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
