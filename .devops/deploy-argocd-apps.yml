@@ -33,6 +33,7 @@ parameters:
     - idpay-onboarding-workflow
     - idpay-payment
     - idpay-reward-calculator
+    - idpay-merchant
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
