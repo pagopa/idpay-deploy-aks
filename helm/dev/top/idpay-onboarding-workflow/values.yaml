@@ -1,31 +1,39 @@
 microservice-chart:
   image:
-    repository: cstardcommonacr.azurecr.io/idpayonboardingworkflow
-    tag: latest
+    repository: ghcr.io/pagopa/idpay-onboarding-workflow
+    tag: snapshot-idp-2675-update-workflows-github
     pullPolicy: Always
 
   ingress:
-    host: "dev01.idpay.internal.dev.cstar.pagopa.it"
+      create: true
+      host: "idpay.itn.internal.dev.cstar.pagopa.it"
+      path: /idpayonboardingworkflow(/|$)(.*)
+      rewriteTarget: /$2
+      servicePort: 8000
+      # proxyBodySize: 2m
+      annotations: {
+        nginx.ingress.kubernetes.io/satisfy: "any"
+      }
 
   resources:
     requests:
       memory: "512Mi"
       cpu: "200m"
     limits:
-      memory: "2Gi"
+      memory: "1Gi"
       cpu: "600m"
 
   autoscaling:
-    enable: false
-    # minReplica: 1
-    # maxReplica: 2
-    # pollingInterval: 30 # seconds
-    # cooldownPeriod: 300 # seconds
-    # triggers:
-    #   - type: cpu
-    #     metadata:
-    #       type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-    #       value: "70"
+    enable: true
+    minReplica: 1
+    maxReplica: 1
+    pollingInterval: 30 # seconds
+    cooldownPeriod: 300 # seconds
+    triggers:
+      - type: cpu
+        metadata:
+          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          value: "70"
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
@@ -47,8 +55,17 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   envSecret:
-    aks-api-url: cstar-d-weu-dev01-aks-apiserver-url
+    aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
   keyvault:
-    name: "cstar-d-idpay-kv"
+    name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
+
+#postman-test:
+#  run: true
+#  repoName: idpay-onboarding-workflow
+#  dir: postman
+#  collectionName: "idpay-onboarding-workflow-e2e.postman_collection.json"
+#  envVariablesFile: "idpay_dev.postman_environment.json"
+
+  # * - Queste variabili d'ambiente le troviamo su Azure DevOps all'interno della folder Library
