@@ -1,13 +1,12 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-calculator
-    tag: snapshot-IDP-2675-update-workflows-github-
+    tag: snapshot-idp-2675-update-workflows-github-
     pullPolicy: Always
 
   ingress:
-    host: "dev01.idpay.internal.dev.cstar.pagopa.it"
-    create: true
     host: "idpay.itn.internal.dev.cstar.pagopa.it"
+    create: true
     path: /idpayrewardcalculator(/|$)(.*)
     rewriteTarget: /$2
     servicePort: 8000
