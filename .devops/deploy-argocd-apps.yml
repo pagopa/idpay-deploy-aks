@@ -35,12 +35,10 @@ parameters:
     - idpay-reward-calculator
     - idpay-merchant
     - idpay-transactions
-    - idpay-timeline
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
     - idpay-admissibility-assessor
-    - idpay-recovery-error-topic
-    - idpay-reward-notification
+    - idpay-notification-email
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
@@ -50,12 +48,16 @@ parameters:
     - idpay-initiative-statistics
     - idpay-portal-welfare-backend-role-permission
     - idpay-group
+    - idpay-reward-notification
+    - idpay-timeline
+    - idpay-recovery-error-topic
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
   type: object
   default:
     - idpay-self-expense-backend
+    - idpay-notification-email
 
 
 - name: POSTMAN_BRANCH
