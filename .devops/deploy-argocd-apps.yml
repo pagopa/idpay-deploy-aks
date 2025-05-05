@@ -51,6 +51,7 @@ parameters:
     - idpay-portal-welfare-backend-role-permission
     - idpay-group
     - idpay-reward-user-id-splitter
+    - idpay-ranking
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
