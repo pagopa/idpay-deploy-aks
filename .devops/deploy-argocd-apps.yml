@@ -38,6 +38,7 @@ parameters:
     - idpay-timeline
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
+    - idpay-admissibility-assessor
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
