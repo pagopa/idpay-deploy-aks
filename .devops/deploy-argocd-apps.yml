@@ -43,6 +43,7 @@ parameters:
   type: object
   default:
     - idpay-payment-instrument
+    - idpay-initiative-statistics
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
