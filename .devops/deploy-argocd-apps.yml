@@ -61,6 +61,7 @@ parameters:
     - idpay-self-expense-backend
     - idpay-notification-manager
     - idpay-notification-email
+    - idpay-iban
 
 
 - name: POSTMAN_BRANCH
