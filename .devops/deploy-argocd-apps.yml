@@ -38,7 +38,7 @@ parameters:
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
     - idpay-admissibility-assessor
-    - idpay-notification-email
+    
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
@@ -51,6 +51,7 @@ parameters:
     - idpay-reward-notification
     - idpay-timeline
     - idpay-recovery-error-topic
+    - idpay-reward-user-id-splitter
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
