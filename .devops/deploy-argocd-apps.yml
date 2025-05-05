@@ -52,6 +52,7 @@ parameters:
     - idpay-timeline
     - idpay-recovery-error-topic
     - idpay-reward-user-id-splitter
+    - idpay-ranking
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
