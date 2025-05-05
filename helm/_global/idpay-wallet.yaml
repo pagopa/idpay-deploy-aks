@@ -92,7 +92,7 @@ microservice-chart:
       KAFKA_TOPIC_TIMELINE: idpay_timeline_topic
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
+    MONGODB_URI: mongodb-primary-connection-string
     KAFKA_CHECKIBAN_OUTCOME_SASL_JAAS_CONFIG: evh-idpay-checkiban-outcome-idpay-checkiban-outcome-consumer-jaas-config-idpay-00
     KAFKA_IBAN_SASL_JAAS_CONFIG: evh-idpay-checkiban-evaluation-idpay-checkiban-evaluation-producer-jaas-config-idpay-00
     KAFKA_TIMELINE_SASL_JAAS_CONFIG: evh-idpay-timeline-idpay-timeline-producer-jaas-config-idpay-01

@@ -37,6 +37,7 @@ parameters:
     - idpay-transactions
     - idpay-timeline
     - idpay-portal-welfare-backend-initiative
+    - idpay-wallet
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
