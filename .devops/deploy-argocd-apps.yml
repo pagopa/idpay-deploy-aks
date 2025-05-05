@@ -40,6 +40,7 @@ parameters:
     - idpay-wallet
     - idpay-admissibility-assessor
     - idpay-recovery-error-topic
+    - idpay-reward-notification
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps

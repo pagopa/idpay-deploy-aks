@@ -98,7 +98,7 @@ microservice-chart:
       MERCHANT_MS_HOST: idpay_merchant_host
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
+    MONGODB_URI: mongodb-primary-connection-string
     KAFKA_REFUND_RULE_REQUEST_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-consumer-jaas-config-idpay-01
     REWARD_RESPONSE_SASL_JAAS_CONFIG: evh-idpay-transaction-idpay-transaction-consumer-jaas-config-idpay-00
     KAFKA_CHECKIBAN_OUTCOME_SASL_JAAS_CONFIG: evh-idpay-checkiban-outcome-idpay-checkiban-outcome-consumer-jaas-config-idpay-00
