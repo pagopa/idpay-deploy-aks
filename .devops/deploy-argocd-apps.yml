@@ -50,6 +50,7 @@ parameters:
   displayName: Extra ArgoCD Apps
   type: object
   default:
+    - idpay-self-expense-backend
 
 
 - name: POSTMAN_BRANCH
