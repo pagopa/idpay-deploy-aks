@@ -1,11 +1,19 @@
 microservice-chart:
   image:
-    repository: cstardcommonacr.azurecr.io/idpaynotificationmanager
-    tag: latest
+    repository: docker pull ghcr.io/pagopa/idpay-notification-manager
+    tag: snapshot-idp-2675-update-workflows-github
     pullPolicy: Always
 
   ingress:
-    host: "dev01.idpay.internal.dev.cstar.pagopa.it"
+    create: true
+    host: "idpay.itn.internal.dev.cstar.pagopa.it"
+    path: /idpaynotificationmanager(/|$)(.*)
+    rewriteTarget: /$2
+    servicePort: 8000
+    # proxyBodySize: 2m
+    annotations: {
+      nginx.ingress.kubernetes.io/satisfy: "any"
+    }
 
   resources:
     requests:
@@ -47,8 +55,8 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   envSecret:
-    aks-api-url: cstar-d-weu-dev01-aks-apiserver-url
+    aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
   keyvault:
-    name: "cstar-d-idpay-kv"
+    name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"

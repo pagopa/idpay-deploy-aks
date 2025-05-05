@@ -38,7 +38,7 @@ parameters:
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
     - idpay-admissibility-assessor
-    
+
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
@@ -59,6 +59,7 @@ parameters:
   type: object
   default:
     - idpay-self-expense-backend
+    - idpay-notification-manager
     - idpay-notification-email
 
 
