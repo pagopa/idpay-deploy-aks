@@ -88,7 +88,7 @@ microservice-chart:
       ONE_TRUST_PRIVACYNOTICES_BASE_URL: one_trust_privacynotice_base_url
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
+    MONGODB_URI: mongodb-primary-connection-string
     ONE_TRUST_TOS_ID: one-trust-tos-id
     ONE_TRUST_API_KEY: one-trust-api-key
 

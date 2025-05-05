@@ -81,8 +81,8 @@ microservice-chart:
       KAFKA_RTD_BROKER: kafka_broker_rtd_domain
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
-    REDIS_CONNECTION_URL: idpay-redis-00-primary-connection-url
+    MONGODB_URI: mongodb-primary-connection-string
+    REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
     PDV_DECRYPT_API_KEY: pdv-api-key
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
     KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
