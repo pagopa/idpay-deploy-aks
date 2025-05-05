@@ -39,6 +39,7 @@ parameters:
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
     - idpay-admissibility-assessor
+    - idpay-recovery-error-topic
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
