@@ -47,6 +47,7 @@ parameters:
     - idpay-payment-instrument
     - idpay-initiative-statistics
     - idpay-portal-welfare-backend-role-permission
+    - idpay-group
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
