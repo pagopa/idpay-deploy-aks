@@ -109,7 +109,7 @@ microservice-chart:
       KAFKA_INITIATIVE_OUTCOME_TOPIC: idpay_rule_update_topic
 
   envSecret:
-    MONGODB_URI: mongodb-connection-string
+    MONGODB_URI: mongodb-primary-connection-string
     KAFKA_INITIATIVE_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-producer-jaas-config-idpay-01
     IO_BACKEND_SERVICE_SUBSCRIPTION_API_KEY: io-backend-manage-api-key
     IO_BACKEND_SERVICE_AUTHORIZED_RECIPIENTS: io-backend-request-authorized-recipients
