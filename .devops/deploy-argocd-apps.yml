@@ -42,6 +42,7 @@ parameters:
   displayName: Mid ArgoCD Apps
   type: object
   default:
+    - idpay-payment-instrument
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
