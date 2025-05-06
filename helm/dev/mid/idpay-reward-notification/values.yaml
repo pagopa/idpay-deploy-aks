@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: cstardcommonacr.azurecr.io/idpayrewardnotification
+    repository: ghcr.io/pagopa/idpayrewardnotification
     tag: snapshot-idp-2675-update-workflows-github
     pullPolicy: Always
 

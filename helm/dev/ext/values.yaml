@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: cstardcommonacr.azurecr.io/idpaymerchant
+    repository: ghcr.io/pagopa/idpaymerchant
     tag: latest
     pullPolicy: Always
 
