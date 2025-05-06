@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: ghcr.io/pagopa/idpaymerchant
+    repository: ghcr.io/pagopa/idpay-merchant
     tag: latest
     pullPolicy: Always
 
