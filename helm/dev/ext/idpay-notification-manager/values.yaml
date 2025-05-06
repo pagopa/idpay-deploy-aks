@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: docker pull ghcr.io/pagopa/idpay-notification-manager
+    repository: ghcr.io/pagopa/idpay-notification-manager
     tag: snapshot-idp-2675-update-workflows-github
     pullPolicy: Always
 
