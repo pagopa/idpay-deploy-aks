@@ -1,7 +1,7 @@
 microservice-chart:
 
   image:
-    repository: cstardcommonacr.azurecr.io/idpayportalwelfarebackendinitiative
+    repository: ghcr.io/pagopa/idpayportalwelfarebackendinitiative
     tag: snapshot-idp-2675-update-workflows-github
     pullPolicy: Always
 

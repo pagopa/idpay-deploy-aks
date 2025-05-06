@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: docker pull ghcr.io/pagopa/idpay-admissibility-assessor
+    repository: ghcr.io/pagopa/idpay-admissibility-assessor
     tag: snapshot-idp-2677-add-workflows-for-new-cicd
     pullPolicy: Always
 
