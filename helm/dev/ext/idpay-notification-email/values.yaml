@@ -61,7 +61,7 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   envSecret:
-    aks-api-url: cstar-d-weu-dev01-aks-apiserver-url
+    aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
   keyvault:
     name: "cstar-d-idpay-kv"
