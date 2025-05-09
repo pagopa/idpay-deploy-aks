@@ -35,11 +35,6 @@ microservice-chart:
     path: /idpay/splitter/(.*)
     servicePort: 8080
 
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
   podAnnotations: {}
 
   podSecurityContext:

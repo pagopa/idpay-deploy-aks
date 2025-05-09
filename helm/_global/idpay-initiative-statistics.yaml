@@ -35,10 +35,6 @@ microservice-chart:
     path: /idpayinitiativestatistics/(.*)
     servicePort: 8080
 
-  serviceAccount:
-    create: false
-    annotations: { }
-    name: ""
 
   podAnnotations: { }
 

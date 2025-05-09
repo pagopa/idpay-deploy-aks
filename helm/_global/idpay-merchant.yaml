@@ -36,11 +36,6 @@ microservice-chart:
     servicePort: 8080
     proxyBodySize: 2m
 
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
   podAnnotations: {}
 
   podSecurityContext:

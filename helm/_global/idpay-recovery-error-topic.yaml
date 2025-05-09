@@ -33,9 +33,6 @@ microservice-chart:
   ingress:
     create: false
 
-  serviceAccount:
-    create: false
-
   podAnnotations: { }
 
   podSecurityContext:

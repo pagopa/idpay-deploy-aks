@@ -38,11 +38,6 @@ microservice-chart:
       nginx.ingress.kubernetes.io/proxy-send-timeout: "3000"
     proxyBodySize: 15m
 
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
   podAnnotations: {}
 
   podSecurityContext:
