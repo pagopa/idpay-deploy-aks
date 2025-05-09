@@ -31,16 +31,37 @@ parameters:
   type: object
   default:
     - idpay-onboarding-workflow
+    - idpay-payment
+    - idpay-reward-calculator
+    - idpay-merchant
+    - idpay-transactions
+    - idpay-portal-welfare-backend-initiative
+    - idpay-wallet
+    - idpay-admissibility-assessor
+
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps
   type: object
   default:
+    - idpay-payment-instrument
+    - idpay-initiative-statistics
+    - idpay-portal-welfare-backend-role-permission
+    - idpay-group
+    - idpay-reward-notification
+    - idpay-timeline
+    - idpay-recovery-error-topic
+    - idpay-reward-user-id-splitter
+    - idpay-ranking
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps
   type: object
   default:
+    - idpay-self-expense-backend
+    - idpay-notification-manager
+    - idpay-notification-email
+    - idpay-iban
 
 
 - name: POSTMAN_BRANCH

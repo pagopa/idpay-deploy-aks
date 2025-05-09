@@ -1,0 +1,108 @@
+microservice-chart:
+
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 6
+    periodSeconds: 10
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 6
+    periodSeconds: 10
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /idpaynotificationemail/(.*)
+    servicePort: 8080
+
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+  #  autoscaling:
+  #    enable: true
+  #    minReplica: 1
+  #    maxReplica: 2
+  #    pollingInterval: 30 # seconds
+  #    cooldownPeriod: 300 # seconds
+  #    triggers:
+  #      - type: azure-monitor
+  #        metadata:
+  #          tenantId: 7788edaf-0346-4068-9d79-c868aed15b3d
+  #          subscriptionId: ac17914c-79bf-48fa-831e-1359ef74c1d5
+  #          resourceGroupName: dvopla-d-sec-rg
+  #          resourceURI: Microsoft.KeyVault/vaults/dvopla-d-neu-kv
+  #          metricName: ServiceApiHit
+  #          # metricNamespace: Microsoft.KeyVault/vaults
+  #          # metricFilter: namespace eq 'default'
+  #          # metricAggregationInterval: "-1:1:0"
+  #          metricAggregationType: Count
+  #          targetValue: "30"
+
+  envConfig:
+    MONGODB_DBNAME: idpay
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpaynotificationemail"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    ASSISTANCE_MAIL_SUBJECT_PREFIX: "[ASSISTANCE]"
+    NO_REPLY_SUBJECT_PREFIX: "[NO-REPLY]"
+    ASSISTANCE_MAIL: "assistenza.IDPay@pagopa.it"
+    NO_REPLY_MAIL: "noreply_idpay@pagopa.it"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+    notification-email:
+      MAIL_SERVER_HOST: mail_server_host
+      MAIL_SERVER_PORT: mail_server_port
+
+  envSecret:
+    MAIL_SERVER_USERNAME: mail-server-username
+    MAIL_SERVER_PASSWORD: mail-server-password
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
+
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}

@@ -1,0 +1,104 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 150
+    failureThreshold: 10
+    periodSeconds: 15
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 150
+    failureThreshold: 10
+    periodSeconds: 15
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /idpayportalwelfarebackendrolepermission/(.*)
+    servicePort: 8080
+
+  serviceAccount:
+    create: false
+    annotations: {}
+    name: ""
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+#  autoscaling:
+#    enable: true
+#    minReplica: 1
+#    maxReplica: 2
+#    pollingInterval: 30 # seconds
+#    cooldownPeriod: 300 # seconds
+#    triggers:
+#      - type: azure-monitor
+#        metadata:
+#          tenantId: 7788edaf-0346-4068-9d79-c868aed15b3d
+#          subscriptionId: ac17914c-79bf-48fa-831e-1359ef74c1d5
+#          resourceGroupName: dvopla-d-sec-rg
+#          resourceURI: Microsoft.KeyVault/vaults/dvopla-d-neu-kv
+#          metricName: ServiceApiHit
+#          # metricNamespace: Microsoft.KeyVault/vaults
+#          # metricFilter: namespace eq 'default'
+#          # metricAggregationInterval: "-1:1:0"
+#          metricAggregationType: Count
+#          targetValue: "30"
+
+  envConfig:
+    MONGODB_DBNAME: idpay
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpayportalwelfarebackendrolepermission"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    HEALTH_MONGO_ENABLED: "false"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+    rest-client:
+      ONE_TRUST_PRIVACYNOTICES_BASE_URL: one_trust_privacynotice_base_url
+
+  envSecret:
+    MONGODB_URI: mongodb-primary-connection-string
+    ONE_TRUST_TOS_ID: one-trust-tos-id
+    ONE_TRUST_API_KEY: one-trust-api-key
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}
