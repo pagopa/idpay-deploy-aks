@@ -32,11 +32,6 @@ microservice-chart:
     create: true
     path: /idpaypayment/(.*)
 
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
   podAnnotations: {}
 
   podSecurityContext:

@@ -36,11 +36,6 @@ microservice-chart:
     path: /idpayportalwelfarebackendrolepermission/(.*)
     servicePort: 8080
 
-  serviceAccount:
-    create: false
-    annotations: {}
-    name: ""
-
   podAnnotations: {}
 
   podSecurityContext:
