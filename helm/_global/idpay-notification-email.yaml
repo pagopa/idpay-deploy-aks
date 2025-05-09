@@ -87,7 +87,6 @@ microservice-chart:
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
-      JAVA_TOOL_OPTIONS: JAVA_TOOL_OPTIONS
     notification-email:
       MAIL_SERVER_HOST: mail_server_host
       MAIL_SERVER_PORT: mail_server_port
