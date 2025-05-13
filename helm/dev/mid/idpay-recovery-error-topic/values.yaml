@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-recovery-error-topic
-    tag: snapshot-idp-2675-update-workflows-github
+    tag: snapshot-idp-2675-update-workflows-github@sha256:e4d81da69e82600cc92da1298d228630183a302110c887ef5bb00a0b09043799
     pullPolicy: Always
 
   resources:
