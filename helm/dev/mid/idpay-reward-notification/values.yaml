@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-notification
-    tag: snapshot-idp-2675-update-workflows-github
+    tag: snapshot-idp-2675-update-workflows-github@sha256:96da7225221789dffb561f7f92b241f28f8a0a3eb84b41698e56a52f672dae92
     pullPolicy: Always
 
   ingress:
