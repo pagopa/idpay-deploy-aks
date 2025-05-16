@@ -9,9 +9,8 @@ microservice-chart:
     pullPolicy: Always
 
   ingress:
-    create: true
-    path: /idpayportalwelfarebackendrolepermission/(.*)
-
+    host: idpay.itn.internal.dev.cstar.pagopa.it
+    
   resources:
     requests:
       memory: "512Mi"
