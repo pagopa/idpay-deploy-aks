@@ -10,14 +10,7 @@ microservice-chart:
 
   ingress:
     create: true
-    host: "idpay.itn.internal.dev.cstar.pagopa.it"
-    path: /idpayportalwelfarebackendrolepermission(/|$)(.*)
-    rewriteTarget: /$2
-    servicePort: 8000
-    # proxyBodySize: 2m
-    annotations: {
-      nginx.ingress.kubernetes.io/satisfy: "any"
-    }
+    path: /idpayportalwelfarebackendrolepermission/(.*)
 
   resources:
     requests:
