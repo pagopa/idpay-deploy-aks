@@ -89,8 +89,8 @@ microservice-chart:
     MONGODB_URI: mongodb-primary-connection-string
     KAFKA_RULE_ENGINE_SASL_JAAS_CONFIG: evh-idpay-hpan-update-idpay-hpan-update-producer-jaas-config-idpay-01
     KAFKA_RE_ACK_SASL_JAAS_CONFIG: evh-idpay-hpan-update-outcome-idpay-hpan-update-outcome-consumer-jaas-config-idpay-01
-    KAFKA_RTD_OUT_SASL_JAAS_CONFIG: evh-rtd-pi-from-app-rtd-pi-from-app-producer-policy-idpay-00
-    KAFKA_RTD_IN_SASL_JAAS_CONFIG: evh-rtd-pi-to-app-rtd-pi-to-app-consumer-policy-idpay-00
+    KAFKA_RTD_OUT_SASL_JAAS_CONFIG: evh-rtd-pi-from-app-rtd-pi-from-app-producer-policy-jaas-config-idpay-00
+    KAFKA_RTD_IN_SASL_JAAS_CONFIG: evh-rtd-pi-to-app-rtd-pi-to-app-consumer-policy-jaas-config-idpay-00
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
     KAFKA_COMMANDS_IN_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
     PDV_ENCRYPT_API_KEY: pdv-api-key
