@@ -33,7 +33,6 @@ microservice-chart:
   ingress:
     create: true
     path: /idpayselfexpensebackend/(.*)
-    servicePort: 8080
     annotations:
       nginx.ingress.kubernetes.io/proxy-send-timeout: "3000"
     proxyBodySize: 15m

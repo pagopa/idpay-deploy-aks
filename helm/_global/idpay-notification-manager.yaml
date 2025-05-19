@@ -33,7 +33,6 @@ microservice-chart:
   ingress:
     create: true
     path: /idpaynotificationmanager/(.*)
-    servicePort: 8080
 
   podAnnotations: {}
 

@@ -33,7 +33,6 @@ microservice-chart:
   ingress:
     create: true
     path: /idpaytransactions/(.*)
-    servicePort: 8080
 
   podAnnotations: { }
 

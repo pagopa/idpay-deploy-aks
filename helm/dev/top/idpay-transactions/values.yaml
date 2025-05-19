@@ -5,15 +5,7 @@ microservice-chart:
     pullPolicy: Always
 
   ingress:
-    create: true
-    host: "idpay.itn.internal.dev.cstar.pagopa.it"
-    path: /idpaytransactions(/|$)(.*)
-    rewriteTarget: /$2
-    servicePort: 8000
-    # proxyBodySize: 2m
-    annotations: {
-      nginx.ingress.kubernetes.io/satisfy: "any"
-    }
+    host: idpay.itn.internal.dev.cstar.pagopa.it
 
   resources:
     requests:
