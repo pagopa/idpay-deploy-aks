@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: ghcr.io/pagopa/idpay-selfexpense-backend
+    repository: ghcr.io/pagopa/idpay-self-expense-backend
     tag: snapshot-idp-2675-update-workflows-github
     pullPolicy: Always
 
