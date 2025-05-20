@@ -30,11 +30,9 @@ microservice-chart:
     type: ClusterIP
     ports:
       - 8080
-
   ingress:
     create: true
     path: /idpayportalwelfarebackendrolepermission/(.*)
-    servicePort: 8080
 
   podAnnotations: {}
 

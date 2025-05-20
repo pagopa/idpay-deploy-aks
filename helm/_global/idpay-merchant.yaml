@@ -33,7 +33,6 @@ microservice-chart:
   ingress:
     create: true
     path: /idpaymerchant/(.*)
-    servicePort: 8080
     proxyBodySize: 2m
 
   podAnnotations: {}
