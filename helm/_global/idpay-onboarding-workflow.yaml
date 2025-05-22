@@ -30,6 +30,10 @@ microservice-chart:
     ports:
       - 8080
 
+  ingress:
+    create: true
+    path: /idpayonboardingworkflow/(.*)
+
   podAnnotations: {}
 
   podSecurityContext:

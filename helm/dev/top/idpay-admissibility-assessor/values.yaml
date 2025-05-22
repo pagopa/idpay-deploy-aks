@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-idp-2677-add-workflows-for-new-cicd
+    tag: snapshot-release-dev
     pullPolicy: Always
 
   ingress:
