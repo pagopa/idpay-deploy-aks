@@ -32,7 +32,7 @@ microservice-chart:
 
   ingress:
     create: true
-    path: /idpay/splitter/(.*)
+    path: /idpaysplitter/(.*)
 
   podAnnotations: {}
 
