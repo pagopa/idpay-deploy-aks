@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-recovery-error-topic
-    tag: snapshot-release-dev
+    tag: snapshot-release-dev@sha256:a8e62303e716199bd40d43e8859fe65d29763cd11ae48dc6cb3b9964ac2ac7e9
     pullPolicy: Always
 
   resources:
