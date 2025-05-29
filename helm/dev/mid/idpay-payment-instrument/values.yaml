@@ -46,7 +46,7 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.authenticate=false 
       -Dcom.sun.management.jmxremote.ssl=false
     SCHEDULE_RETRIEVE_INITIATIVE: 0 0 */2 ? * *
-    AZURE_KEYVAULT_URL: "https://cstar-d-idpay-kv.vault.azure.net"
+    AZURE_KEYVAULT_URL: "https://cstar-d-itn-idpay-kv.vault.azure.net"
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
