@@ -1,0 +1,98 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8083
+
+  ingress:
+    create: true
+    path: /idpaykafkaconnect/(.*)
+
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1001
+    runAsGroup: 1001
+
+  envConfig:
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpaykafkaconnect"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    CONNECT_METADATA_MAX_AGE_MS: "180000"
+    CONNECT_CONNECTIONS_MAX_IDLE_MS: "180000"
+    CONNECT_MAX_REQUEST_SIZE: "1000000"
+    GROUP_ID: kafka-connect-consumer-group
+    CONFIG_STORAGE_TOPIC: idpay-cdc-configs
+    OFFSET_STORAGE_TOPIC: idpay-cdc-offsets
+    STATUS_STORAGE_TOPIC: idpay-cdc-status
+
+    CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+    CONNECT_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
+
+    # allows to get secrets from environment variables
+    CONNECT_CONFIG_PROVIDERS: "env"
+    CONNECT_CONFIG_PROVIDERS_ENV_CLASS: "org.apache.kafka.common.config.provider.EnvVarConfigProvider"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+
+
+    idpay-eventhub-00:
+      BOOTSTRAP_SERVERS: kafka_broker
+      CONNECT_SECURITY_PROTOCOL: kafka_security_protocol
+      CONNECT_SASL_MECHANISM: kafka_sasl_mechanism
+      CONNECT_PRODUCER_SECURITY_PROTOCOL: kafka_security_protocol
+      CONNECT_PRODUCER_SASL_MECHANISM: kafka_sasl_mechanism
+
+
+  envSecret:
+    COSMOS_CONNECTION_STRING: mongodb-primary-connection-string
+    CONNECT_SASL_JAAS_CONFIG: evh-root-sasl-jaas-config-idpay-00
+    CONNECT_PRODUCER_SASL_JAAS_CONFIG: evh-root-sasl-jaas-config-idpay-00
+
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
