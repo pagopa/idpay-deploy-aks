@@ -1,6 +1,6 @@
 microservice-chart:
   image:
-    repository: ghcr.io/pagopa/idpay-admissibility-assessor
+    repository: ghcr.io/pagopa/idpay-kafka-connect
     tag: snapshot-release-dev
     pullPolicy: Always
 
