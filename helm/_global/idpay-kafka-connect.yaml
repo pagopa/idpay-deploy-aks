@@ -69,15 +69,10 @@ microservice-chart:
     CONNECT_HEARTBEAT_INTERVAL_MS: "3000"
     CONNECT_SESSION_TIMEOUT_MS: "30000"
     CONNECT_MAX_POLL_INTERVAL_MS: "300000"
-
-
-
     GROUP_ID: kafka-connect-consumer-group
     CONFIG_STORAGE_TOPIC: idpay-cdc-configs
     OFFSET_STORAGE_TOPIC: idpay-cdc-offsets
     STATUS_STORAGE_TOPIC: idpay-cdc-status
-
-
     CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
     CONNECT_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
 
@@ -120,3 +115,4 @@ microservice-chart:
     mounts:
       - name: tmp
         mountPath: /tmp
+
