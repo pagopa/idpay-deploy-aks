@@ -4,17 +4,17 @@ microservice-chart:
   fullnameOverride: ""
 
   livenessProbe:
-    create: true
-    handlerType: 'exec'
-    exec:
-      command:
-        - sh
-        - -c
-        - for connector in $(curl -s -X GET http://localhost:8083/connectors | grep -Eo '[^]",\[]+'); do curl -s -X GET http://localhost:8083/connectors/$connector/status | grep FAILED | wc -l; done | grep -Ez '^(0[[:space:]])+$'
-    initialDelaySeconds: 60
-    periodSeconds: 30
-    failureThreshold: 15
-    timeoutSeconds: 5
+    create: false
+#    handlerType: 'exec'
+#    exec:
+#      command:
+#       - sh
+#       - -c
+#       - for connector in $(curl -s -X GET http://localhost:8083/connectors | grep -Eo '[^]",\[]+'); do curl -s -X GET http://localhost:8083/connectors/$connector/status | grep FAILED | wc -l; done | grep -Ez '^(0[[:space:]])+$'
+#    initialDelaySeconds: 60
+#    periodSeconds: 30
+#   failureThreshold: 15
+#   timeoutSeconds: 5
 
   readinessProbe:
     httpGet:
