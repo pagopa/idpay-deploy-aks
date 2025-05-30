@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-iban
-    tag: snapshot-release-dev
+    tag: snapshot-release-dev@sha256:84134c836a38f32e3b23bdfd8949f1af0ec1d02c242851fb8ad5a838eaa434fa
     pullPolicy: Always
 
   ingress:
