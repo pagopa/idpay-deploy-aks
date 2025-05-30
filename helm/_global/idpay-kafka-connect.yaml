@@ -4,22 +4,25 @@ microservice-chart:
   fullnameOverride: ""
 
   livenessProbe:
-    handlerType: httpGet
-    httpGet:
-      path: /actuator/health/liveness
-      port: 8080
-    initialDelaySeconds: 120
+    create: true
+    handlerType: 'exec'
+    exec:
+      command:
+        - sh
+        - -c
+        - for connector in $(curl -s -X GET http://localhost:8083/connectors | grep -Eo '[^]",\[]+'); do curl -s -X GET http://localhost:8083/connectors/$connector/status | grep FAILED | wc -l; done | grep -Ez '^(0[[:space:]])+$'
+    initialDelaySeconds: 60
+    periodSeconds: 30
     failureThreshold: 15
-    periodSeconds: 10
+    timeoutSeconds: 5
 
   readinessProbe:
-    handlerType: httpGet
     httpGet:
-      path: /actuator/health/readiness
-      port: 8080
-    initialDelaySeconds: 120
+      path: /connectors
+      port: 8083
+    initialDelaySeconds: 65
     failureThreshold: 15
-    periodSeconds: 10
+    periodSeconds: 30
 
   deployment:
     create: true
@@ -52,13 +55,28 @@ microservice-chart:
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
     APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    CONNECT_PRODUCER_METADATA_MAX_AGE_MS: "180000"
+    CONNECT_PRODUCER_CONNECTIONS_MAX_IDLE_MS: "180000"
+    CONNECT_PRODUCER_MAX_REQUEST_SIZE: "1000000"
+    CONNECT_PRODUCER_RETRIES: "3"
+    CONNECT_PRODUCER_REQUEST_TIMEOUT_MS: "30000"
+    CONNECT_PRODUCER_METADATA_MAX_IDLE_MS: "180000"
+    CONNECT_PRODUCER_LINGER_MS: "5"
+    CONNECT_PRODUCER_DELIVERY_TIMEOUT_MS: "180000"
+    CONNECT_PRODUCER_COMPRESSION_TYPE: "none"
     CONNECT_METADATA_MAX_AGE_MS: "180000"
     CONNECT_CONNECTIONS_MAX_IDLE_MS: "180000"
-    CONNECT_MAX_REQUEST_SIZE: "1000000"
+    CONNECT_HEARTBEAT_INTERVAL_MS: "3000"
+    CONNECT_SESSION_TIMEOUT_MS: "30000"
+    CONNECT_MAX_POLL_INTERVAL_MS: "300000"
+
+
+
     GROUP_ID: kafka-connect-consumer-group
     CONFIG_STORAGE_TOPIC: idpay-cdc-configs
     OFFSET_STORAGE_TOPIC: idpay-cdc-offsets
     STATUS_STORAGE_TOPIC: idpay-cdc-status
+
 
     CONNECT_KEY_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
     CONNECT_VALUE_CONVERTER: "org.apache.kafka.connect.json.JsonConverter"
