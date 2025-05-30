@@ -6,6 +6,11 @@ microservice-chart:
 
   ingress:
     host: idpay.itn.internal.dev.cstar.pagopa.it
+    servicePort: 8083
+
+  service:
+    ports:
+      - 8083
 
   resources:
     requests:
