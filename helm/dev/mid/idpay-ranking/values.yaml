@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranking
-    tag: snapshot-release-dev
+    tag: snapshot-release-dev@sha256:4a21f76bda1cba108ac875ac042b5814083682ba5233e14c3295470d622d58fd
     pullPolicy: Always
 
   ingress:
