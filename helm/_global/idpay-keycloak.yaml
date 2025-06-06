@@ -42,7 +42,6 @@ microservice-chart:
 
   securityContext:
     allowPrivilegeEscalation: false
-    readOnlyRootFilesystem: false
     runAsNonRoot: true
     runAsUser: 1001
     runAsGroup: 1001
@@ -88,4 +87,8 @@ microservice-chart:
     mounts:
       - name: tmp
         mountPath: /tmp
+      - name: data
+        mountPath: /opt/keycloak/data
+      - name: log
+        mountPath: /opt/keycloak/log
 
