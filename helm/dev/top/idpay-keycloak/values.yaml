@@ -3,6 +3,9 @@ microservice-chart:
     repository: quay.io/keycloak/keycloak
     tag: 26.1.4
     pullPolicy: Always
+
+
+container:
   args: ["start-dev"]
 
   ingress:
