@@ -1,7 +1,11 @@
 microservice-chart:
   image:
-    repository: quay.io/keycloak/keycloak:26.1.4
+    repository: quay.io/keycloak/keycloak
+    tag: 26.1.4
     pullPolicy: Always
+
+  container:
+    args: ["start-dev"]
 
   ingress:
     host: idpay.itn.internal.dev.cstar.pagopa.it
