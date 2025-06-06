@@ -5,8 +5,8 @@ microservice-chart:
     pullPolicy: Always
 
 
-container:
-  args: ["start-dev"]
+  container:
+    args: ["start-dev"]
 
   ingress:
     host: idpay.itn.internal.dev.cstar.pagopa.it
