@@ -1,97 +1,90 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: keycloak
-  namespace: idpay
-  labels:
-    app: keycloak
-spec:
-  ports:
-    - name: http
-      port: 8080
-  selector:
-    app: keycloak
-  type: ClusterIP
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: keycloak
-  labels:
-    app: keycloak
-  namespace: idpay
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: keycloak
-  template:
-    metadata:
-      labels:
-        app: keycloak
-    spec:
-      containers:
-        - name: keycloak
-          image: quay.io/keycloak/keycloak:26.1.4
-          args: ["start-dev"]
-          env:
-            - name: KC_BOOTSTRAP_ADMIN_USERNAME
-              value: "admin"
-            - name: KC_BOOTSTRAP_ADMIN_PASSWORD
-              value: "admin"
-            - name: KC_HOSTNAME
-              value: "https://idpay.itn.internal.dev.cstar.pagopa.it/keycloak/"
-            - name: KC_HTTP_ENABLED
-              value: "true"
-            - name: KC_PROXY_HEADERS
-              value: "xforwarded"
-            - name: PROXY_ADDRESS_FORWARDING
-              value: "true"
-            - name: KC_HEALTH_ENABLED
-              value: "true"
-          ports:
-            - name: http
-              containerPort: 8080
-          readinessProbe:
-            httpGet:
-              path: /health/ready
-              port: 9000
-            initialDelaySeconds: 120
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
-          resources:
-            requests:
-              memory: "756Mi"
-              cpu: "200m"
-            limits:
-              memory: "1000Mi"
-              cpu: "600m"
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: keycloak-ingress
-  namespace: idpay
-  annotations:
-    nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
-    nginx.ingress.kubernetes.io/proxy-body-size: 1m
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/use-regex: 'true'
-spec:
-  ingressClassName: nginx
-  tls:
-    - hosts:
-        - idpay.itn.internal.dev.cstar.pagopa.it
-      secretName: idpay-itn-internal-dev-cstar-pagopa-it
-  rules:
-    - host: idpay.itn.internal.dev.cstar.pagopa.it
-      http:
-        paths:
-          - path: /keycloak/(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: keycloak
-                port:
-                  number: 8080
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /health/live
+      port: 9000
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /health/ready
+      port: 9000
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /keycloak/(.*)
+
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 1001
+    runAsGroup: 1001
+
+  envConfig:
+    KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
+    KC_BOOTSTRAP_ADMIN_PASSWORD: "admin"
+    KC_HOSTNAME: "https://idpay.itn.internal.dev.cstar.pagopa.it/keycloak/"
+    KC_HTTP_ENABLED: "true"
+    KC_PROXY_HEADERS: "xforwarded"
+    PROXY_ADDRESS_FORWARDING: "true"
+    KC_HEALTH_ENABLED: "true"
+    KC_DB_URL_DATABASE: "postgres"
+    KC_DB_URL_HOST: "cstar-d-itn-idpay-keycloak.postgres.database.azure.com"
+    KC_DB_SCHEMA: "public"
+    KC_DB_URL_PORT: "5432"
+    KC_DB: "postgres" 
+    KC_DB_USERNAME: "admin25"
+    KC_DB_PASSWORD: "keycloak2025@" 
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+
+
+
+
+
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
+
+  tmpVolumeMount:
+    create: true
+    mounts:
+      - name: tmp
+        mountPath: /tmp
+
