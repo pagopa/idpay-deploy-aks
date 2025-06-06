@@ -4,10 +4,6 @@ microservice-chart:
     tag: 26.1.4
     pullPolicy: Always
 
-
-  container:
-    args: ["start-dev"]
-
   ingress:
     host: idpay.itn.internal.dev.cstar.pagopa.it
     servicePort: 8080
