@@ -44,8 +44,6 @@ microservice-chart:
     allowPrivilegeEscalation: false
     readOnlyRootFilesystem: false
     runAsNonRoot: true
-    runAsUser: 1001
-    runAsGroup: 1001
 
   envConfig:
     KC_BOOTSTRAP_ADMIN_USERNAME: "admin"
