@@ -3,6 +3,7 @@ microservice-chart:
     repository: quay.io/keycloak/keycloak
     tag: 26.1.4
     pullPolicy: Always
+  args: ["start-dev"]
 
   ingress:
     host: idpay.itn.internal.dev.cstar.pagopa.it
