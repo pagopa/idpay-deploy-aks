@@ -42,6 +42,7 @@ microservice-chart:
 
   securityContext:
     allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
     runAsNonRoot: true
     runAsUser: 1001
     runAsGroup: 1001
