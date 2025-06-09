@@ -1,0 +1,54 @@
+microservice-chart:
+  image:
+    repository: quay.io/keycloak/keycloak
+    tag: 26.1.4
+    pullPolicy: Always
+
+  container:
+    args: ["start-dev"]
+
+  ingress:
+    host: idpay.itn.internal.dev.cstar.pagopa.it
+    servicePort: 8080
+
+  service:
+    ports:
+      - 8080
+
+  resources:
+    requests:
+      memory: "756Mi"
+      cpu: "200m"
+    limits:
+      memory: "1000Mi"
+      cpu: "600m"
+
+  autoscaling:
+    enable: true
+    minReplica: 1
+    maxReplica: 1
+    pollingInterval: 30 # seconds
+    cooldownPeriod: 300 # seconds
+    triggers:
+      - type: cpu
+        metadata:
+          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          value: "70"
+
+  envConfig:
+    JAVA_TOOL_OPTIONS: >-
+      -XX:InitialRAMPercentage=80.0
+      -XX:MaxRAMPercentage=90.0
+      -XX:+UseG1GC
+      -XX:+UseContainerSupport
+      -Djava.security.egd=file:/dev/./urandom
+      -Djava.util.concurrent.ForkJoinPool.common.parallelism=7
+      -Dio.netty.eventLoopThreads=100
+    HEAP_OPTS: "-Xms256m -Xmx512m"
+
+  envSecret:
+    aks-api-url: cstar-d-itn-dev-aks-apiserver-url
+
+  keyvault:
+    name: "cstar-d-itn-idpay-kv"
+    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
