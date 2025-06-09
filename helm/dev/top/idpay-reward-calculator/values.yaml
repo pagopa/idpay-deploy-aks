@@ -7,13 +7,15 @@ microservice-chart:
   ingress:
     host: idpay.itn.internal.dev.cstar.pagopa.it
 
+
   resources:
     requests:
-      memory: "512Mi"
-      cpu: "200m"
-    limits:
       memory: "1Gi"
-      cpu: "600m"
+      cpu: "300m"
+    limits:
+      memory: "2Gi"
+      cpu: "800m"
+
 
   autoscaling:
     enable: false
