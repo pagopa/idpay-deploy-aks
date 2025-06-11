@@ -38,7 +38,7 @@ parameters:
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
     - idpay-admissibility-assessor
-    - idpay-keycloak
+    - idpay-asset-register-backend
 
 
 - name: APPS_MID
