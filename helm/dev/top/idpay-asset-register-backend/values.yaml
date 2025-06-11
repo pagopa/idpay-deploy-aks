@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-maven-migration
+    tag: snapshot-rdb-33-tos-and-privacy-information
     pullPolicy: Always
 
   ingress:
