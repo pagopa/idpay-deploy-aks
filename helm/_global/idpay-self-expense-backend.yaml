@@ -60,6 +60,7 @@ microservice-chart:
     HEALTH_MONGO_ENABLED: "false"
     KAFKA_COMMANDS_GROUP_ID: "idpay-commands-self-expense-consumer-group"
     BLOB_STORAGE_CONTAINER_REFERENCE: webview
+    AWS_REGION: 'eu-south-1'
 
   externalConfigMapValues:
     idpay-common:

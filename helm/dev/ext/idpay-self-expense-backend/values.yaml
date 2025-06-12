@@ -29,6 +29,9 @@ microservice-chart:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
+    AWS_ACCESS_KEY_ID: cstar-d-aws-access-key-id
+    AWS_SECRET_ACCESS_KEY: cstar-d-aws-secret-access-key
+    AWS_SES_USER: cstar-d-aws-ses-user
 
   keyvault:
     name: "cstar-d-itn-idpay-kv"
@@ -58,4 +61,3 @@ microservice-chart:
     REDIRECT_URI: "https://api-io.dev.cstar.pagopa.it/idpay/self-expense/redirect"
     WEB-VIEW-URL: "https://welfare.uat.cstar.pagopa.it/ricevute/session/<session-id>"
     MIL_AUTH_BASE_URL: "https://api-mcshared.uat.cstar.pagopa.it/auth/token"
-
