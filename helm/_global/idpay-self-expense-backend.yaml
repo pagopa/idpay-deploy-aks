@@ -92,6 +92,11 @@ microservice-chart:
     UTIL_CRYPTO_AES_MODE_GCM_IV: notification-token-iv
     BLOB_STORAGE_CONNECTION_STRING: webview-storage-connection-string
 
+    #AWS
+    AWS_ACCESS_KEY_ID: aws-cstar-ses-user-access-key
+    AWS_SECRET_ACCESS_KEY: aws-cstar-ses-user-secret-key
+    AWS_SES_USER: aws-cstar-ses-username
+
   # nodeSelector: {}
 
   # tolerations: []

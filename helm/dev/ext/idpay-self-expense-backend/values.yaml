@@ -29,9 +29,6 @@ microservice-chart:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
-    AWS_ACCESS_KEY_ID: cstar-d-aws-access-key-id
-    AWS_SECRET_ACCESS_KEY: cstar-d-aws-secret-access-key
-    AWS_SES_USER: cstar-d-aws-ses-user
 
   keyvault:
     name: "cstar-d-itn-idpay-kv"
