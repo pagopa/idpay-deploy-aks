@@ -62,9 +62,9 @@ microservice-chart:
   # tolerations: []
 
   # affinity: {}
-  postman-test:
-    run: true
-    repoName: idpay-group
-    dir: postman
-    collectionName: "idpay-group-e2e.postman_collection.json"
-    envVariablesFile: "idpay_itn_dev.postman_environment.json"
+postman-test:
+  run: true
+  repoName: idpay-group
+  dir: postman
+  collectionName: "idpay-group-e2e.postman_collection.json"
+  envVariablesFile: "idpay_itn_dev.postman_environment.json"
