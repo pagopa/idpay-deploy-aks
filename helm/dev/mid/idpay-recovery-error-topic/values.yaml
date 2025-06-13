@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-recovery-error-topic
-    tag: snapshot-release-dev
+    tag: snapshot-idp-2676-jdk-update-to-21
     pullPolicy: Always
 
   resources:
