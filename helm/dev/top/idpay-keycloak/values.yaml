@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: quay.io/keycloak/keycloak
-    tag: 26.1.4
+    tag: 26.1.4@sha256:044a457e04987e1fff756be3d2fa325a4ef420fa356b7034ecc9f1b693c32761
     pullPolicy: Always
 
   container:
