@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-notification-manager
-    tag: snapshot-release-dev
+    tag: snapshot-release-dev@sha256:6682a2723f4813fe3db23d0436930317c744395ba6ad038f9d06d01fc385460f
     pullPolicy: Always
 
   ingress:
