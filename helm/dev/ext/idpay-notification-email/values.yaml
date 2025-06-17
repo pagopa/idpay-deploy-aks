@@ -65,9 +65,9 @@ microservice-chart:
 
   # affinity: {}
 
-  # postman-test:
-  #   run: true
-  #   repoName: idpay-notification-email
-  #   dir: postman
-  #   collectionName: "idpay-notification-email-e2e.postman_collection.json"
-  #   envVariablesFile: "idpay_dev.postman_environment.json"
+postman-test:
+  run: true
+  repoName: idpay-notification-email
+  dir: postman
+  collectionName: "idpay-notification-email-e2e.postman_collection.json"
+  envVariablesFile: "idpay_itn_dev.postman_environment.json"
