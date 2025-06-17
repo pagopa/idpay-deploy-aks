@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment-instrument
-    tag: snapshot-idp-2676-jdk-update-to-21
+    tag: snapshot-release-dev
     pullPolicy: Always
 
   ingress:

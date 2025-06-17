@@ -5,7 +5,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-portal-welfare-backend-role-permission
-    tag: snapshot-idp-2676-jdk-update-to-21
+    tag: snapshot-release-dev
     pullPolicy: Always
 
   ingress:
