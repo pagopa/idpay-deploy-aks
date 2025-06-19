@@ -38,7 +38,7 @@ parameters:
     - idpay-portal-welfare-backend-initiative
     - idpay-wallet
     - idpay-admissibility-assessor
-
+    - idpay-asset-register-backend
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps. Set to [] to skip deployment.

@@ -1,0 +1,77 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  deployment:
+    create: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /idpayassetregisterbackend/(.*)
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+  envConfig:
+    MONGODB_DBNAME: rdb
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpayassetregisterbackend"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    HEALTH_MONGO_ENABLED: "false"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+    rest-client:
+      ONE_TRUST_PRIVACYNOTICES_BASE_URL: one_trust_privacynotice_base_url
+
+  envSecret:
+    MONGODB_URI: mongodb-primary-connection-string
+    ONE_TRUST_TOS_ID: one-trust-tos-id
+    ONE_TRUST_API_KEY: one-trust-api-key
+  # nodeSelector: {}
+
+  # tolerations: []
+
+  # affinity: {}
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
