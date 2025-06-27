@@ -1,0 +1,49 @@
+microservice-chart:
+  image:
+    repository: ghcr.io/pagopa/idpay-mock
+    tag:  snapshot-release-uat
+    pullPolicy: Always
+
+  ingress:
+    host: idpay.itn.internal.uat.cstar.pagopa.it
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "40m"
+    limits:
+      memory: "4Gi"
+      cpu: "300m"
+
+  autoscaling:
+    enable: true
+#    minReplica: 1
+#    maxReplica: 2
+#    pollingInterval: 30 # seconds
+#    cooldownPeriod: 300 # seconds
+#    triggers:
+#      - type: cpu
+#        metadata:
+#          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+#          value: "70"
+
+  envConfig:
+    JAVA_TOOL_OPTIONS: >-
+      -XX:InitialRAMPercentage=75.0
+      -XX:MaxRAMPercentage=85.0
+      -XX:+UseG1GC
+      -XX:+UseContainerSupport
+      -Dio.netty.eventLoopThreads=100 
+      -javaagent:/app/applicationinsights-agent.jar 
+      -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json 
+
+
+  envSecret:
+    aks-api-url: cstar-u-itn-uat-aks-apiserver-url
+    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
+
+  keyvault:
+    name: "cstar-u-itn-idpay-kv"
+    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
+
+
