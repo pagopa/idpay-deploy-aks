@@ -50,7 +50,7 @@ parameters:
   - name: collectionTimeout
     displayName: 'Collection Timeout (seconds)'
     type: number
-    default: 300
+    default: 1800
     # Timeout in secondi per l'esecuzione della collection
 
   # Parametri Key Vault

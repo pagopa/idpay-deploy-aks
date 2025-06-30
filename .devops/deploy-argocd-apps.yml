@@ -227,46 +227,46 @@ stages:
             applicationPrefix: $(area)
             targetBranch: ${{ parameters.ARGOCD_TARGET_BRANCH }}
 
-#  # Stage for Postman Tests
-#  - stage: run_postman_tests
-#    condition: and(succeeded(), or(${{eq(parameters.ENV, 'dev')}}, ${{eq(parameters.ENV, 'uat')}}))
-#    dependsOn: sync_argo_apps
-#    jobs:
-#      # Top Apps Tests
-#      - ${{ if and(ne(length(parameters.APPS_TOP), 0), ne(parameters.APPS_TOP, '[]')) }}:
-#        - template: templates/postman-tests-template.yml
-#          parameters:
-#            appsList: ${{ parameters.APPS_TOP }}
-#            appCategory: 'top'
-#            env: ${{ parameters.ENV }}
-#            agentPoolName: $(agentPoolName)
-#            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
-#            azureServiceConnection: $(azureServiceConnectionName)
-#            keyVaultName: $(postman_kv_name)
-#            secretName: $(postman_env_secret_name)
-#
-#      # Mid Apps Tests
-#      - ${{ if and(ne(length(parameters.APPS_MID), 0), ne(parameters.APPS_MID, '[]')) }}:
-#        - template: templates/postman-tests-template.yml
-#          parameters:
-#            appsList: ${{ parameters.APPS_MID }}
-#            appCategory: 'mid'
-#            env: ${{ parameters.ENV }}
-#            agentPoolName: $(agentPoolName)
-#            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
-#            azureServiceConnection: $(azureServiceConnectionName)
-#            keyVaultName: $(postman_kv_name)
-#            secretName: $(postman_env_secret_name)
-#
-#      # Ext Apps Tests
-#      - ${{ if and(ne(length(parameters.APPS_EXT), 0), ne(parameters.APPS_EXT, '[]')) }}:
-#        - template: templates/postman-tests-template.yml
-#          parameters:
-#            appsList: ${{ parameters.APPS_EXT }}
-#            appCategory: 'ext'
-#            env: ${{ parameters.ENV }}
-#            agentPoolName: $(agentPoolName)
-#            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
-#            azureServiceConnection: $(azureServiceConnectionName)
-#            keyVaultName: $(postman_kv_name)
-#            secretName: $(postman_env_secret_name)
+  # Stage for Postman Tests
+  - stage: run_postman_tests
+    condition: and(succeeded(), or(${{eq(parameters.ENV, 'dev')}}, ${{eq(parameters.ENV, 'uat')}}))
+    dependsOn: sync_argo_apps
+    jobs:
+      # Top Apps Tests
+      - ${{ if and(ne(length(parameters.APPS_TOP), 0), ne(parameters.APPS_TOP, '[]')) }}:
+        - template: templates/postman-tests-template.yml
+          parameters:
+            appsList: ${{ parameters.APPS_TOP }}
+            appCategory: 'top'
+            env: ${{ parameters.ENV }}
+            agentPoolName: $(agentPoolName)
+            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
+            azureServiceConnection: $(azureServiceConnectionName)
+            keyVaultName: $(postman_kv_name)
+            secretName: $(postman_env_secret_name)
+
+      # Mid Apps Tests
+      - ${{ if and(ne(length(parameters.APPS_MID), 0), ne(parameters.APPS_MID, '[]')) }}:
+        - template: templates/postman-tests-template.yml
+          parameters:
+            appsList: ${{ parameters.APPS_MID }}
+            appCategory: 'mid'
+            env: ${{ parameters.ENV }}
+            agentPoolName: $(agentPoolName)
+            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
+            azureServiceConnection: $(azureServiceConnectionName)
+            keyVaultName: $(postman_kv_name)
+            secretName: $(postman_env_secret_name)
+
+      # Ext Apps Tests
+      - ${{ if and(ne(length(parameters.APPS_EXT), 0), ne(parameters.APPS_EXT, '[]')) }}:
+        - template: templates/postman-tests-template.yml
+          parameters:
+            appsList: ${{ parameters.APPS_EXT }}
+            appCategory: 'ext'
+            env: ${{ parameters.ENV }}
+            agentPoolName: $(agentPoolName)
+            postmanBranch: ${{ parameters.POSTMAN_BRANCH }}
+            azureServiceConnection: $(azureServiceConnectionName)
+            keyVaultName: $(postman_kv_name)
+            secretName: $(postman_env_secret_name)
