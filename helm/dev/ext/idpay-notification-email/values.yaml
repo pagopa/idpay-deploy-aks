@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-notification-email
-    tag: snapshot-release-dev
+    tag: RDB-68-be-adeguamento-microservizio-idpay-notification-email
     pullPolicy: Always
 
   ingress:
