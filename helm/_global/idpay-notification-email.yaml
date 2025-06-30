@@ -76,21 +76,16 @@ microservice-chart:
     ASSISTANCE_MAIL_SUBJECT_PREFIX: "[ASSISTANCE]"
     NO_REPLY_SUBJECT_PREFIX: "[NO-REPLY]"
     ASSISTANCE_MAIL: "assistenza.IDPay@pagopa.it"
-    NO_REPLY_MAIL: "noreply_idpay@pagopa.it"
     AWS_REGION: "eu-central-1"
 
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
-    notification-email:
-      MAIL_SERVER_HOST: mail_server_host
-      MAIL_SERVER_PORT: mail_server_port
 
   envSecret:
-    MAIL_SERVER_USERNAME: mail-server-username
-    MAIL_SERVER_PASSWORD: mail-server-password
     AWS_ACCESS_KEY_ID: aws-ses-mail-user-access-key
     AWS_SECRET_ACCESS_KEY: aws-ses-mail-user-secret-key
+    NO_REPLY_MAIL: aws-ses-mail-from
 
   externalConfigMapFiles:
     create: true
