@@ -17,15 +17,15 @@ microservice-chart:
 
   autoscaling:
     enable: false
-#    minReplica: 1
-#    maxReplica: 1
-#    pollingInterval: 30 # seconds
-#    cooldownPeriod: 300 # seconds
-#    triggers:
-#      - type: cpu
-#        metadata:
-#          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-#          value: "70"
+    minReplica: 1
+    maxReplica: 1
+    pollingInterval: 30 # seconds
+    cooldownPeriod: 300 # seconds
+    triggers:
+      - type: cpu
+        metadata:
+          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          value: "70"
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
