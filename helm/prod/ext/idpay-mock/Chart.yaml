@@ -1,6 +1,6 @@
 apiVersion: v2
-name: idpay-reward-user-id-splitter
-description: Transaction splitter for IdPay
+name: idpay-mock
+description: IDPay Mock
 type: application
 version: 1.0.0
 appVersion: 1.0.0
