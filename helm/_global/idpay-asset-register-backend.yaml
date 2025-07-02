@@ -59,12 +59,11 @@ microservice-chart:
       TZ: TZ
     rest-client:
       ONE_TRUST_PRIVACYNOTICES_BASE_URL: one_trust_privacynotice_base_url
-      
-  idpay-eventhub-rdb:
-    KAFKA_BROKER: kafka_broker
-    KAFKA_CONFIG_SASL_MECHANISM: kafka_sasl_mechanism
-    KAFKA_CONFIG_SECURITY_PROTOCOL: kafka_security_protocol
-    KAFKA_ASSET_REGISTER: idpay-asset-register_topic
+    idpay-eventhub-rdb:
+      KAFKA_BROKER: kafka_broker
+      KAFKA_CONFIG_SASL_MECHANISM: kafka_sasl_mechanism
+      KAFKA_CONFIG_SECURITY_PROTOCOL: kafka_security_protocol
+      KAFKA_ASSET_REGISTER: idpay-asset-register_topic
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
