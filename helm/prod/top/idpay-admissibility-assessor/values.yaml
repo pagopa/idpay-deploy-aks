@@ -1,7 +1,7 @@
 microservice-chart:
   image:
-    repository: cstarpcommonacr.azurecr.io/idpayadmissibilityassessor
-    tag: latest
+    repository: ghcr.io/pagopa/idpay-admissibility-assessor
+    tag: snapshot-release-prod
     pullPolicy: Always
 
   ingress:
@@ -28,7 +28,7 @@ microservice-chart:
          value: "70"
 
   envSecret:
-    aks-api-url: cstar-p-weu-prod01-aks-apiserver-url
+    aks-api-url: cstar-p-itn-prod-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     PAGOPA_PDND_CONFIGURATION_JWT_KEY_C001: pagopa-pdnd-configuration-jwt-key-c001
     PAGOPA_PDND_CONFIGURATION_AGID_JWT_PUB_C001: pagopa-pdnd-configuration-agid-jwt-pub-c001
@@ -42,7 +42,7 @@ microservice-chart:
     PAGOPA_PDND_CONFIGURATION_PURPOSE_ID_C021: pagopa-pdnd-configuration-purpose-id-c021
 
   keyvault:
-    name: "cstar-p-idpay-kv"
+    name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
   envConfig:

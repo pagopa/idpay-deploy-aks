@@ -1,7 +1,7 @@
 microservice-chart:
   image:
-    repository: cstarpcommonacr.azurecr.io/idpaypaymentinstrument
-    tag: latest
+    repository: ghcr.io/pagopa/idpay-payment-instrument
+    tag: snapshot-release-prod
     pullPolicy: Always
 
   ingress:
@@ -41,9 +41,9 @@ microservice-chart:
     AZURE_KEYVAULT_URL: "https://cstar-p-idpay-kv.vault.azure.net"
 
   envSecret:
-    aks-api-url: cstar-p-weu-prod01-aks-apiserver-url
+    aks-api-url: cstar-p-itn-prod-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
-    name: "cstar-p-idpay-kv"
+    name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
