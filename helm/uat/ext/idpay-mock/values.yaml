@@ -39,7 +39,6 @@ microservice-chart:
 
 
   envSecret:
-    aks-api-url: cstar-u-itn-uat-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:

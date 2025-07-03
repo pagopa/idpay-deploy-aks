@@ -28,7 +28,6 @@ microservice-chart:
           value: "70"
 
   envSecret:
-    aks-api-url: cstar-u-itn-uat-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     PAGOPA_PDND_CONFIGURATION_JWT_KEY_C001: pagopa-pdnd-configuration-jwt-key-c001
     PAGOPA_PDND_CONFIGURATION_AGID_JWT_PUB_C001: pagopa-pdnd-configuration-agid-jwt-pub-c001

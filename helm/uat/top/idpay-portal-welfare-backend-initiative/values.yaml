@@ -40,7 +40,6 @@ microservice-chart:
     INITIATIVE_LOGO_URL: "https://welfare.uat.cstar.pagopa.it/"
 
   envSecret:
-    aks-api-url: cstar-u-itn-uat-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
