@@ -39,6 +39,7 @@ parameters:
     - idpay-wallet
     - idpay-admissibility-assessor
     - idpay-asset-register-backend
+    - idpay-kafka-connect
 
 - name: APPS_MID
   displayName: Mid ArgoCD Apps. Set to [] to skip deployment.
@@ -62,6 +63,7 @@ parameters:
     - idpay-notification-manager
     - idpay-notification-email
     - idpay-iban
+    - idpay-mock
 
 
 - name: POSTMAN_BRANCH
