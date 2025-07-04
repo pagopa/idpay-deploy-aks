@@ -53,17 +53,26 @@ microservice-chart:
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
     APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
     HEALTH_MONGO_ENABLED: "false"
+    BLOB_STORAGE_CONTAINER_REFERENCE: "asset"
 
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
     rest-client:
       ONE_TRUST_PRIVACYNOTICES_BASE_URL: one_trust_privacynotice_base_url
+    idpay-eventhub-rdb:
+      KAFKA_BROKER: kafka_broker
+      KAFKA_CONFIG_SASL_MECHANISM: kafka_sasl_mechanism
+      KAFKA_CONFIG_SECURITY_PROTOCOL: kafka_security_protocol
+      KAFKA_ASSET_REGISTER: idpay-asset-register_topic
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
     ONE_TRUST_TOS_ID: one-trust-tos-id
     ONE_TRUST_API_KEY: one-trust-api-key
+    BLOB_STORAGE_CONNECTION_STRING: asset-storage-connection-string
+    KAFKA_REGISTER_PRODUCT_FILE_UPLOAD_SASL_JAAS_CONFIG: evh-idpay-asset-register-idpay-asset-register-consumer-jaas-config-idpay-rdb
+
   # nodeSelector: {}
 
   # tolerations: []
