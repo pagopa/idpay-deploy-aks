@@ -37,5 +37,5 @@ microservice-chart:
                 periodSeconds: 2
 
   keyvault:
-    name: "cstar-d-rtd-kv"
+    name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
