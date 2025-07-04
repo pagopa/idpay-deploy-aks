@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-RDB-63-be-realizzazione-api-dettaglio-prodotto
+    tag: snapshot-RDB-51-be-integrazione-servizio-eprel
     pullPolicy: Always
 
   ingress:
