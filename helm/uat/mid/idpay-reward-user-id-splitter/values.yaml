@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-user-id-splitter
-    tag: snapshot-release-uat
+    tag: snapshot-release-uat@sha256:20334e526bd6699006d9574415f8b61ffe6f70a1930ba1a1b027316f9aa3f606
     pullPolicy: Always
 
   ingress:
