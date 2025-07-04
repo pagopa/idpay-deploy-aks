@@ -15,9 +15,6 @@ microservice-chart:
       memory: "256Mi"
       cpu: "200m"
 
-  envSecret:
-    aks-api-url: cstar-d-weu-dev01-aks-apiserver-url
-
   autoscaling:
     enable: true
     minReplica: 1

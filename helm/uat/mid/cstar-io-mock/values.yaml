@@ -27,9 +27,6 @@ microservice-chart:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "80"
 
-  envSecret:
-    aks-api-url: cstar-u-weu-uat01-aks-apiserver-url
-
   keyvault:
     name: "cstar-u-rtd-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
