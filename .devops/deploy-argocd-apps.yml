@@ -54,6 +54,7 @@ parameters:
     - idpay-recovery-error-topic
     - idpay-reward-user-id-splitter
     - idpay-ranking
+    - cstar-io-mock
 
 - name: APPS_EXT
   displayName: Extra ArgoCD Apps. Set to [] to skip deployment.
