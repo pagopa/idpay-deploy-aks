@@ -16,7 +16,7 @@ microservice-chart:
       cpu: "600m"
 
   autoscaling:
-    enable: false
+    enable: true
     minReplica: 1
     maxReplica: 1
     pollingInterval: 30 # seconds
@@ -44,4 +44,4 @@ microservice-chart:
   keyvault:
     name: "cstar-u-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
-  
+
