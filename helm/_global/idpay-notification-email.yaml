@@ -24,6 +24,9 @@ microservice-chart:
 
   deployment:
     create: true
+    topologySpreadConstraints:
+      create: true
+      useDefaultConfiguration: true
 
   service:
     create: true
