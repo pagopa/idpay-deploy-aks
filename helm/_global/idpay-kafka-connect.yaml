@@ -103,7 +103,11 @@ microservice-chart:
 
   # nodeSelector: {}
 
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
   # affinity: {}
 

@@ -83,6 +83,12 @@ microservice-chart:
     KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-producer-jaas-config-idpay-01
     KAFKA_MERCHANT_FILE_UPLOAD_SASL_JAAS_CONFIG: evh-idpay-reward-notification-storage-events-idpay-reward-notification-storage-producer-jaas-config-idpay-01
 
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
   externalConfigMapFiles:
     create: true
     configMaps:

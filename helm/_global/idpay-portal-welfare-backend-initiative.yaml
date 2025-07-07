@@ -125,8 +125,12 @@ microservice-chart:
       - name: appinsights-config
         key: applicationinsights.json
 
-  # nodeSelector: {}
+  nodeSelector: {}
 
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
-  # affinity: {}
+  affinity: {}

@@ -86,11 +86,15 @@ microservice-chart:
     PDV_DECRYPT_API_KEY: pdv-api-key
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
 
-  # nodeSelector: {}
+  nodeSelector: {}
 
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
-  # affinity: {}
+  affinity: {}
 
   externalConfigMapFiles:
     create: true

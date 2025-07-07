@@ -69,7 +69,11 @@ microservice-chart:
     ONE_TRUST_API_KEY: one-trust-api-key
   # nodeSelector: {}
 
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
   # affinity: {}
 

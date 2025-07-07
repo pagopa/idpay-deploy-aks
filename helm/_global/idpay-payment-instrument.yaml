@@ -99,9 +99,11 @@ microservice-chart:
     PDV_DECRYPT_API_KEY: pdv-api-key
     PM_SERVICE_APIM_KEY: pm-api-key
 
-  # nodeSelector: {}
-
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
   # affinity: {}
 

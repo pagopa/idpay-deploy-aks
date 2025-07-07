@@ -95,6 +95,10 @@ microservice-chart:
         key: applicationinsights.json
   # nodeSelector: {}
 
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
   # affinity: {}

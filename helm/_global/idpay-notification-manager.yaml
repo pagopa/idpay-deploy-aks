@@ -102,9 +102,11 @@ microservice-chart:
     UTIL_CRYPTO_AES_MODE_GCM_IV: notification-token-iv
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
 
-  # nodeSelector: {}
-
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
   # affinity: {}
 
