@@ -97,6 +97,16 @@ microservice-chart:
       - name: appinsights-config
         key: applicationinsights.json
 
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: domain
+            operator: In
+            values:
+            - idpay
+
   tolerations:
     - key: "idpayOnly"
       operator: "Equal"
