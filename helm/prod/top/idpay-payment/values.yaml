@@ -17,8 +17,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 1
-    maxReplica: 2
+    minReplica: 3
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -34,9 +34,9 @@ microservice-chart:
       -XX:+UseG1GC
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
-      -Djava.util.concurrent.ForkJoinPool.common.parallelism=7 
-      -Dio.netty.eventLoopThreads=100 
-      -javaagent:/app/applicationinsights-agent.jar 
+      -Djava.util.concurrent.ForkJoinPool.common.parallelism=7
+      -Dio.netty.eventLoopThreads=100
+      -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
 
   envSecret:

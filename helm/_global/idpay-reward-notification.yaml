@@ -23,6 +23,9 @@ microservice-chart:
 
   deployment:
     create: true
+    topologySpreadConstraints:
+      create: true
+      useDefaultConfiguration: true
 
   service:
     create: true
@@ -109,3 +112,19 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
+
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: domain
+            operator: In
+            values:
+            - idpay

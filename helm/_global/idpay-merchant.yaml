@@ -23,6 +23,9 @@ microservice-chart:
 
   deployment:
     create: true
+    topologySpreadConstraints:
+      create: true
+      useDefaultConfiguration: true
 
   service:
     create: true
@@ -85,11 +88,23 @@ microservice-chart:
     KAFKA_COMMANDS_OUT_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-producer-jaas-config-idpay-01
     KAFKA_INITIATIVE_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-consumer-jaas-config-idpay-01
 
-  # nodeSelector: {}
+  nodeSelector: {}
 
-  # tolerations: []
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
 
-  # affinity: {}
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: domain
+            operator: In
+            values:
+            - idpay
 
   externalConfigMapFiles:
     create: true
