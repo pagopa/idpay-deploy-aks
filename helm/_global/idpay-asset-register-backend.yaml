@@ -65,6 +65,7 @@ microservice-chart:
       TZ: TZ
     rest-client:
       ONE_TRUST_PRIVACYNOTICES_BASE_URL: one_trust_privacynotice_base_url
+      NOTIFICATION_MS_BASE_URL: email_notification_ms_host
     idpay-eventhub-rdb:
       KAFKA_BROKER: kafka_broker
       KAFKA_CONFIG_SASL_MECHANISM: kafka_sasl_mechanism
