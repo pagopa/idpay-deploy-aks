@@ -44,7 +44,6 @@ microservice-chart:
 
   keyvault:
     name: "cstar-p-itn-idpay-kv"
-    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
   postman-test:
     run: true
