@@ -1,7 +1,6 @@
 microservice-chart:
-
   image:
-    repository: ghcr.io/pagopa/idpay-notification-email
+    repository: ghcr.io/pagopa/idpay-asset-register-backend
     tag: latest
     pullPolicy: Always
 
@@ -10,10 +9,10 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "768Mi"
-      cpu: "150m"
+      memory: "512Mi"
+      cpu: "200m"
     limits:
-      memory: "768Mi"
+      memory: "1Gi"
       cpu: "600m"
 
   autoscaling:
@@ -29,35 +28,19 @@ microservice-chart:
           value: "70"
 
   envConfig:
-    ENV_TARGET: "PROD"
-    LOG_LEVEL_PAGOPA: INFO
-    LOG_LEVEL_INITIATIVE_NOTIFICATION_EMAIL: INFO
-    LOG_LEVEL_SPRING_BOOT: INFO
-    LOG_LEVEL_SPRING_WEB: INFO
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=75.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
-      -Djava.security.egd=file:/dev/./urandom
+      -Dio.netty.eventLoopThreads=100
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
+
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
     name: "cstar-p-itn-idpay-kv"
-
-  # nodeSelector: {}
-
-  # tolerations: []
-
-  # affinity: {}
-
-  postman-test:
-    run: true
-    repoName: idpay-notification-email
-    dir: postman
-    collectionName: "idpay-notification-email-e2e.postman_collection.json"
-    envVariablesFile: "idpay.postman_environment.json"
+    
