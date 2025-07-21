@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-notification-email
-    tag: snapshot-release-uat
+    tag: snapshot-sender-test
     pullPolicy: Always
 
   ingress:
