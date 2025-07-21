@@ -17,8 +17,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 1
-    maxReplica: 2
+    minReplica: 3
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -44,6 +44,7 @@ microservice-chart:
 
   keyvault:
     name: "cstar-p-itn-idpay-kv"
+    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
   postman-test:
     run: true
