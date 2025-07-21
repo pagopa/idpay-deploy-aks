@@ -1,7 +1,7 @@
 microservice-chart:
 
   image:
-    repository: cstarpcommonacr.azurecr.io/idpayportalwelfarebackendinitiative
+    repository: ghcr.io/pagopa/idpay-portal-welfare-backend-initiative
     tag: latest
     pullPolicy: Always
 
@@ -18,8 +18,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 5
+    minReplica: 1
+    maxReplica: 2
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -27,6 +27,7 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
+
   envConfig:
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=75.0
@@ -39,11 +40,10 @@ microservice-chart:
     INITIATIVE_LOGO_URL: "https://welfare.cstar.pagopa.it/"
 
   envSecret:
-    aks-api-url: cstar-p-weu-prod01-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
-    name: "cstar-p-idpay-kv"
+    name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
   # nodeSelector: {}
@@ -51,3 +51,10 @@ microservice-chart:
   # tolerations: []
 
   # affinity: {}
+
+  postman-test:
+    run: true
+    repoName: idpay-portal-welfare-backend-initiative
+    dir: postman
+    collectionName: "idpay-initiative-e2e.postman_collection.json"
+    envVariablesFile: "idpay.postman_environment.json"
