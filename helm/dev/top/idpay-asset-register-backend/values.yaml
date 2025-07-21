@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-energy-class-sort-fix
+    tag: snapshot-na-mapping-to-null
     pullPolicy: Always
 
   ingress:
