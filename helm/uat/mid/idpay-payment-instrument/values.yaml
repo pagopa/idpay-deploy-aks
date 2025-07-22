@@ -18,7 +18,7 @@ microservice-chart:
   autoscaling:
     enable: true
     minReplica: 1
-    maxReplica: 1
+    maxReplica: 2
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -37,7 +37,7 @@ microservice-chart:
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
     SCHEDULE_RETRIEVE_INITIATIVE: 0 0 */2 ? * *
-    AZURE_KEYVAULT_URL: "https://cstar-u-idpay-kv.vault.azure.net"
+    AZURE_KEYVAULT_URL: "https://cstar-u-itn-idpay-kv.vault.azure.net"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key

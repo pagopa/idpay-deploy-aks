@@ -4,7 +4,7 @@ microservice-chart:
   fullnameOverride: ""
 
   image:
-    repository: cstarpcommonacr.azurecr.io/idpayportalwelfarebackendrolepermission
+    repository: ghcr.io/pagopa/idpay-portal-welfare-backend-role-permission
     tag: latest
     pullPolicy: Always
 
@@ -32,11 +32,10 @@ microservice-chart:
           value: "70"
 
   envSecret:
-    aks-api-url: cstar-p-weu-prod01-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
-    name: "cstar-p-idpay-kv"
+    name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
   envConfig:
