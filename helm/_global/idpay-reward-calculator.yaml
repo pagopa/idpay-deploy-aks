@@ -71,9 +71,10 @@ microservice-chart:
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
-    idpay-eventhub-02:
+    idpay-eventhub-00:
       KAFKA_REWARD_RESPONSE_BROKER: kafka_broker
       KAFKA_REWARD_RESPONSE_TOPIC: idpay_transaction_topic
+    idpay-eventhub-02:
       KAFKA_RTD_BROKER: kafka_broker_rtd_domain
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
