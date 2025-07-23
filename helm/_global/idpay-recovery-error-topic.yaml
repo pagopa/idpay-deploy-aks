@@ -60,7 +60,7 @@ microservice-chart:
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
-    idpay-eventhub-00:
+    idpay-eventhub-02:
       KAFKA_EVENTHUB_00_BROKER: kafka_broker
       KAFKA_EVENTHUB_00_SASL_MECHANISM: kafka_sasl_mechanism
       KAFKA_EVENTHUB_00_SECURITY_PROTOCOL: kafka_security_protocol

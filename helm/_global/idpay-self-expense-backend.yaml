@@ -76,7 +76,7 @@ microservice-chart:
       KAFKA_ERRORS_TOPIC: idpay_error_topic
       KAFKA_COMMANDS_BROKER: kafka_broker
       KAFKA_COMMANDS_TOPIC: idpay_commands_topic
-    idpay-eventhub-00:
+    idpay-eventhub-02:
       KAFKA_RTD_BROKER: kafka_broker_rtd_domain
 
   envSecret:

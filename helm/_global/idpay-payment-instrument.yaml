@@ -83,7 +83,7 @@ microservice-chart:
       KAFKA_TOPIC_ERRORS: idpay_error_topic
       KAFKA_RE_ACK_GROUP_IN: idpay_hpan_update_outcome_consumer_group
       #KAFKA_TOPIC_COMMANDS: idpay-commands
-    idpay-eventhub-00:
+    idpay-eventhub-02:
       KAFKA_BINDER_BROKER_ENDPOINT_RTD: kafka_broker_rtd_pi
       KAFKA_TOPIC_RTD_OUT: rtd_pi_from_app_topic
       KAFKA_TOPIC_RTD_IN: rtd_pi_to_app_topic
