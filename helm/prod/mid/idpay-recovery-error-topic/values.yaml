@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-recovery-error-topic
-    tag: latest
+    tag: v1.1.4
     pullPolicy: Always
 
   resources:

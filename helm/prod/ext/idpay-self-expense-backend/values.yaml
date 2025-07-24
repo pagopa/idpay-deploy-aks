@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-self-expense-backend
-    tag: latest
+    tag: v1.0.0
     pullPolicy: Always
 
   ingress:
