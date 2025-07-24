@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-na-mapping-to-null
+    tag: snapshot-RDB-111
     pullPolicy: Always
 
   ingress:
