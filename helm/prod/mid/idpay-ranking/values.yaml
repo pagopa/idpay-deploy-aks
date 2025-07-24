@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranking
-    tag: latest
+    tag: v1.2.2
     pullPolicy: Always
 
   ingress:
