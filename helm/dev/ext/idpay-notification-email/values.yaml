@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-notification-email
-    tag: snapshot-release-dev
+    tag: snapshot-RDB-140-rejected-template
     pullPolicy: Always
 
   ingress:
