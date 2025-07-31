@@ -36,7 +36,7 @@ microservice-chart:
   ingress:
     create: true
     path: /idpayassetregisterbackend/(.*)
-
+    proxyBodySize: 2m
   podAnnotations: {}
 
   podSecurityContext:
