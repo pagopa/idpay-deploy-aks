@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-calculator
-    tag: snapshot-release-uat
+    tag: snapshot-release-uat@sha256:a4fb60a93b702d9e794b3016ec850fa972085378fb736d588ddcf2178a0aac9c
     pullPolicy: Always
 
   ingress:
