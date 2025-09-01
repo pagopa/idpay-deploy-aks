@@ -29,9 +29,7 @@ microservice-chart:
 
   envConfig:
     KEYCLOAK_ADMIN_REDIRECT_URI: "https://bonuselettrodomestici.it/esercente"
-    MERCHANT_DEFAULT_INITIATIVES:
-      - "initiative-1"
-      - "initiative-2"
+    MERCHANT_DEFAULT_INITIATIVES: "initiative-1,initiative-2"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=75.0
       -XX:MaxRAMPercentage=85.0
