@@ -28,6 +28,10 @@ microservice-chart:
           value: "70"
 
   envConfig:
+    KEYCLOAK_ADMIN_REDIRECT_URI: "https://bonuselettrodomestici.it/esercente"
+    MERCHANT_DEFAULT_INITIATIVES:
+      - "initiative-1"
+      - "initiative-2"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=75.0
       -XX:MaxRAMPercentage=85.0
@@ -43,7 +47,7 @@ microservice-chart:
   keyvault:
     name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
-    
+
 
   postman-test:
     run: true
