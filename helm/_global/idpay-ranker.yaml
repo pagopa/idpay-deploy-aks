@@ -1,0 +1,99 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/liveness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  readinessProbe:
+    handlerType: httpGet
+    httpGet:
+      path: /actuator/health/readiness
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  deployment:
+    create: true
+    topologySpreadConstraints:
+      create: true
+      useDefaultConfiguration: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /idpayranker/(.*)
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+  envConfig:
+    MONGODB_DBNAME: idpay
+    KAFKA_ONBOARDING_OUTCOME_TOPIC: "idpay-admissibility-request"
+    APPLICATIONINSIGHTS_ROLE_NAME: "idpayranker"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    APPLICATIONINSIGHTS_SAMPLING_ENABLED: "false"
+    APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE: "100"
+    DELETE_PAGINATION_SIZE: "100"
+    DELETE_DELAY_TIME: "1000"
+    HEALTH_MONGO_ENABLED: "false"
+
+  externalConfigMapValues:
+    idpay-common:
+      TZ: TZ
+    idpay-eventhub-00:
+      KAFKA_ONBOARDING_REQUEST_TOPIC: idpay_onboarding_request_topic
+      KAFKA_SASL_MECHANISM: kafka_sasl_mechanism
+
+
+  envSecret:
+    MONGODB_URI: mongodb-primary-connection-string
+    SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
+
+  nodeSelector: {}
+
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: domain
+            operator: In
+            values:
+            - idpay
+
+  externalConfigMapFiles:
+    create: true
+    configMaps:
+      - name: appinsights-config
+        key: applicationinsights.json
