@@ -77,8 +77,8 @@ microservice-chart:
     ONE_TRUST_TOS_ID: one-trust-tos-id
     ONE_TRUST_API_KEY: one-trust-api-key
     BLOB_STORAGE_CONNECTION_STRING: asset-storage-connection-string
-    KAFKA_REGISTER_PRODUCT_FILE_UPLOAD_SASL_JAAS_CONFIG: evh-idpay-asset-register-idpay-asset-register-consumer-jaas-config-idpay-rdb
-
+    KAFKA_REGISTER_PRODUCT_FILE_UPLOAD_CONSUMER_SASL_JAAS_CONFIG: evh-idpay-asset-register-idpay-asset-register-consumer-jaas-config-idpay-rdb
+    KAFKA_REGISTER_PRODUCT_FILE_UPLOAD_PRODUCER_SASL_JAAS_CONFIG: evh-idpay-asset-register-idpay-asset-register-producer-jaas-config-idpay-rdb
   # nodeSelector: {}
 
   tolerations:
