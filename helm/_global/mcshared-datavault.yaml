@@ -61,7 +61,9 @@ microservice-chart:
 
   envSecret:
     mongodb-connection-string-1: mongodb-primary-connection-string
-    "application-insights.connection-string":
+    application-insights-connection-string: appinsights-instrumentation-key
+    secret-key-id: mcshared-datavault-secret-key-id
+    secret-key: mcshared-datavault-secret-key
 
   # nodeSelector: {}
 
@@ -80,9 +82,3 @@ microservice-chart:
             operator: In
             values:
             - idpay
-
-  externalConfigMapFiles:
-    create: true
-    configMaps:
-      - name: appinsights-config
-        key: applicationinsights.json
