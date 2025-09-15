@@ -1,0 +1,84 @@
+microservice-chart:
+  namespace: "idpay"
+  nameOverride: ""
+  fullnameOverride: ""
+
+  livenessProbe:
+    httpGet:
+      path: /q/health/live
+      port: 8080
+    initialDelaySeconds: 120
+    failureThreshold: 15
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /q/health/ready
+      port: 8080
+    initialDelaySeconds: 125
+    failureThreshold: 15
+    periodSeconds: 10
+
+  deployment:
+    create: true
+    topologySpreadConstraints:
+      create: true
+      useDefaultConfiguration: true
+
+  service:
+    create: true
+    type: ClusterIP
+    ports:
+      - 8080
+
+  ingress:
+    create: true
+    path: /mcshareddatavault/(.*)
+
+  podAnnotations: {}
+
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    runAsNonRoot: true
+    runAsUser: 10000
+    runAsGroup: 10000
+
+  envConfig:
+    MONGODB_DBNAME: idpay
+    APPLICATIONINSIGHTS_ROLE_NAME: "mcshareddatavault"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    APPLICATIONINSIGHTS_SAMPLING_ENABLED: "false"
+    APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE: "100"
+
+
+  externalConfigMapValues:
+
+  envSecret:
+    mongodb-connection-string-1: mongodb-primary-connection-string
+    application-insights-connection-string: appinsights-instrumentation-key
+    secret-key-id: mcshared-datavault-secret-key-id
+    secret-key: mcshared-datavault-secret-key
+
+  # nodeSelector: {}
+
+  tolerations:
+    - key: "idpayOnly"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
+
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: domain
+            operator: In
+            values:
+            - idpay
