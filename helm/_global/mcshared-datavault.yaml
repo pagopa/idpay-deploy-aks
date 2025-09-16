@@ -61,6 +61,7 @@ microservice-chart:
 
   envSecret:
     mongodb-connection-string-1: mongodb-primary-connection-string
+    mongodb-connection-string-2: mongodb-secondary-connection-string
     application-insights-connection-string: appinsights-instrumentation-key
     secret-key-id: mcshared-datavault-secret-key-id
     secret-key: mcshared-datavault-secret-key
