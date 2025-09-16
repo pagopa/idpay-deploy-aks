@@ -4,18 +4,16 @@ microservice-chart:
   fullnameOverride: ""
 
   livenessProbe:
-    handlerType: httpGet
     httpGet:
-      path: /actuator/health/liveness
+      path: /q/health/live
       port: 8080
     initialDelaySeconds: 120
     failureThreshold: 15
     periodSeconds: 10
 
   readinessProbe:
-    handlerType: httpGet
     httpGet:
-      path: /actuator/health/readiness
+      path: /q/health/ready
       port: 8080
     initialDelaySeconds: 125
     failureThreshold: 15
@@ -30,11 +28,12 @@ microservice-chart:
   service:
     create: true
     type: ClusterIP
-    port: 8080
+    ports:
+      - 8080
 
   ingress:
     create: true
-    path: /idpaymock/(.*)
+    path: /mcshareddatavault/(.*)
 
   podAnnotations: {}
 
@@ -50,26 +49,22 @@ microservice-chart:
 
   envConfig:
     MONGODB_DBNAME: idpay
-    APPLICATIONINSIGHTS_ROLE_NAME: "idpaymock"
-    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
+    APPLICATIONINSIGHTS_ROLE_NAME: "mcshareddatavault"
+    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
     APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
     APPLICATIONINSIGHTS_SAMPLING_ENABLED: "false"
     APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE: "100"
-    ENABLE_AUDIT_APPENDER: "TRUE"
+
 
   externalConfigMapValues:
-    idpay-common:
-      TZ: TZ
-
-    rest-client:
-      PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
-      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
   envSecret:
-    MONGODB_URI: mongodb-primary-connection-string
-    PDV_ENCRYPT_API_KEY: pdv-api-key
-    PDV_DECRYPT_API_KEY: pdv-api-key
+    mongodb-connection-string-1: mongodb-primary-connection-string
+    mongodb-connection-string-2: mongodb-secondary-connection-string
+    application-insights-connection-string: appinsights-instrumentation-key
+    secret-key-id: mcshared-datavault-secret-key-id
+    secret-key: mcshared-datavault-secret-key
 
   # nodeSelector: {}
 
@@ -88,9 +83,3 @@ microservice-chart:
             operator: In
             values:
             - idpay
-
-  externalConfigMapFiles:
-    create: true
-    configMaps:
-      - name: appinsights-config
-        key: applicationinsights.json
