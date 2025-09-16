@@ -51,7 +51,8 @@ microservice-chart:
 
   envConfig:
     MONGODB_DBNAME: idpay
-    KAFKA_ONBOARDING_OUTCOME_TOPIC: "idpay-admissibility-request"
+    SB_ONBOARDING_REQUEST_TOPIC: "idpay-onboarding-request"
+    SB_ONBOARDING_OUTCOME_TOPIC: "idpay-admissibility-request"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpayranker"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
@@ -73,6 +74,7 @@ microservice-chart:
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
     SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
+    SERVICEBUS_ADMISSIBILITY_CONNECTION_STRING: idpay-onboarding-request-producer-sas-key
 
   nodeSelector: {}
 
