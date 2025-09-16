@@ -66,9 +66,6 @@ microservice-chart:
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
-    idpay-eventhub-00:
-      KAFKA_ONBOARDING_REQUEST_TOPIC: idpay_onboarding_request_topic
-      KAFKA_SASL_MECHANISM: kafka_sasl_mechanism
 
 
   envSecret:
