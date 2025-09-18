@@ -131,9 +131,9 @@ jobs:
           local app_name=$1
           local target_branch=$2
 
-          echo "🔄 Updating application target branch to: $target_branch"
+          echo "🎚️ Updating application target branch to: $target_branch"
           if ! argocd app set "$app_name" --revision "$target_branch"; then
-              handle_error "Failed to update target branch for $app_name"
+              handle_error "Failed to update app: $app_name for target branch: $target_branch"
               return 1
           fi
           echo "✅ Successfully updated target branch"
@@ -185,40 +185,40 @@ jobs:
       fi
 
       # 🎯 Step 2: Update target branch
-      echo "🔄 Update app target branch..."
+      echo "🎚️ Step 2: Update app target branch..."
       if ! update_app_branch "$app_name" "$target_branch"; then
           handle_error "Failed to update target branch for $app_name"
           exit 0
       fi
 
       # 🔄 Step 3: Sync application
-      echo "🔄 Syncing application..."
+      echo "🔄 Step 3: Syncing application..."
       if ! argocd app sync "$app_name" --prune --timeout ${{ parameters.syncTimeout }}; then
           handle_error "Sync failed for $app_name"
           exit 0
       fi
 
       # 🏥 Step 4: Check application health
-      echo "🏥 Checking application health..."
+      echo "🏥 Step 4: Checking application health..."
       if ! check_app_health "$app_name"; then
           handle_error "Health check failed for $app_name"
           exit 0
       fi
 
-      # 🔄 Step 5: Restart deployments
-      echo "🔄 Restarting deployments..."
+      # 🪄 Step 5: Restart deployments
+      echo "🪄 Step 5: Restarting deployments..."
       if ! argocd app actions run "$app_name" restart --kind Deployment --all --grpc-web; then
           handle_error "Failed to restart deployments for $app_name"
           exit 0
       fi
 
-      echo "✨ Deployment completed successfully for $app_name"
+      echo "🎉 Deployment completed successfully for $app_name"
     name: syncArgoApp
     displayName: '🔄 Sync ArgoCD App: $(appName)'
     env:
       ARGOCD_SERVER: ${{ parameters.argocdServerUrl }}
       ARGOCD_USERNAME: ${{ parameters.argocdUserName }}
       ARGOCD_PASSWORD: ${{ parameters.argocdUserPassword }}
-      ARGOCD_APP_NAME: "$(appName)"
+      ARGOCD_APP_NAME: "$(applicationPrefix)/$(appName)"
       TARGET_BRANCH: ${{ parameters.targetBranch }}
     continueOnError: true
