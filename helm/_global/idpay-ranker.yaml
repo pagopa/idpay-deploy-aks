@@ -71,7 +71,7 @@ microservice-chart:
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
     SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
-    SERVICEBUS_ADMISSIBILITY_CONNECTION_STRING: idpay-onboarding-request-producer-sas-key
+    SERVICEBUS_ADMISSIBILITY_CONNECTION_STRING: idpay-admissibility-request-producer-sas-key
 
   nodeSelector: {}
 
