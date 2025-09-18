@@ -29,7 +29,7 @@ microservice-chart:
 
   envConfig:
     KEYCLOAK_ADMIN_REDIRECT_URI: "https://uat.bonuselettrodomestici.it/esercente"
-    MERCHANT_DEFAULT_INITIATIVES: "6895bb2562fc1f4a873a97a7,6895f82462fc1f4a873a97a8"
+    MERCHANT_DEFAULT_INITIATIVES: "6895bb2562fc1f4a873a97a7,6895f82462fc1f4a873a97a8,68c7db19fed6831074cbc624"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=75.0
       -XX:MaxRAMPercentage=85.0
