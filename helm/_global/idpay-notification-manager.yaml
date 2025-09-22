@@ -80,6 +80,7 @@ microservice-chart:
       IO_BACKEND_SERVICE_URL: io_backend_service_url
       PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
       INITIATIVE_MS_BASE_URL: initiative_ms_base_url
+      NOTIFICATION_MS_BASE_URL: email_notification_ms_host
     idpay-eventhub-00:
       KAFKA_BINDER_BROKER_ENDPOINT_LIST: kafka_broker
       KAFKA_NOTIFICATION_SASL_MECHANISM: kafka_sasl_mechanism
