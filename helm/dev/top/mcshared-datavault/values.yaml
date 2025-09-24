@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/mcshared-datavault
-    tag: snapshot-main
+    tag: snapshot-main@sha256:cf4427f2bcdc0c931c0969901f8bdf8c08da530b1570e946e743baead92ebc31
     pullPolicy: Always
 
   ingress:
@@ -27,24 +27,7 @@ microservice-chart:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
 
-#  envConfig:
-#    JAVA_TOOL_OPTIONS: >-
-#      -XX:InitialRAMPercentage=75.0
-#      -XX:MaxRAMPercentage=85.0
-#      -XX:+UseG1GC
-#      -XX:+UseContainerSupport
-#      -Djava.security.egd=file:/dev/./urandom
-#      -Djava.util.concurrent.ForkJoinPool.common.parallelism=7
-#      -Dio.netty.eventLoopThreads=100
-#      -javaagent:/app/applicationinsights-agent.jar
-#      -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
-#      -agentlib:jdwp=transport=dt_socket,server=y,address=8001,suspend=n
-#      -Dcom.sun.management.jmxremote=true
-#      -Dcom.sun.management.jmxremote.port=3002
-#      -Dcom.sun.management.jmxremote.rmi.port=3003
-#      -Djava.rmi.server.hostname=127.0.0.1
-#      -Dcom.sun.management.jmxremote.authenticate=false
-#      -Dcom.sun.management.jmxremote.ssl=false
+  envConfig:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
