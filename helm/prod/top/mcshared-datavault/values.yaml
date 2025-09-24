@@ -1,0 +1,36 @@
+microservice-chart:
+  image:
+    repository: ghcr.io/pagopa/mcshared-datavault
+    tag: snapshot-main@sha256:cf4427f2bcdc0c931c0969901f8bdf8c08da530b1570e946e743baead92ebc31
+    pullPolicy: Always
+
+  ingress:
+    host: idpay.itn.internal.cstar.pagopa.it
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "200m"
+    limits:
+      memory: "256Mi"
+      cpu: "400m"
+
+  autoscaling:
+    enable: true
+    minReplica: 2
+    maxReplica: 5
+    pollingInterval: 30 # seconds
+    cooldownPeriod: 300 # seconds
+    triggers:
+      - type: cpu
+        metadata:
+          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          value: "70"
+
+  envConfig:
+
+  envSecret:
+  
+  keyvault:
+    name: "cstar-p-itn-idpay-kv"
+    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
