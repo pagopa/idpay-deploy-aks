@@ -5,7 +5,7 @@ microservice-chart:
     pullPolicy: Always
 
   ingress:
-    host: idpay.itn.internal.dev.cstar.pagopa.it
+    host: idpay.itn.internal.cstar.pagopa.it
 
   resources:
     requests:
@@ -17,8 +17,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 1
-    maxReplica: 2
+    minReplica: 2
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -30,7 +30,7 @@ microservice-chart:
   envConfig:
 
   envSecret:
-
+  
   keyvault:
-    name: "cstar-d-itn-idpay-kv"
+    name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"

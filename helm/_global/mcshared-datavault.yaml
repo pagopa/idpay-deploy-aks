@@ -48,14 +48,6 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: idpay
-    APPLICATIONINSIGHTS_ROLE_NAME: "mcshareddatavault"
-    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
-    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
-    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
-    APPLICATIONINSIGHTS_SAMPLING_ENABLED: "false"
-    APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE: "100"
-
 
   externalConfigMapValues:
 
@@ -63,7 +55,6 @@ microservice-chart:
     mongodb-connection-string-1: mongodb-primary-connection-string
     mongodb-connection-string-2: mongodb-secondary-connection-string
     application-insights-connection-string: appinsights-instrumentation-key
-    secret-key-id: mcshared-datavault-secret-key-id
     secret-key: mcshared-datavault-secret-key
 
   # nodeSelector: {}
