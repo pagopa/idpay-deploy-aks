@@ -96,8 +96,6 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-          echo "🔍 Validating Postman configuration..."
-
           echo "🔍 DEBUG: Verifica path e contenuto del file YAML"
             yamlPath="$(Build.Repository.LocalPath)/helm/${{parameters.env}}/${{parameters.appCategory}}/$(appName)/values.yaml"
           echo "📄 Path del file YAML: $yamlPath"
@@ -107,18 +105,19 @@ jobs:
             cat "$yamlPath"
             else
             echo "❌ File non trovato!"
+            exit 1
             fi
           
           echo "🔍 DEBUG: Verifica versione yq"
             yq --version || echo "❌ yq non disponibile"
           
           echo "🔍 DEBUG: Output yq diretto"
-            yq '.postman-test' "$yamlPath" || echo "❌ Errore nella lettura di .postman-test"
-            yq '.postman-test.run' "$yamlPath" || echo "❌ Errore nella lettura di .postman-test.run"
+            yq eval '.postman-test' "$yamlPath" || echo "❌ Errore nella lettura di .postman-test"
+            yq eval '.postman-test.run' "$yamlPath" || echo "❌ Errore nella lettura di .postman-test.run"
             
             # Estrazione configurazione
-            rootPostman=$(yq '.postman-test' "$yamlPath")
-            runPostmanTests=$(yq '.postman-test.run' "$yamlPath")
+            rootPostman=$(yq eval '.postman-test' "$yamlPath")
+            runPostmanTests=$(yq eval '.postman-test.run' "$yamlPath")
             
             echo "Configuration found:"
           echo "- Root config: $rootPostman"
