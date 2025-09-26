@@ -236,7 +236,7 @@ stages:
     condition: and(succeeded(), or(${{eq(parameters.ENV, 'dev')}}, ${{eq(parameters.ENV, 'uat')}}))
     dependsOn: sync_argo_apps
     jobs:
-       Top Apps Tests
+      #  Top Apps Tests
       - ${{ if and(ne(length(parameters.APPS_TOP), 0), ne(parameters.APPS_TOP, '[]')) }}:
         - template: templates/postman-tests-template.yml
           parameters:
@@ -249,7 +249,7 @@ stages:
             keyVaultName: $(postman_kv_name)
             secretName: $(postman_env_secret_name)
 
-       Mid Apps Tests
+      # Mid Apps Tests
       - ${{ if and(ne(length(parameters.APPS_MID), 0), ne(parameters.APPS_MID, '[]')) }}:
         - template: templates/postman-tests-template.yml
           parameters:
@@ -262,7 +262,7 @@ stages:
             keyVaultName: $(postman_kv_name)
             secretName: $(postman_env_secret_name)
 
-       Ext Apps Tests
+      # Ext Apps Tests
       - ${{ if and(ne(length(parameters.APPS_EXT), 0), ne(parameters.APPS_EXT, '[]')) }}:
         - template: templates/postman-tests-template.yml
           parameters:
