@@ -57,6 +57,6 @@ postman-test:
   run: "true"
   repoName: idpay-asset-register-backend
   dir: postman/collection
-  collectionName: AssetRegister.postman_collection-file
+  collectionName: AssetRegister.postman_collection
 
 
