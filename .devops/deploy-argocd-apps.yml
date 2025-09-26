@@ -163,7 +163,7 @@ pool:
 name: $(pipelineName)
 
 stages:
-   Debug Steps
+  # Debug Steps
   - stage: pre_steps
     condition: succeeded()
     jobs:
