@@ -96,47 +96,29 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-          echo "🔍 DEBUG: Verifica path e contenuto del file YAML"
-            yamlPath="$(Build.Repository.LocalPath)/helm/${{parameters.env}}/${{parameters.appCategory}}/$(appName)/values.yaml"
-          echo "📄 Path del file YAML: $yamlPath"
-            
-            if [ -f "$yamlPath" ]; then
-            echo "✅ File trovato. Contenuto:"
-            cat "$yamlPath"
-            else
-            echo "❌ File non trovato!"
-            exit 1
-            fi
-          
-          echo "🔍 DEBUG: Verifica versione yq"
-            yq --version || echo "❌ yq non disponibile"
-          
-          echo "🔍 DEBUG: Output yq diretto"
-            yq eval '.postman-test' "$yamlPath" || echo "❌ Errore nella lettura di .postman-test"
-            yq eval '.postman-test.run' "$yamlPath" || echo "❌ Errore nella lettura di .postman-test.run"
-            
-            # Estrazione configurazione
-            rootPostman=$(yq eval '.postman-test' "$yamlPath")
-            runPostmanTests=$(yq eval '.postman-test.run' "$yamlPath")
-            
-            echo "Configuration found:"
+          echo "🔍 Validating Postman configuration..."
+
+          # Extract configuration from values.yaml
+          rootPostman=$(yq '.postman-test' $(Build.Repository.LocalPath)/helm/${{parameters.env}}/${{parameters.appCategory}}/$(appName)/values.yaml)
+          runPostmanTests=$(yq '.postman-test.run' $(Build.Repository.LocalPath)/helm/${{parameters.env}}/${{parameters.appCategory}}/$(appName)/values.yaml)
+
+          echo "Configuration found:"
           echo "- Root config: $rootPostman"
           echo "- Run tests: $runPostmanTests"
-          
-          # Validazione
-            function is_valid_config() {
-            [ ! -z "$1" ] && [ "$1" != "null" ]
-          }
-            
-            if ! is_valid_config "$rootPostman" || ! is_valid_config "$runPostmanTests" || [ "$runPostmanTests" != "true" ]; then
-            echo "##vso[task.logissue type=warning]⚠️ Skipping Postman tests - Configuration not valid or tests disabled"
-            echo "##vso[task.setvariable variable=runPostmanTest;isOutput=true]false"
-            exit 0
-            fi
-            
-            echo "✅ Postman configuration validated successfully"
-            echo "##vso[task.setvariable variable=runPostmanTest;isOutput=true]true"
 
+          # Validate if configuration exists and is not null
+          function is_valid_config() {
+              [ ! -z "$1" ] && [ "$1" != "null" ]
+          }
+
+          if ! is_valid_config "$rootPostman" || ! is_valid_config "$runPostmanTests" || [ "$runPostmanTests" != "true" ]; then
+              echo "##vso[task.logissue type=warning]⚠️ Skipping Postman tests - Configuration not valid or tests disabled"
+              echo "##vso[task.setvariable variable=runPostmanTest;isOutput=true]false"
+              exit 0
+          fi
+
+          echo "✅ Postman configuration validated successfully"
+          echo "##vso[task.setvariable variable=runPostmanTest;isOutput=true]true"
 
     - task: Bash@3
       name: setupTestEnvironment
