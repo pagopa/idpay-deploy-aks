@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/mcshared-datavault
-    tag: snapshot-main@sha256:cf4427f2bcdc0c931c0969901f8bdf8c08da530b1570e946e743baead92ebc31
+    tag: snapshot-main@sha256:0cffd47d97c5d7a1dbfc05624c4c8842bdd1d902ffce26a9c9d0c2716ae0d926
     pullPolicy: Always
 
   ingress:
