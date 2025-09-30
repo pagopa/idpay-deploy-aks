@@ -48,6 +48,16 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
+    json-logs: "false"
+    quarkus-log-level: "ERROR"
+    app-log-level: "ERROR"
+    mongodb-connect-timeout: "5"
+    mongodb-read-timeout: "10"
+    mongodb-server-selection-timeout: "5"
+    mongodb-database: "idpay"
+    back-off-initial-duration: "1"
+    back-off-jitter: "0.2"
+    back-off-number-of-attempts: "3"
 
   externalConfigMapValues:
 
