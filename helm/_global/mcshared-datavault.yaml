@@ -48,9 +48,9 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    json-logs: "false"
+    json-logs: "true"
     quarkus-log-level: "WARN"
-    app-log-level: "WARN"
+    app-log-level: "INFO"
     mongodb-connect-timeout: "5"
     mongodb-read-timeout: "10"
     mongodb-server-selection-timeout: "5"
