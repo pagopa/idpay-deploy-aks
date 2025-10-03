@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/mcshared-datavault
-    tag: 1.1.1@sha256:533cba2a274f8e17efc0f371b1e184ef83f2e9dc7d3f73d6478266c77e8e2e98
+    tag: 1.2.0@sha256:8aae1d8f697af7246ecabbbb8659791909c8ae8e8b8cf43367cb58a7b3079dda
     pullPolicy: Always
 
   ingress:
@@ -17,7 +17,7 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 5
+    minReplica: 3
     maxReplica: 10
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
