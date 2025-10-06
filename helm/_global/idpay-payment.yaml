@@ -61,6 +61,7 @@ microservice-chart:
     DELETE_DELAY_TIME: "1000"
     TIMEOUT_PAYMENT_SECONDS: "30"
     HEALTH_MONGO_ENABLED: "false"
+    BLOB_STORAGE_CONTAINER_REFERENCE: "invoices"
 
   externalConfigMapValues:
     idpay-common:
@@ -94,6 +95,7 @@ microservice-chart:
     PDV_DECRYPT_API_KEY: pdv-api-key
     AZURE_SERVICEBUS_CONNECTION_STRING: idpay-service-bus-ns-manager-sas-key
     AZURE_SERVICEBUS_PAYMENT_TIMEOUT_CONNECTION_STRING: idpay-payment-timeout-consumer-sas-key
+    BLOB_STORAGE_CONNECTION_STRING: refund-storage-connection-string
 
   # nodeSelector: {}
 

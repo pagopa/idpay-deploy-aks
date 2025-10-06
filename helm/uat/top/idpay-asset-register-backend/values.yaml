@@ -41,11 +41,12 @@ microservice-chart:
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
+  keyvault:
+    name: "cstar-u-itn-idpay-kv"
+    tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
 postman-test:
   run: "true"
   repoName: idpay-asset-register-backend
   dir: postman/collection
   collectionName: AssetRegister.postman_collection.json
-
-
