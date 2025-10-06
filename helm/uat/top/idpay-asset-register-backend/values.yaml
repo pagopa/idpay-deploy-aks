@@ -42,10 +42,8 @@ microservice-chart:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
 
-postman-test:
-  run: "true"
-  repoName: idpay-asset-register-backend
-  dir: postman/collection
-  collectionName: AssetRegister.postman_collection.json
-
-
+  postman-test:
+    run: "true"
+    repoName: idpay-asset-register-backend
+    dir: postman/collection
+    collectionName: AssetRegister.postman_collection.json
