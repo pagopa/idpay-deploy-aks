@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-notification-email
-    tag: snapshot-RDB-289-update-template-email
+    tag: snapshot-UPBE-181-rename-folder
     pullPolicy: Always
 
   ingress:
