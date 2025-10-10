@@ -62,6 +62,7 @@ microservice-chart:
     DELETE_PAGINATION_SIZE: "100"
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
+    KAFKA_TRANSACTION_GROUP_ID: "idpay_transaction_ranker_consumer_group"
 
   externalConfigMapValues:
     idpay-common:
@@ -75,7 +76,6 @@ microservice-chart:
       KAFKA_TRANSACTIONS_BROKER: kafka_broker
       KAFKA_TRANSACTIONS_SASL_MECHANISM_00: kafka_sasl_mechanism
       KAFKA_TRANSACTION_TOPIC: idpay_transaction_topic
-      KAFKA_TRANSACTION_GROUP_ID: idpay_transaction_ranker_consumer_group
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
