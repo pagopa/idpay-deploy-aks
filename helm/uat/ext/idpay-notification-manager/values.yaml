@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-notification-manager
-    tag: snapshot-uat
+    tag: snapshot-uat@sha256:5c26220a5c1f6ff025fde5f86f837f5b45e680320518c8c7e93adbd91cb12cae
     pullPolicy: Always
 
   ingress:
