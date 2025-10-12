@@ -55,6 +55,9 @@ microservice-chart:
     mongodb-read-timeout: "10"
     mongodb-server-selection-timeout: "5"
     mongodb-database: "idpay"
+    datavault-retry-max-attempts: "5"
+    datavault-retry-max-jitter-ms: "50"
+    datavault-retry-max-cumulative-delay-ms: "3000"
 
   externalConfigMapValues:
 

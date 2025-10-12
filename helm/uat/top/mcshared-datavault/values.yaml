@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/mcshared-datavault
-    tag: 2.0.1@sha256:571ac9b07672d8400b110499a7284e16bcb3604fde5fd8aec9c00634de77d29d
+    tag: 2.1.0@sha256:243c530b65fccccab9b4bd353002150b181e98dda0960f43bfdc439c47865a67
     pullPolicy: Always
 
   ingress:
@@ -25,7 +25,7 @@ microservice-chart:
       - type: cpu
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-          value: "70"
+          value: "50"
 
   envConfig:
 
