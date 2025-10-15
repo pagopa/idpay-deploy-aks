@@ -64,10 +64,12 @@ microservice-chart:
 
     rest-client:
       PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
+      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
     PDV_ENCRYPT_API_KEY: pdv-api-key
+    PDV_DECRYPT_API_KEY: pdv-api-key
 
   # nodeSelector: {}
 

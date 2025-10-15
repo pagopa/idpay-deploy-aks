@@ -2,3 +2,5 @@
 .idea
 **/charts
 **/Chart.lock
+/.project
+/.DS_Store

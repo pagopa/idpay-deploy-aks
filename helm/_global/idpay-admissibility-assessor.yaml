@@ -64,6 +64,7 @@ microservice-chart:
     DELETE_PAGINATION_SIZE: "60"
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
+    KAFKA_ONBOARDING_REQUEST_TOPIC: "idpay-admissibility-request"
 
   externalConfigMapValues:
     idpay-common:
@@ -72,7 +73,6 @@ microservice-chart:
       KAFKA_BROKER: kafka_broker
       KAFKA_CONFIG_SASL_MECHANISM: kafka_sasl_mechanism
       KAFKA_CONFIG_SECURITY_PROTOCOL: kafka_security_protocol
-      KAFKA_ONBOARDING_REQUEST_TOPIC: idpay_onboarding_request_topic
       KAFKA_ONBOARDING_OUTCOME_TOPIC: idpay_onboarding_outcome_topic
       KAFKA_RANKING_REQUEST_TOPIC: idpay-onboarding-ranking-request
     idpay-eventhub-01:
@@ -92,7 +92,7 @@ microservice-chart:
     KAFKA_ONBOARDING_OUTCOME_SASL_JAAS_CONFIG: evh-idpay-onboarding-outcome-idpay-onboarding-outcome-producer-jaas-config-idpay-00
     KAFKA_RANKING_REQUEST_SASL_JAAS_CONFIG: evh-idpay-onboarding-ranking-request-idpay-onboarding-ranking-request-producer-jaas-config-idpay-00
     KAFKA_BENEFICIARY_RULE_REQUEST_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-consumer-jaas-config-idpay-01
-    SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
+    SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-admissibility-request-processor-sas-key
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
     PDV_DECRYPT_API_KEY: pdv-api-key
