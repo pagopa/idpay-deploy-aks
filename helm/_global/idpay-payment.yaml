@@ -62,6 +62,9 @@ microservice-chart:
     TIMEOUT_PAYMENT_SECONDS: "30"
     HEALTH_MONGO_ENABLED: "false"
     BLOB_STORAGE_CONTAINER_REFERENCE: "invoices"
+    staleMinutesThreshold: "120"
+    sendExpiredSendBatchSize: "1000"
+    updateBatchSize: "10000"
 
   externalConfigMapValues:
     idpay-common:
