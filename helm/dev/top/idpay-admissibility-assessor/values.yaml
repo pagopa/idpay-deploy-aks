@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-UPBE-145-fix-wsimport
+    tag: snapshot-UPBE-275-be-adeguamento-admissibility
     pullPolicy: Always
 
   ingress:
