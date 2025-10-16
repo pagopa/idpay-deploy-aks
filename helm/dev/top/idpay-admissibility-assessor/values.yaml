@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-develop
+    tag: snapshot-UPBE-275-be-adeguamento-admissibility
     pullPolicy: Always
 
   ingress:
@@ -70,7 +70,7 @@ microservice-chart:
 
     ANPR_ENV: dev
     ANPR_AUTH_USERID: pagopa-idpay
-    ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
-    #ANPR_BASE_URL: https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
+#    ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
+    ANPR_BASE_URL: https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
 
     INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
