@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/mcshared-datavault
-    tag: 2.1.0@sha256:243c530b65fccccab9b4bd353002150b181e98dda0960f43bfdc439c47865a67
+    tag: 3.1.0@sha256:36c3e40e1fe8a59501576fd5be979a6ffd6c9435e7ec0ab97d87d5aef1269110
     pullPolicy: Always
 
   ingress:
@@ -9,23 +9,23 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "128Mi"
-      cpu: "200m"
-    limits:
       memory: "256Mi"
-      cpu: "700m"
+      cpu: "1000m"
+    limits:
+      memory: "512Mi"
+      cpu: "2000m"
 
   autoscaling:
     enable: true
-    minReplica: 8
-    maxReplica: 16
+    minReplica: 10
+    maxReplica: 20
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
       - type: cpu
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-          value: "50"
+          value: "60"
 
   envConfig:
 
