@@ -58,5 +58,3 @@ postman-test:
   repoName: idpay-asset-register-backend
   dir: postman/collection
   collectionName: AssetRegister.postman_collection.json
-
-
