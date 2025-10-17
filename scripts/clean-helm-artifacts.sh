@@ -20,10 +20,18 @@ fi
 # Resolve to an absolute path for clearer logging
 TARGET_ROOT="$(cd "$TARGET_ROOT" && pwd)"
 
-echo "Removing Chart.lock files under '$TARGET_ROOT'..."
+echo "🧹 Removing Chart.lock files under '$TARGET_ROOT'..."
 find "$TARGET_ROOT" -type f -name 'Chart.lock' -print -delete
 
-echo "Removing chart directories under '$TARGET_ROOT'..."
-find "$TARGET_ROOT" -type d \( -name 'chart' -o -name 'charts' \) -print -exec rm -rf {} +
+echo "🗂️ Scanning for chart directories under '$TARGET_ROOT'..."
+if ! find "$TARGET_ROOT" -type d \( -name 'chart' -o -name 'charts' \) -print -quit | grep -q .; then
+  echo "✅ No chart directories found."
+else
+  find "$TARGET_ROOT" -type d \( -name 'chart' -o -name 'charts' \) -print0 \
+    | while IFS= read -r -d '' dir; do
+        echo "🚮 Deleting directory: $dir"
+        rm -rf "$dir"
+      done
+fi
 
-echo "Cleanup complete."
+echo "✨ Cleanup complete."
