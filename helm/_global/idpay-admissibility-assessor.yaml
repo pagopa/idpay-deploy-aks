@@ -85,6 +85,7 @@ microservice-chart:
     rest-client:
       PDV_BASE_URL: pdv_decrypt_base_url
       IDPAY_MOCK_BASE_URL: idpay_mock_base_url
+      IDPAY_ONBOARDING_WORKFLOW_BASE_URL: idpay_onboarding_host
 
 
   envSecret:
