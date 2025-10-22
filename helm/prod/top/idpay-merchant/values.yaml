@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-merchant
-    tag: v2.2.0
+    tag: v2.3.0@sha256:7ec84df3cf0443df56e1c520d1d3a31d518cf908efb5802a67118039faa0a545
     pullPolicy: Always
 
   ingress:
@@ -10,9 +10,9 @@ microservice-chart:
   resources:
     requests:
       memory: "1Gi"
-      cpu: "150m"
+      cpu: "200m"
     limits:
-      memory: "1Gi"
+      memory: "1.5Gi"
       cpu: "600m"
 
   autoscaling:
@@ -29,7 +29,7 @@ microservice-chart:
 
   envConfig:
     KEYCLOAK_ADMIN_REDIRECT_URI: "https://bonuselettrodomestici.it/esercente"
-    MERCHANT_DEFAULT_INITIATIVES: "initiative-1,initiative-2"
+    MERCHANT_DEFAULT_INITIATIVES: "68dd003ccce8c534d1da22bc"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=75.0
       -XX:MaxRAMPercentage=85.0
