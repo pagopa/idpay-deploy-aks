@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-mock
-    tag:  snapshot-develop
+    tag:  snapshot-275-adeguamento-family-birth-date
     pullPolicy: Always
 
   ingress:
