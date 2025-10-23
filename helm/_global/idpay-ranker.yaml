@@ -63,6 +63,7 @@ microservice-chart:
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
     KAFKA_TRANSACTION_GROUP_ID: "idpay_transaction_ranker_consumer_group"
+    KAFKA_COMMANDS_GROUP_ID: "idpay_commands_ranker_consumer_group"
 
   externalConfigMapValues:
     idpay-common:
@@ -72,6 +73,8 @@ microservice-chart:
       KAFKA_TRANSACTIONS_SECURITY_PROTOCOL: kafka_security_protocol
       KAFKA_ERRORS_BROKER: kafka_broker
       KAFKA_ERRORS_TOPIC: idpay_error_topic
+      KAFKA_COMMANDS_BROKER: kafka_broker
+      KAFKA_COMMANDS_TOPIC: idpay_commands_topic
     idpay-eventhub-00:
       KAFKA_TRANSACTIONS_BROKER: kafka_broker
       KAFKA_TRANSACTIONS_SASL_MECHANISM_00: kafka_sasl_mechanism
@@ -81,8 +84,10 @@ microservice-chart:
     MONGODB_URI: mongodb-primary-connection-string
     SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
     SERVICEBUS_ADMISSIBILITY_CONNECTION_STRING: idpay-admissibility-request-producer-sas-key
+    KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
     EVH_CONNECTION_TRANSACTION: evh-idpay-transaction-idpay-transaction-consumer-jaas-config-idpay-00
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
+
 
   nodeSelector: {}
 
