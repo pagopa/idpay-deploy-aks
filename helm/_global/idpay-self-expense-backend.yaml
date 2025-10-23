@@ -54,7 +54,7 @@ microservice-chart:
 
   envConfig:
     APP: "idpay-self-expense-backend"
-    MONGODB_DBNAME: "idpay"
+    MONGODB_DBNAME: "idpay-beneficiari"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpayselfexpensebackend"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"

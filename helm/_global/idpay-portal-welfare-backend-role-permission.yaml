@@ -70,7 +70,7 @@ microservice-chart:
 #          targetValue: "30"
 
   envConfig:
-    MONGODB_DBNAME: idpay
+    MONGODB_DBNAME: "idpay-iniziative"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpayportalwelfarebackendrolepermission"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
