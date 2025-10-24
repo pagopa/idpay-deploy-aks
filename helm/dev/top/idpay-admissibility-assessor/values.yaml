@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-develop
+    tag: snapshot-develop@sha256:df77e863b9f2f78f9fbfc4621f78838a82958da9e5ba6097c5673bbb89f1ad7a
     pullPolicy: Always
 
   ingress:
