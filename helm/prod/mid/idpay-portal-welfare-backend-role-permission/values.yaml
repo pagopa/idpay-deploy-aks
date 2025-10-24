@@ -5,7 +5,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-portal-welfare-backend-role-permission
-    tag: v1.2.3
+    tag: v1.2.4@sha256:e832c049a58cfd6ad7abef3cbc1e545156253db3851d689043b87b73c38d083d
     pullPolicy: Always
 
   ingress:
