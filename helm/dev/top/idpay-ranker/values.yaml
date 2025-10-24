@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranker
-    tag: snapshot-develop
+    tag: snapshot-UPBE-240-expiration-trx-event-processing
     pullPolicy: Always
 
   ingress:
