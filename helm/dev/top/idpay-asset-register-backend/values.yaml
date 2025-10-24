@@ -9,7 +9,7 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "512Mi"
+      memory: "768Mi"
       cpu: "200m"
     limits:
       memory: "1Gi"
@@ -58,5 +58,3 @@ postman-test:
   repoName: idpay-asset-register-backend
   dir: postman/collection
   collectionName: AssetRegister.postman_collection.json
-
-

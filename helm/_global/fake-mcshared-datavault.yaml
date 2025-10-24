@@ -4,20 +4,18 @@ microservice-chart:
   fullnameOverride: ""
 
   livenessProbe:
-    handlerType: httpGet
     httpGet:
-      path: /actuator/health/liveness
+      path: /q/health/live
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 30
     failureThreshold: 15
     periodSeconds: 10
 
   readinessProbe:
-    handlerType: httpGet
     httpGet:
-      path: /actuator/health/readiness
+      path: /q/health/ready
       port: 8080
-    initialDelaySeconds: 125
+    initialDelaySeconds: 30
     failureThreshold: 15
     periodSeconds: 10
 
@@ -30,11 +28,12 @@ microservice-chart:
   service:
     create: true
     type: ClusterIP
-    port: 8080
+    ports:
+      - 8080
 
   ingress:
     create: true
-    path: /idpaymock/(.*)
+    path: /fakemcshareddatavault/(.*)
 
   podAnnotations: {}
 
@@ -49,27 +48,23 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: "idpay-beneficiari"
-    APPLICATIONINSIGHTS_ROLE_NAME: "idpaymock"
-    APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
-    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
-    APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
-    APPLICATIONINSIGHTS_SAMPLING_ENABLED: "false"
-    APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE: "100"
-    ENABLE_AUDIT_APPENDER: "TRUE"
+    json-logs: "true"
+    quarkus-log-level: "WARN"
+    app-log-level: "INFO"
+    mongodb-connect-timeout: "5"
+    mongodb-read-timeout: "10"
+    mongodb-server-selection-timeout: "5"
+    mongodb-database: "idpay-beneficiari"
+    datavault-retry-max-attempts: "5"
+    datavault-retry-max-jitter-ms: "50"
+    datavault-retry-max-cumulative-delay-ms: "3000"
 
   externalConfigMapValues:
-    idpay-common:
-      TZ: TZ
-
-    rest-client:
-      PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
-      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
   envSecret:
-    MONGODB_URI: mongodb-primary-connection-string
-    PDV_ENCRYPT_API_KEY: pdv-api-key
-    PDV_DECRYPT_API_KEY: pdv-api-key
+    mongodb-connection-string-1: mongodb-primary-connection-string
+    mongodb-connection-string-2: mongodb-secondary-connection-string
+    application-insights-connection-string: appinsights-instrumentation-key
 
   # nodeSelector: {}
 
@@ -88,9 +83,3 @@ microservice-chart:
             operator: In
             values:
             - idpay
-
-  externalConfigMapFiles:
-    create: true
-    configMaps:
-      - name: appinsights-config
-        key: applicationinsights.json

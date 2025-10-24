@@ -50,7 +50,7 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: idpay
+    MONGODB_DBNAME: "idpay-beneficiari"
     SB_ONBOARDING_REQUEST_TOPIC: "idpay-onboarding-request"
     SB_ONBOARDING_OUTCOME_TOPIC: "idpay-admissibility-request"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpayranker"

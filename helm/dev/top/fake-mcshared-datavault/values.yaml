@@ -5,32 +5,32 @@ microservice-chart:
     pullPolicy: Always
 
   ingress:
-    host: idpay.itn.internal.uat.cstar.pagopa.it
+    host: idpay.itn.internal.dev.cstar.pagopa.it
 
   resources:
     requests:
-      memory: "256Mi"
-      cpu: "1000m"
+      memory: "128Mi"
+      cpu: "100m"
     limits:
-      memory: "512Mi"
-      cpu: "2000m"
+      memory: "256Mi"
+      cpu: "100m"
 
   autoscaling:
     enable: true
-    minReplica: 9
-    maxReplica: 21
-    pollingInterval: 30 # seconds
+    minReplica: 1
+    maxReplica: 2
+    pollingInterval: 10 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
       - type: cpu
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-          value: "60"
+          value: "50"
 
   envConfig:
 
   envSecret:
 
   keyvault:
-    name: "cstar-u-itn-idpay-kv"
+    name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"

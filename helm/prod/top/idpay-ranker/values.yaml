@@ -36,6 +36,6 @@ microservice-chart:
   keyvault:
     name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
-    
+
 
   # * - Queste variabili d'ambiente le troviamo su Azure DevOps all'interno della folder Library

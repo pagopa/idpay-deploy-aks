@@ -50,7 +50,8 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: "idpay"
+    MONGODB_DBNAME: "idpay-pagamenti"
+    MONGODB_SECONDARY_DBNAME: "idpay-beneficiari"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpayrewardcalculator"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "OFF"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
