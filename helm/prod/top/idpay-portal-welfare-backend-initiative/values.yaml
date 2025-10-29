@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-portal-welfare-backend-initiative
-    tag: v1.3.5
+    tag: v1.6.0
     pullPolicy: Always
 
   ingress:
