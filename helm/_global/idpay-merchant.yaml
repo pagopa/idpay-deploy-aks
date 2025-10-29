@@ -72,6 +72,8 @@ microservice-chart:
       IDPAY_INITIATIVE_BASE_URL: initiative_ms_base_url
       IDPAY_PAYMENT_BASE_URL: idpay_payment_host
       IDPAY_TRANSACTIONS_BASE_URL: idpay_transactions_host
+      PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
+      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
