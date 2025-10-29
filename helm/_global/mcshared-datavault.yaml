@@ -7,7 +7,7 @@ microservice-chart:
     httpGet:
       path: /q/health/live
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 30
     failureThreshold: 15
     periodSeconds: 10
 
@@ -15,7 +15,7 @@ microservice-chart:
     httpGet:
       path: /q/health/ready
       port: 8080
-    initialDelaySeconds: 125
+    initialDelaySeconds: 30
     failureThreshold: 15
     periodSeconds: 10
 
@@ -54,7 +54,7 @@ microservice-chart:
     mongodb-connect-timeout: "5"
     mongodb-read-timeout: "10"
     mongodb-server-selection-timeout: "5"
-    mongodb-database: "idpay"
+    mongodb-database: "idpay-beneficiari"
     datavault-retry-max-attempts: "5"
     datavault-retry-max-jitter-ms: "50"
     datavault-retry-max-cumulative-delay-ms: "3000"

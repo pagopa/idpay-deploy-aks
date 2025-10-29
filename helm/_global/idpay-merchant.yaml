@@ -8,7 +8,7 @@ microservice-chart:
     httpGet:
       path: /actuator/health
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 30
     failureThreshold: 15
     periodSeconds: 10
 
@@ -17,7 +17,7 @@ microservice-chart:
     httpGet:
       path: /actuator/health
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 35
     failureThreshold: 15
     periodSeconds: 10
 
@@ -51,7 +51,7 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: idpay
+    MONGODB_DBNAME: "idpay-pagamenti"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaymerchant"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
@@ -70,6 +70,8 @@ microservice-chart:
       TZ: TZ
     rest-client:
       IDPAY_INITIATIVE_BASE_URL: initiative_ms_base_url
+      IDPAY_PAYMENT_BASE_URL: idpay_payment_host
+      IDPAY_TRANSACTIONS_BASE_URL: idpay_transactions_host
 
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
