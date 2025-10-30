@@ -1,6 +1,6 @@
 microservice-chart:
   namespace: "idpay"
-  nameOverride: ""
+  nameOverride: "canary"
   fullnameOverride: ""
 
   livenessProbe:
@@ -116,7 +116,7 @@ microservice-chart:
       effect: "NoSchedule"
 
   canaryDelivery:
-    create: false
+    create: true
     ingress:
       header: true
       headerName: X-Canary
