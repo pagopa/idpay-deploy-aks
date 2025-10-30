@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-develop
+    tag: snapshot-UPBE-223-be-isee-happy-path
     pullPolicy: Always
 
   ingress:
