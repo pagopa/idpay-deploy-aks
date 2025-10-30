@@ -122,3 +122,5 @@ microservice-chart:
         type: header
         headerName: X-Canary
         headerValue: canary
+    envSecret: {}
+    envConfig: {}
