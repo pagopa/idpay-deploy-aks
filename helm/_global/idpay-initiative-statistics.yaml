@@ -51,7 +51,7 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: "idpay"
+    MONGODB_DBNAME: "idpay-iniziative"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpayinitiativestatistics"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"

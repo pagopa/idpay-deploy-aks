@@ -7,7 +7,7 @@ microservice-chart:
     httpGet:
       path: /actuator/health/liveness
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 30
     failureThreshold: 15
     periodSeconds: 10
 
@@ -15,7 +15,7 @@ microservice-chart:
     httpGet:
       path: /actuator/health/readiness
       port: 8080
-    initialDelaySeconds: 125
+    initialDelaySeconds: 35
     failureThreshold: 15
     periodSeconds: 10
 
@@ -48,7 +48,7 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    MONGODB_DBNAME: idpay
+    MONGODB_DBNAME: "idpay-beneficiari"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaypayment"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
@@ -62,9 +62,9 @@ microservice-chart:
     TIMEOUT_PAYMENT_SECONDS: "30"
     HEALTH_MONGO_ENABLED: "false"
     BLOB_STORAGE_CONTAINER_REFERENCE: "invoices"
-    staleMinutesThreshold: "120"
-    sendExpiredSendBatchSize: "1000"
-    updateBatchSize: "10000"
+    STALE_MINUTES_THRESHOLD: "120"
+    EXPIRY_SEND_BATCH_SIZE: "1000"
+    EXPIRY_UPDATE_BATCH_SIZE: "10000"
 
   externalConfigMapValues:
     idpay-common:

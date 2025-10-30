@@ -9,17 +9,17 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "768Mi"
-      cpu: "150m"
-    limits:
       memory: "1Gi"
+      cpu: "200m"
+    limits:
+      memory: "1.5Gi"
       cpu: "600m"
 
   autoscaling:
     enable: true
     minReplica: 3
-    maxReplica: 5
-    pollingInterval: 30 # seconds
+    maxReplica: 6
+    pollingInterval: 20 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
       - type: cpu
@@ -33,7 +33,7 @@ microservice-chart:
   keyvault:
     name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
-    
+
 
   # nodeSelector: {}
 
