@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-user-id-splitter
-    tag: v1.3.0
+    tag: v1.3.0@sha256:a8fb1549a45bf12930aadca2b49bb9b7e5d8b64a1801139bf7ef3ece74356cac
     pullPolicy: Always
 
   ingress:

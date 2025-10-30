@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: v1.1.0
+    tag: v1.1.0@sha256:bc466dee24020e1ccca83781bfdce795877604b5094e39f216afb1d7ab5fe334
     pullPolicy: Always
 
   ingress:
