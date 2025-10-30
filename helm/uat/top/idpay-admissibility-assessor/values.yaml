@@ -52,8 +52,8 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=80.0
-      -XX:MaxRAMPercentage=80.0
+      -XX:InitialRAMPercentage=30.0
+      -XX:MaxRAMPercentage=65.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
