@@ -114,12 +114,15 @@ microservice-chart:
       value: "true"
       effect: "NoSchedule"
 
+  # Must be
+  nameOverride: "canary"
   canaryDelivery:
     create: true
     ingress:
       header: true
       headerName: X-Canary
       headerValue: canary
+      weightPercent: 10
     image:
       repository: ghcr.io/pagopa/idpay-ranking
       tag: v1.2.2

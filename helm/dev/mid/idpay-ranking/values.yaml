@@ -1,6 +1,4 @@
 microservice-chart:
-  nameOverride: "canary"
-
   image:
     repository: ghcr.io/pagopa/idpay-ranking
     tag: snapshot-develop
