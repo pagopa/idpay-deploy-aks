@@ -114,3 +114,11 @@ microservice-chart:
       operator: "Equal"
       value: "true"
       effect: "NoSchedule"
+
+  canaryDelivery:
+    create: false
+    ingress:
+      canary:
+        type: header
+        headerName: X-Canary
+        headerValue: canary
