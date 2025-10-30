@@ -122,9 +122,9 @@ microservice-chart:
       header: true
       headerName: X-Canary
       headerValue: canary
-      weightPercent: 30
+      weightPercent: 10
     image:
       repository: ghcr.io/pagopa/idpay-ranking
-      tag: v1.2.2
+      tag: <HOT_FIX_IMAGE_HERE>
     envSecret: {}
     envConfig: {}
