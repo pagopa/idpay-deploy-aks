@@ -9,7 +9,7 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "256Mi"
+      memory: "2Gi"
       cpu: "300m"
     limits:
       memory: "4Gi"
@@ -17,15 +17,19 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 1
-    maxReplica: 2
+    minReplica: 3
+    maxReplica: 6
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
       - type: cpu
         metadata:
-          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          type: Utilization
           value: "70"
+      - type: memory
+        metadata:
+          type: Utilization
+          value: "75"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
@@ -49,7 +53,7 @@ microservice-chart:
   envConfig:
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=80.0
-      -XX:MaxRAMPercentage=90.0
+      -XX:MaxRAMPercentage=80.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
