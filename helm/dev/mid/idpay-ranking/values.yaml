@@ -69,6 +69,6 @@ microservice-chart:
       headerValue: canary
     image:
       repository: ghcr.io/pagopa/idpay-ranking
-      tag: pippo
+      tag: v1.2.2
     envSecret: {}
     envConfig: {}
