@@ -1,6 +1,6 @@
 microservice-chart:
   namespace: "idpay"
-  nameOverride: "canary"
+  nameOverride: ""
   fullnameOverride: ""
 
   livenessProbe:
