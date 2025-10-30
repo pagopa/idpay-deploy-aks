@@ -116,7 +116,7 @@ microservice-chart:
       effect: "NoSchedule"
 
   canaryDelivery:
-    create: false
+    create: true
     ingress:
       canary:
         type: header
