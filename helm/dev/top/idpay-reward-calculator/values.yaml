@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-calculator
-    tag: snapshot-add-secondary-connection-string
+    tag: snapshot-add-secondary-connection-string@sha256:1ec1af7a7f58bd1466b4231e2549feec57ce4165d04e0af6636eaa505334b8c7
     pullPolicy: Always
 
   ingress:
