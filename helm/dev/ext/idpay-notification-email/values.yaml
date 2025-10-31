@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-notification-email
-    tag: snapshot-develop
+    tag: snapshot-develop@sha256:de274a005d820e378a3cc00081acd545d430bb6e2fa58690071be1d1e444e971
     pullPolicy: Always
 
   ingress:
