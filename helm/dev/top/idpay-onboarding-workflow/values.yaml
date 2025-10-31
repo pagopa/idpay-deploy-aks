@@ -54,7 +54,7 @@ microservice-chart:
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
 
 configMap:
-  initiativeIds: "68dd003ccce8c534d1da22bc,68de7fc681ce9e35a476e985,68dd003ccce8c534d1da22bb,68fb9937f0f9ee401031a0c7,68fb9cb9f0f9ee401031a0c8,68fb9ceaf0f9ee401031a0c9"
+  INITIATIVE_IDS: "68dd003ccce8c534d1da22bc,68de7fc681ce9e35a476e985,68dd003ccce8c534d1da22bb,68fb9937f0f9ee401031a0c7,68fb9cb9f0f9ee401031a0c8,68fb9ceaf0f9ee401031a0c9"
 
 #postman-test:
 #  run: true
