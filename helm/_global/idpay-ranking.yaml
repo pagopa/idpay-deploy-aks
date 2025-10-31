@@ -114,9 +114,9 @@ microservice-chart:
       value: "true"
       effect: "NoSchedule"
 
-#  nameOverride: "canary"
+  nameOverride: "canary"
   canaryDelivery:
-    create: false
+    create: true
     ingress:
       header: true
       headerName: X-Canary
