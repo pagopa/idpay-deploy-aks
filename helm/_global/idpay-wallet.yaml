@@ -62,6 +62,8 @@ microservice-chart:
     DELETE_PAGINATION_SIZE: "100"
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
+    WALLET_EXPIRING_DAY: "5"
+    BLOCK_REMINDER_BATCH: "100"
 
   externalConfigMapValues:
     idpay-common:
