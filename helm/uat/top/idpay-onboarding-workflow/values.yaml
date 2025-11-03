@@ -53,3 +53,4 @@ postman-test:
   dir: postman
   collectionName: "idpay-onboarding-workflow-e2e.postman_collection.json"
   envVariablesFile: "idpay_uat.postman_environment.json"
+
