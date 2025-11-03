@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: v1.5.0@sha256:a3110888de17bcaa83996fd8fc290ca26994e8b32fc551c5df93f64cb101a5b7
+    tag: v1.6.0@sha256:b5f10a53c3e78b4f303c4cf84a2716333076a779ea93ee5897edcc6721e31cc0
     pullPolicy: Always
 
   ingress:
@@ -39,6 +39,8 @@ microservice-chart:
     PAGOPA_PDND_CONFIGURATION_CLIENT_ID_C021: pagopa-pdnd-configuration-client-id-c021
     PAGOPA_PDND_CONFIGURATION_KID_C021: pagopa-pdnd-configuration-kid-c021
     PAGOPA_PDND_CONFIGURATION_PURPOSE_ID_C021: pagopa-pdnd-configuration-purpose-id-c021
+#    INPS_CLIENT_CERT_STRING: pagopa-inps-client-cert-string
+#    INPS_CLIENT_KEY_PEM: pagopa-inps-client-key-pem
 
   keyvault:
     name: "cstar-p-itn-idpay-kv"
