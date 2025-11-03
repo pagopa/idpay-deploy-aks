@@ -108,3 +108,23 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
+
+# How to deploy Canary(?)
+# To deploy a canary version:
+# 1. Uncomment and set nameOverride: "canary"
+# 2. Set canaryDelivery.create: true
+# 3. Configure the hotfix image tag in canaryDelivery.image.tag
+# 4. Revert for remove canary deployment
+#  nameOverride: "canary"
+  canaryDelivery:
+    create: false
+    ingress:
+      header: true
+      headerName: X-Canary
+      headerValue: canary
+      weightPercent: 10
+    image:
+      repository: ghcr.io/pagopa/idpay-reward-user-id-splitter
+      tag: <HOT_FIX_IMAGE_HERE>
+    envSecret: {}
+    envConfig: {}
