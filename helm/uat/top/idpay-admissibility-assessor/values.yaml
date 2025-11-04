@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-uat
+    tag: snapshot-UPBE-223-be-isee-happy-path
     pullPolicy: Always
 
   ingress:
@@ -68,3 +68,6 @@ microservice-chart:
     ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
 
     INPS_ISEE_CONSULTATION_BASE_URL: https://api.collaudo.inps.it/modi/soap/ConsultazioneISEE/v1
+    INPS_MOCK_ENABLED: "false"
+    INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
+
