@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-UPBE-363-be-configurazione-recovery-error-topic-per-ko-anpr
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
@@ -77,5 +77,4 @@ microservice-chart:
 
     INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
     INPS_MOCK_ENABLED: "true"
-    #TODO change port after test
-    INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8081/idpay/mock/inps/soap
+    INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
