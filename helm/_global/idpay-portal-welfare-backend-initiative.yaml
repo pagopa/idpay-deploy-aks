@@ -101,6 +101,10 @@ microservice-chart:
       ONBOARDING_URI: idpay_onboarding_host
       RANKING_URI: idpay_ranking_host
       PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
+      MERCHANT_URI: idpay_merchant_host
+      TIMELINE_URI: idpay_timeline_host
+      TRANSACTION_URI: idpay_transactions_host
+      WALLET_URI: idpay_wallet_host
     idpay-eventhub-01:
       KAFKA_BINDER_BROKER_ENDPOINT_LIST: kafka_broker
       KAFKA_INITIATIVE_SASL_MECHANISM: kafka_sasl_mechanism
