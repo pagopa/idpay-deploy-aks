@@ -29,7 +29,7 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: '-Xms256m -Xmx512m -javaagent:/app/applicationinsights-agent.jar -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json'
-    INITIATIVE_LOGO_URL: "https://idpayuinitiativestorage.blob.core.windows.net/logo/"
+    INITIATIVE_LOGO_URL: "https://welfare.cstar.pagopa.it/"
     IS_IBAN_FORMAL_CONTROL_ACTIVE: "false"
 
   envSecret:
