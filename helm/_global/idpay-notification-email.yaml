@@ -82,6 +82,7 @@ microservice-chart:
     NO_REPLY_SUBJECT_PREFIX: "[NO-REPLY]"
     ASSISTANCE_MAIL: "assistenza.IDPay@pagopa.it"
     AWS_REGION: "eu-central-1"
+    ASSISTED_LINK: "https://bonuselettrodomestici.it/utente/assistenza"
 
   externalConfigMapValues:
     idpay-common:
