@@ -17,8 +17,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 4
-    maxReplica: 8
+    minReplica: 9
+    maxReplica: 18
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
