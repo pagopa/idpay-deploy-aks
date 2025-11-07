@@ -54,6 +54,7 @@ microservice-chart:
     mongodb-connect-timeout: "5"
     mongodb-read-timeout: "10"
     mongodb-server-selection-timeout: "5"
+    mongodb-max-connection-idle-time: "120"
     mongodb-database: "idpay-beneficiari"
     datavault-retry-max-attempts: "5"
     datavault-retry-max-jitter-ms: "50"
