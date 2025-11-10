@@ -70,6 +70,7 @@ microservice-chart:
     mongodb-connection-string-2: mongodb-secondary-connection-string
     application-insights-connection-string: appinsights-instrumentation-key
     redis-url: idpay-redis-primary-connection-url
+    redis-url-2: idpay-redis-secondary-connection-url
 
   # nodeSelector: {}
 
