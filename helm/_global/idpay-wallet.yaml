@@ -8,7 +8,7 @@ microservice-chart:
     httpGet:
       path: /actuator/health/liveness
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 40
     failureThreshold: 15
     periodSeconds: 10
 
@@ -17,7 +17,7 @@ microservice-chart:
     httpGet:
       path: /actuator/health/readiness
       port: 8080
-    initialDelaySeconds: 120
+    initialDelaySeconds: 40
     failureThreshold: 15
     periodSeconds: 10
 
@@ -62,6 +62,8 @@ microservice-chart:
     DELETE_PAGINATION_SIZE: "100"
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
+    WALLET_EXPIRING_DAY: "5"
+    BLOCK_REMINDER_BATCH: "100"
 
   externalConfigMapValues:
     idpay-common:
@@ -102,6 +104,7 @@ microservice-chart:
     KAFKA_NOTIFICATION_SASL_JAAS_CONFIG: evh-idpay-notification-request-idpay-notification-request-producer-jaas-config-idpay-00
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
     KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
+    ZENDESK_JWT_SECRET: zendesk-jwt-secret
 
   nodeSelector: {}
 
@@ -126,3 +129,23 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
+
+# How to deploy Canary(?)
+# To deploy a canary version:
+# 1. Uncomment and set nameOverride: "canary"
+# 2. Set canaryDelivery.create: true
+# 3. Configure the hotfix image tag in canaryDelivery.image.tag
+# 4. Revert for remove canary deployment
+#  nameOverride: "canary"
+  canaryDelivery:
+    create: false
+    ingress:
+      header: true
+      headerName: X-Canary
+      headerValue: canary
+      weightPercent: 10
+    image:
+      repository: ghcr.io/pagopa/idpay-wallet
+      tag: <HOT_FIX_IMAGE_HERE>
+    envSecret: {}
+    envConfig: {}

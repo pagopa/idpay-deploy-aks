@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranking
-    tag: v1.2.2
+    tag: v1.3.0@sha256:8ab6743c5e20d3d2cb7ef6b86ebd36b198daf481349e0765a7d2b270c5c3b6aa
     pullPolicy: Always
 
   ingress:
@@ -17,8 +17,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 5
+    minReplica: 1
+    maxReplica: 1
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:

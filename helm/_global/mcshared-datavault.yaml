@@ -50,14 +50,18 @@ microservice-chart:
   envConfig:
     json-logs: "true"
     quarkus-log-level: "WARN"
-    app-log-level: "INFO"
+    app-log-level: "DEBUG"
     mongodb-connect-timeout: "5"
     mongodb-read-timeout: "10"
     mongodb-server-selection-timeout: "5"
+    mongodb-max-connection-idle-time: "120"
     mongodb-database: "idpay-beneficiari"
     datavault-retry-max-attempts: "5"
     datavault-retry-max-jitter-ms: "50"
     datavault-retry-max-cumulative-delay-ms: "3000"
+    try-to-find-first: "true"
+    cache-enabled: "true"
+    cache-expire-after-write: "1d"
 
   externalConfigMapValues:
 
@@ -65,6 +69,7 @@ microservice-chart:
     mongodb-connection-string-1: mongodb-primary-connection-string
     mongodb-connection-string-2: mongodb-secondary-connection-string
     application-insights-connection-string: appinsights-instrumentation-key
+    redis-url: idpay-redis-primary-connection-url
 
   # nodeSelector: {}
 
@@ -83,3 +88,23 @@ microservice-chart:
             operator: In
             values:
             - idpay
+
+# How to deploy Canary(?)
+# To deploy a canary version:
+# 1. Uncomment and set nameOverride: "canary"
+# 2. Set canaryDelivery.create: true
+# 3. Configure the hotfix image tag in canaryDelivery.image.tag
+# 4. Revert for remove canary deployment
+#  nameOverride: "canary"
+  canaryDelivery:
+    create: false
+    ingress:
+      header: true
+      headerName: X-Canary
+      headerValue: canary
+      weightPercent: 10
+    image:
+      repository: ghcr.io/pagopa/mcshared-datavault
+      tag: <HOT_FIX_IMAGE_HERE>
+    envSecret: {}
+    envConfig: {}

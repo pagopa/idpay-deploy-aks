@@ -61,6 +61,8 @@ microservice-chart:
     DELETE_PAGINATION_SIZE: "100"
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
+    INITIATIVE_IDS: "68dd003ccce8c534d1da22bc,68de7fc681ce9e35a476e985"
+
 
   externalConfigMapValues:
     idpay-common:
@@ -115,3 +117,23 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
+
+# How to deploy Canary(?)
+# To deploy a canary version:
+# 1. Uncomment and set nameOverride: "canary"
+# 2. Set canaryDelivery.create: true
+# 3. Configure the hotfix image tag in canaryDelivery.image.tag
+# 4. Revert for remove canary deployment
+#  nameOverride: "canary"
+  canaryDelivery:
+    create: false
+    ingress:
+      header: true
+      headerName: X-Canary
+      headerValue: canary
+      weightPercent: 10
+    image:
+      repository: ghcr.io/pagopa/idpay-onboarding-workflow
+      tag: <HOT_FIX_IMAGE_HERE>
+    envSecret: {}
+    envConfig: {}

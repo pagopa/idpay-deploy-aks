@@ -72,6 +72,8 @@ microservice-chart:
       IDPAY_INITIATIVE_BASE_URL: initiative_ms_base_url
       IDPAY_PAYMENT_BASE_URL: idpay_payment_host
       IDPAY_TRANSACTIONS_BASE_URL: idpay_transactions_host
+      PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
+      PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
@@ -94,6 +96,8 @@ microservice-chart:
     KAFKA_INITIATIVE_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-consumer-jaas-config-idpay-01
     KEYCLOAK_ADMIN_SERVER_URL: keycloak-url
     KEYCLOAK_ADMIN_CLIENT_SECRET: keycloak-merchant-op-client-secret
+    PDV_ENCRYPT_API_KEY: pdv-api-key
+    PDV_DECRYPT_API_KEY: pdv-api-key
 
   nodeSelector: {}
 
@@ -118,3 +122,23 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
+
+# How to deploy Canary(?)
+# To deploy a canary version:
+# 1. Uncomment and set nameOverride: "canary"
+# 2. Set canaryDelivery.create: true
+# 3. Configure the hotfix image tag in canaryDelivery.image.tag
+# 4. Revert for remove canary deployment
+#  nameOverride: "canary"
+  canaryDelivery:
+    create: false
+    ingress:
+      header: true
+      headerName: X-Canary
+      headerValue: canary
+      weightPercent: 10
+    image:
+      repository: ghcr.io/pagopa/idpay-merchant
+      tag: <HOT_FIX_IMAGE_HERE>
+    envSecret: {}
+    envConfig: {}

@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: v1.4.1
+    tag: v1.6.0@sha256:b5f10a53c3e78b4f303c4cf84a2716333076a779ea93ee5897edcc6721e31cc0
     pullPolicy: Always
 
   ingress:
@@ -9,16 +9,16 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "256Mi"
-      cpu: "300m"
+      memory: "1Gi"
+      cpu: "400m"
     limits:
-      memory: "4Gi"
-      cpu: "500m"
+      memory: "3Gi"
+      cpu: "800m"
 
   autoscaling:
     enable: true
     minReplica: 3
-    maxReplica: 5
+    maxReplica: 6
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -39,6 +39,8 @@ microservice-chart:
     PAGOPA_PDND_CONFIGURATION_CLIENT_ID_C021: pagopa-pdnd-configuration-client-id-c021
     PAGOPA_PDND_CONFIGURATION_KID_C021: pagopa-pdnd-configuration-kid-c021
     PAGOPA_PDND_CONFIGURATION_PURPOSE_ID_C021: pagopa-pdnd-configuration-purpose-id-c021
+#    INPS_CLIENT_CERT_STRING: pagopa-inps-client-cert-string
+#    INPS_CLIENT_KEY_PEM: pagopa-inps-client-key-pem
 
   keyvault:
     name: "cstar-p-itn-idpay-kv"
@@ -67,3 +69,5 @@ microservice-chart:
 
     #TODO Now we are using MOCK on APIM for ISEE
     INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
+    INPS_MOCK_ENABLED: "false"
+    INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap

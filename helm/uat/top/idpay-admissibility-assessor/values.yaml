@@ -9,22 +9,26 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "256Mi"
-      cpu: "300m"
+      memory: "2Gi"
+      cpu: "750m"
     limits:
       memory: "4Gi"
-      cpu: "500m"
+      cpu: "1500m"
 
   autoscaling:
     enable: true
-    minReplica: 1
-    maxReplica: 2
+    minReplica: 5
+    maxReplica: 10
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
       - type: cpu
         metadata:
-          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          type: Utilization
+          value: "70"
+      - type: memory
+        metadata:
+          type: Utilization
           value: "70"
 
   envSecret:
@@ -39,6 +43,8 @@ microservice-chart:
     PAGOPA_PDND_CONFIGURATION_CLIENT_ID_C021: pagopa-pdnd-configuration-client-id-c021
     PAGOPA_PDND_CONFIGURATION_KID_C021: pagopa-pdnd-configuration-kid-c021
     PAGOPA_PDND_CONFIGURATION_PURPOSE_ID_C021: pagopa-pdnd-configuration-purpose-id-c021
+#    INPS_CLIENT_CERT_STRING: pagopa-inps-client-cert-string
+#    INPS_CLIENT_KEY_PEM: pagopa-inps-client-key-pem
 
   keyvault:
     name: "cstar-u-itn-idpay-kv"
@@ -46,8 +52,8 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=80.0
-      -XX:MaxRAMPercentage=90.0
+      -XX:InitialRAMPercentage=30.0
+      -XX:MaxRAMPercentage=65.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
@@ -67,3 +73,5 @@ microservice-chart:
 
     #TODO Now we are using MOCK on APIM for ISEE
     INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
+    INPS_MOCK_ENABLED: "true"
+    INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap

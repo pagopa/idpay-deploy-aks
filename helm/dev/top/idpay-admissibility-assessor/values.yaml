@@ -39,6 +39,8 @@ microservice-chart:
     PAGOPA_PDND_CONFIGURATION_CLIENT_ID_C021: pagopa-pdnd-configuration-client-id-c021
     PAGOPA_PDND_CONFIGURATION_KID_C021: pagopa-pdnd-configuration-kid-c021
     PAGOPA_PDND_CONFIGURATION_PURPOSE_ID_C021: pagopa-pdnd-configuration-purpose-id-c021
+    INPS_CLIENT_CERT_STRING: pagopa-inps-client-cert-string
+    INPS_CLIENT_KEY_PEM: pagopa-inps-client-key-pem
 
   keyvault:
     name: "cstar-d-itn-idpay-kv"
@@ -65,12 +67,14 @@ microservice-chart:
     CACHE_REFRESH_MS_RATE: "60000"
     REDIS_CACHE_ENABLED: "true"
 
-    PDND_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd
+    #PDND_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd
     PDND_ACCESS_TOKEN_AUDIENCE: auth.uat.interop.pagopa.it/client-assertion
 
     ANPR_ENV: dev
     ANPR_AUTH_USERID: pagopa-idpay
-    ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
-    #ANPR_BASE_URL: https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
+    #ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
+    ANPR_BASE_URL: https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
 
     INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
+    INPS_MOCK_ENABLED: "true"
+    INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
