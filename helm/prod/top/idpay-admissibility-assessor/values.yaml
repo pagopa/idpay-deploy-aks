@@ -68,6 +68,6 @@ microservice-chart:
     #ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
 
     #TODO Now we are using MOCK on APIM for ISEE
-    INPS_MOCK_ENABLED: "true"
+    INPS_MOCK_ENABLED: "false"
     INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
     INPS_ISEE_CONSULTATION_BASE_URL: https://api.inps.it/modi/soap/ConsultazioneISEE/v1
