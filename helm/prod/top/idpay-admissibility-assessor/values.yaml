@@ -39,8 +39,8 @@ microservice-chart:
     PAGOPA_PDND_CONFIGURATION_CLIENT_ID_C021: pagopa-pdnd-configuration-client-id-c021
     PAGOPA_PDND_CONFIGURATION_KID_C021: pagopa-pdnd-configuration-kid-c021
     PAGOPA_PDND_CONFIGURATION_PURPOSE_ID_C021: pagopa-pdnd-configuration-purpose-id-c021
-#    INPS_CLIENT_CERT_STRING: pagopa-inps-client-cert-string
-#    INPS_CLIENT_KEY_PEM: pagopa-inps-client-key-pem
+    INPS_CLIENT_CERT_STRING: pagopa-inps-client-cert-string
+    INPS_CLIENT_KEY_PEM: pagopa-inps-client-key-pem
 
   keyvault:
     name: "cstar-p-itn-idpay-kv"
@@ -68,6 +68,6 @@ microservice-chart:
     #ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
 
     #TODO Now we are using MOCK on APIM for ISEE
-    INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
     INPS_MOCK_ENABLED: "false"
     INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
+    INPS_ISEE_CONSULTATION_BASE_URL: https://api.inps.it/modi/soap/ConsultazioneISEE/v1

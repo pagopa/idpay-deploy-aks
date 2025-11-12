@@ -67,7 +67,7 @@ microservice-chart:
     CACHE_REFRESH_MS_RATE: "60000"
     REDIS_CACHE_ENABLED: "true"
 
-    #PDND_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd
+    PDND_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd
     PDND_ACCESS_TOKEN_AUDIENCE: auth.uat.interop.pagopa.it/client-assertion
 
     ANPR_ENV: dev
@@ -75,6 +75,6 @@ microservice-chart:
     ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
     #ANPR_BASE_URL: https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
 
-    INPS_ISEE_CONSULTATION_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
+    INPS_ISEE_CONSULTATION_BASE_URL: https://api.collaudo.inps.it/modi/soap/ConsultazioneISEE/v1
     INPS_MOCK_ENABLED: "true"
     INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
