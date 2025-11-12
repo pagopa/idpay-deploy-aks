@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-develop
+    tag: snapshot-LTBE-109-la-chiamata-products-deve-tornare-400-in-caso-di-validazione-fallita
     pullPolicy: Always
 
   ingress:
