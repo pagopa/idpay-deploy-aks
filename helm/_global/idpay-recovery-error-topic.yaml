@@ -75,8 +75,8 @@ microservice-chart:
 
   envSecret:
     KAFKA_ERROR_MESSAGE_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-consumer-jaas-config-idpay-01
-    SERVICEBUS_IDPAY_SB_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
-    SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-processor-sas-key
+    SERVICEBUS_IDPAY_SB_CONNECTION_STRING: idpay-admissibility-request-processor-sas-key
+    SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-admissibility-request-processor-sas-key
     KAFKA_RTD_TRX_SASL_JAAS_CONFIG: evh-rtd-trx-rtd-trx-producer-jaas-config-idpay-02
     KAFKA_TRANSACTION_SASL_JAAS_CONFIG: evh-idpay-transaction-idpay-transaction-producer-jaas-config-idpay-00
     KAFKA_RULE_UPDATE_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-producer-jaas-config-idpay-01
@@ -107,3 +107,23 @@ microservice-chart:
             operator: In
             values:
             - idpay
+
+# How to deploy Canary(?)
+# To deploy a canary version:
+# 1. Uncomment and set nameOverride: "canary"
+# 2. Set canaryDelivery.create: true
+# 3. Configure the hotfix image tag in canaryDelivery.image.tag
+# 4. Revert for remove canary deployment
+#  nameOverride: "canary"
+  canaryDelivery:
+    create: false
+    ingress:
+      header: true
+      headerName: X-Canary
+      headerValue: canary
+      weightPercent: 10
+    image:
+      repository: ghcr.io/pagopa/idpay-recovery-error-topic
+      tag: <HOT_FIX_IMAGE_HERE>
+    envSecret: {}
+    envConfig: {}
