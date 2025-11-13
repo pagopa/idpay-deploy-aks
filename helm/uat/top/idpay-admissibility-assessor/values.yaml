@@ -17,8 +17,8 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 5
-    maxReplica: 10
+    minReplica: 6
+    maxReplica: 12
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -30,6 +30,7 @@ microservice-chart:
         metadata:
           type: Utilization
           value: "70"
+
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
@@ -75,4 +76,3 @@ microservice-chart:
     INPS_MOCK_ENABLED: "true"
     INPS_MOCK_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/inps/soap
     INPS_ISEE_CONSULTATION_BASE_URL: https://api.collaudo.inps.it/modi/soap/ConsultazioneISEE/v1
-

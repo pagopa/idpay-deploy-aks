@@ -27,14 +27,14 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=80.0
-      -XX:MaxRAMPercentage=90.0
+      -XX:InitialRAMPercentage=50.0
+      -XX:MaxRAMPercentage=70.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
       -Djava.util.concurrent.ForkJoinPool.common.parallelism=7
       -Dio.netty.eventLoopThreads=100
-      -javaagent:applicationinsights-agent.jar
+      -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
       -agentlib:jdwp=transport=dt_socket,server=y,address=8001,suspend=n
       -Dcom.sun.management.jmxremote=true
@@ -43,7 +43,9 @@ microservice-chart:
       -Djava.rmi.server.hostname=127.0.0.1
       -Dcom.sun.management.jmxremote.authenticate=false
       -Dcom.sun.management.jmxremote.ssl=false
-    HEAP_OPTS: "-Xms256m -Xmx512m"
+    HEAP_OPTS: >-
+      -XX:InitialRAMPercentage=50.0
+      -XX:MaxRAMPercentage=70.0
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url

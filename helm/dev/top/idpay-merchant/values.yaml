@@ -26,6 +26,10 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
+      - type: memory
+        metadata:
+          type: Utilization
+          value: "70"
 
   envConfig:
     KEYCLOAK_ADMIN_REDIRECT_URI: "https://dev.bonuselettrodomestici.it/esercente"

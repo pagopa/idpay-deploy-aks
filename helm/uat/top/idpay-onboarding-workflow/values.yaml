@@ -31,6 +31,7 @@ microservice-chart:
           type: Utilization
           value: "70"
 
+
   envConfig:
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0
@@ -53,4 +54,3 @@ postman-test:
   dir: postman
   collectionName: "idpay-onboarding-workflow-e2e.postman_collection.json"
   envVariablesFile: "idpay_uat.postman_environment.json"
-

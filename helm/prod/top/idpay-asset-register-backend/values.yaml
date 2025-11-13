@@ -17,7 +17,7 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    minReplica: 5
+    minReplica: 6
     maxReplica: 12
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
@@ -26,6 +26,10 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "60"
+      - type: memory
+        metadata:
+          type: Utilization
+          value: "70"
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-

@@ -18,7 +18,7 @@ microservice-chart:
   autoscaling:
     enable: true
     minReplica: 3
-    maxReplica: 5
+    maxReplica: 6
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -26,9 +26,20 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
+      - type: memory
+        metadata:
+          type: Utilization
+          value: "70"
 
   envConfig:
-    JAVA_TOOL_OPTIONS: '-Xms256m -Xmx512m -javaagent:/app/applicationinsights-agent.jar -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json'
+    JAVA_TOOL_OPTIONS: >-
+      -XX:InitialRAMPercentage=50.0
+      -XX:MaxRAMPercentage=70.0
+      -XX:+UseG1GC
+      -XX:+UseContainerSupport
+      -Djava.security.egd=file:/dev/./urandom
+      -javaagent:/app/applicationinsights-agent.jar
+      -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
     INITIATIVE_LOGO_URL: "https://welfare.cstar.pagopa.it/"
     IS_IBAN_FORMAL_CONTROL_ACTIVE: "false"
 
