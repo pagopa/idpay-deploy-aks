@@ -38,15 +38,18 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=80.0
-      -XX:MaxRAMPercentage=90.0
+      -XX:InitialRAMPercentage=50.0
+      -XX:MaxRAMPercentage=70.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
+      -Djava.security.egd=file:/dev/./urandom
       -Dio.netty.eventLoopThreads=100
-      -javaagent:applicationinsights-agent.jar
+      -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
 
-    HEAP_OPTS: "-Xms256m -Xmx512m"
+    HEAP_OPTS: >-
+      -XX:InitialRAMPercentage=50.0
+      -XX:MaxRAMPercentage=70.0
 
   envSecret:
   aks-api-url: cstar-p-itn-prod-aks-apiserver-url
