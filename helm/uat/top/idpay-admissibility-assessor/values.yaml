@@ -31,6 +31,7 @@ microservice-chart:
           type: Utilization
           value: "70"
 
+
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     PAGOPA_PDND_CONFIGURATION_JWT_KEY_C001: pagopa-pdnd-configuration-jwt-key-c001

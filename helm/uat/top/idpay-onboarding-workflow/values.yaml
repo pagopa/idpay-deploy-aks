@@ -31,6 +31,7 @@ microservice-chart:
           type: Utilization
           value: "70"
 
+
   envConfig:
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0

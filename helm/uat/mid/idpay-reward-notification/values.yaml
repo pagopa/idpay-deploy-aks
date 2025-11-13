@@ -27,6 +27,10 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
+      - type: memory
+        metadata:
+          type: Utilization
+          value: "70"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
