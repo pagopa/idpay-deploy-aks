@@ -15,21 +15,9 @@ microservice-chart:
       memory: "768Mi"
       cpu: "600m"
 
+# Never enable autoscaling because is used for service bus queue processing
   autoscaling:
     enable: false
-    minReplica: 1
-    maxReplica: 3
-    pollingInterval: 30 # seconds
-    cooldownPeriod: 300 # seconds
-    triggers:
-      - type: cpu
-        metadata:
-          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-          value: "70"
-      - type: memory
-        metadata:
-          type: Utilization
-          value: "70"
 
   envConfig:
     JAVA_TOOL_OPTIONS: '-Xms256m -Xmx512m -javaagent:/app/applicationinsights-agent.jar -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json'
