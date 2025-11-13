@@ -22,10 +22,10 @@ microservice-chart:
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
-     - type: cpu
-       metadata:
-         type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-         value: "70"
+      - type: cpu
+        metadata:
+          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          value: "70"
       - type: memory
         metadata:
           type: Utilization
