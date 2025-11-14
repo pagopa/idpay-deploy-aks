@@ -9,23 +9,23 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "768Mi"
-      cpu: "150m"
+      memory: "1536Mi"
+      cpu: "1"
     limits:
-      memory: "768Mi"
-      cpu: "600m"
+      memory: "2048Mi"
+      cpu: "2"
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 6
+    minReplica: 6
+    maxReplica: 12
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
       - type: cpu
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
-          value: "70"
+          value: "60"
       - type: memory
         metadata:
           type: Utilization
