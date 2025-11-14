@@ -52,8 +52,8 @@ microservice-chart:
       -XX:MaxRAMPercentage=70.0
 
   envSecret:
-  aks-api-url: cstar-u-itn-uat-aks-apiserver-url
-  APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
+    aks-api-url: cstar-u-itn-uat-aks-apiserver-url
+    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
     name: "cstar-u-itn-idpay-kv"
