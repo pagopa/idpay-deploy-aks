@@ -44,7 +44,7 @@ microservice-chart:
       -XX:+UseContainerSupport
       -Djava.security.egd=file:/dev/./urandom
       -Dio.netty.eventLoopThreads=100
-      -javaagent:/app/applicationinsights-agent.jar
+      -javaagent:/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
 
     HEAP_OPTS: >-
