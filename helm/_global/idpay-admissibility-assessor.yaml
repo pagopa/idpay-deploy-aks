@@ -65,6 +65,7 @@ microservice-chart:
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
     KAFKA_ONBOARDING_REQUEST_TOPIC: "idpay-admissibility-request"
+    ONBOARDING_ANPR_FAMILY_LIMITS_DELAY_MINUTES: "60"
 
   externalConfigMapValues:
     idpay-common:
