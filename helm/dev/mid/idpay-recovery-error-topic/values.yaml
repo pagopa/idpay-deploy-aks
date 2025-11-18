@@ -59,4 +59,5 @@ microservice-chart:
       -Djava.rmi.server.hostname=127.0.0.1
       -Dcom.sun.management.jmxremote.authenticate=false
       -Dcom.sun.management.jmxremote.ssl=false
-    ERROR_MESSAGE_MAX_RETRY: "2"
+    ERROR_MESSAGE_MAX_RETRY: "5000"
+    ERROR_LISTENER_PAUSE_SECONDS: "600"
