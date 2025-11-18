@@ -69,6 +69,7 @@ microservice-chart:
     ANPR_ENV: prod
     ANPR_AUTH_USERID: pagopa-idpay
     ANPR_BASE_URL: https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
+    ANPR_C021_AUDIENCE: https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C021-servizioAccertamentoStatoFamiglia/v1
     #ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
 
     #TODO Now we are using MOCK on APIM for ISEE
