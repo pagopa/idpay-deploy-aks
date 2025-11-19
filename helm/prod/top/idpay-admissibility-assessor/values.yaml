@@ -78,4 +78,4 @@ microservice-chart:
     INPS_ISEE_CONSULTATION_BASE_URL: https://api.inps.it/modi/soap/ConsultazioneISEE/v1
 
     ONBOARDING_REQUEST_DELAY_NEXT_DAY: "true"
-    ONBOARDING_REQUEST_ERROR_MAX_RETRY: "5"
+    ONBOARDING_REQUEST_ERROR_MAX_RETRY: "5000"
