@@ -50,5 +50,5 @@ microservice-chart:
       -Djava.security.egd=file:/dev/./urandom
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
-    ERROR_MESSAGE_MAX_RETRY: "5000"
-    ERROR_LISTENER_PAUSE_SECONDS: "120"
+    ERROR_MESSAGE_MAX_RETRY: "1000"
+    ERROR_LISTENER_PAUSE_SECONDS: "600"
