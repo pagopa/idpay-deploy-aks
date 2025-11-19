@@ -40,7 +40,7 @@ microservice-chart:
       -Djava.security.egd=file:/dev/./urandom
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
-    INITIATIVE_LOGO_URL: "https://welfare.cstar.pagopa.it/"
+    INITIATIVE_LOGO_URL: "https://welfare.cstar.pagopa.it/logo/"
     IS_IBAN_FORMAL_CONTROL_ACTIVE: "false"
 
   envSecret:
