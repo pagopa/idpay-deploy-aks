@@ -52,3 +52,4 @@ microservice-chart:
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
     ERROR_MESSAGE_MAX_RETRY: "5000"
     ERROR_LISTENER_PAUSE_SECONDS: "120"
+    THREADS_SCHEDULE_MAX_NUMBER: "2"
