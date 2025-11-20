@@ -71,6 +71,7 @@ microservice-chart:
     ANPR_BASE_URL: https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
     ANPR_C021_AUDIENCE: https://modipa.anpr.interno.it/govway/rest/in/MinInternoPortaANPR/C021-servizioAccertamentoStatoFamiglia/v1
     #ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
+    ANPR_KO_ANOMALY_CODES_LIST: EN122
 
     #TODO Now we are using MOCK on APIM for ISEE
     INPS_MOCK_ENABLED: "false"
