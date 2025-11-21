@@ -65,6 +65,7 @@ microservice-chart:
     STALE_MINUTES_THRESHOLD: "120"
     EXPIRY_SEND_BATCH_SIZE: "1000"
     EXPIRY_UPDATE_BATCH_SIZE: "10000"
+    PAYMENT_AUTH_EXPIRE_MINUTES: 15
 
   externalConfigMapValues:
     idpay-common:
