@@ -19,6 +19,9 @@ microservice-chart:
       memory: "1.5Gi"
       cpu: "750m"
 
+  deployment:
+    replica: 0 # This value must be set equal to autoscaling.minReplica
+
   autoscaling:
     minReplica: 0
     maxReplica: 0
