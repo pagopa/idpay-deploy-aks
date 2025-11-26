@@ -137,7 +137,7 @@ microservice-chart:
       header: true
       headerName: X-Canary
       headerValue: canary
-      weightPercent: 1
+      weightPercent: 10
     image:
       repository: ghcr.io/pagopa/idpay-reward-calculator
       tag: v2.4.1@sha256:04ab13a8654776ead8ea0e46fa8d105e97d8d35d16d80ee819566f45509db40d
