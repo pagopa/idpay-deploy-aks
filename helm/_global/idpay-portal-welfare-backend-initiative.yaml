@@ -162,7 +162,7 @@ microservice-chart:
       header: true
       headerName: X-Canary
       headerValue: canary
-      weightPercent: 80
+      weightPercent: 100
     image:
       repository: ghcr.io/pagopa/idpay-portal-welfare-backend-initiative
       tag: v1.7.1@sha256:09e214d5c7624c2c0dcd52356cfe723ff7d7276b35a94caa4f822dd17a506187
