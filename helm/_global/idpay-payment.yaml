@@ -140,7 +140,7 @@ microservice-chart:
       headerValue: canary
       weightPercent: 10
     image:
-      repository: ghcr.io/pagopa/idpay-admissibility-assessor
+      repository: ghcr.io/pagopa/idpay-payment
       tag: <HOT_FIX_IMAGE_HERE>
     envSecret: {}
     envConfig: {}
