@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: v1.18.0
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
@@ -16,12 +16,12 @@ microservice-chart:
       cpu: "600m"
 
   deployment:
-    replicas: 2 # This value must be set equal to autoscaling.minReplica
+    replicas: 1 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true
-    minReplica: 2
-    maxReplica: 3
+    minReplica: 1
+    maxReplica: 2
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
