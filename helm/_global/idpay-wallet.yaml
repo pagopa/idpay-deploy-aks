@@ -137,14 +137,14 @@ microservice-chart:
 # 4. Revert for remove canary deployment
 #  nameOverride: "canary"
   canaryDelivery:
-    create: false
+    create: true
     ingress:
       header: true
       headerName: X-Canary
       headerValue: canary
-      weightPercent: 10
+      weightPercent: 50
     image:
       repository: ghcr.io/pagopa/idpay-wallet
-      tag: <HOT_FIX_IMAGE_HERE>
+      tag: v1.8.1@sha256:26113ca1ddada6fd175b675aa7aaccede55456e2c539c8f582e645ccbb410ae3
     envSecret: {}
     envConfig: {}
