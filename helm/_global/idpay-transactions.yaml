@@ -120,9 +120,9 @@ microservice-chart:
 # 2. Set canaryDelivery.create: true
 # 3. Configure the hotfix image tag in canaryDelivery.image.tag
 # 4. Revert for remove canary deployment
-#  nameOverride: "canary"
+  nameOverride: "canary"
   canaryDelivery:
-    create: false
+    create: true
     ingress:
       header: true
       headerName: X-Canary
@@ -130,6 +130,6 @@ microservice-chart:
       weightPercent: 10
     image:
       repository: ghcr.io/pagopa/idpay-transactions
-      tag: <HOT_FIX_IMAGE_HERE>
+      tag: snapshot-ltbe-146-new@sha256:1b11e1ae09415fa8efc740bd028426d5a32027f96668e645147409c6909494cc
     envSecret: {}
     envConfig: {}
