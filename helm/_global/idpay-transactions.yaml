@@ -130,6 +130,6 @@ microservice-chart:
       weightPercent: 50
     image:
       repository: ghcr.io/pagopa/idpay-transactions
-      tag: snapshot-ltbe-146-new@sha256:1b11e1ae09415fa8efc740bd028426d5a32027f96668e645147409c6909494cc
+      tag: v1.7.1@sha256:c4fee7bd27641cc5e2ca07739e8a33cf8f12757b27afbec5d5f82bd45a5bc4ab
     envSecret: {}
     envConfig: {}
