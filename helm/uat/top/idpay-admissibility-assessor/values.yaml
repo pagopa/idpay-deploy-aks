@@ -15,10 +15,13 @@ microservice-chart:
       memory: "4Gi"
       cpu: "1500m"
 
+  deployment:
+    replicas: 1 # This value must be set equal to autoscaling.minReplica
+
   autoscaling:
     enable: true
-    minReplica: 6
-    maxReplica: 12
+    minReplica: 1
+    maxReplica: 3
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -71,6 +74,7 @@ microservice-chart:
     ANPR_AUTH_USERID: pagopa-idpay
     #ANPR_BASE_URL: https://modipa-val.anpr.interno.it/govway/rest/in/MinInternoPortaANPR-PDND
     ANPR_BASE_URL: http://idpay-mock-microservice-chart:8080/idpay/mock/anpr
+    ANPR_KO_ANOMALY_CODES_LIST: EN122,TEST001
 
     #TODO Now we are using MOCK on APIM for ISEE
     INPS_MOCK_ENABLED: "true"

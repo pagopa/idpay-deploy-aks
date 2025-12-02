@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: v1.17.0@sha256:5ad37980cdb34b07017f891eb3e2354fd8b934b1fe550e126657c3334894616d
+    tag: v1.18.0@sha256:09ca2d8c93fd7807b8bb3bf9de390863daaf8ac662becb067c61ef4c6c260d65
     pullPolicy: Always
 
   ingress:
@@ -14,6 +14,9 @@ microservice-chart:
     limits:
       memory: "3Gi"
       cpu: "2"
+
+  deployment:
+    replicas: 15 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true

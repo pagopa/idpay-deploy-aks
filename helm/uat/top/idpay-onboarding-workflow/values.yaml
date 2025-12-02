@@ -15,10 +15,13 @@ microservice-chart:
       memory: "4Gi"
       cpu: "4000m"
 
+  deployment:
+    replicas: 1 # This value must be set equal to autoscaling.minReplica
+
   autoscaling:
     enable: true
-    minReplica: 15
-    maxReplica: 21
+    minReplica: 1
+    maxReplica: 3
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
