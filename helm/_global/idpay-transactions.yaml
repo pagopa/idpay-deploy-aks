@@ -91,6 +91,7 @@ microservice-chart:
     KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
     PDV_DECRYPT_API_KEY: pdv-api-key
     BLOB_STORAGE_ACCOUNT_NAME: refund-storage-account-name
+    REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
 
   externalConfigMapFiles:
     create: true
