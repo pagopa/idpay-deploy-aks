@@ -142,9 +142,9 @@ microservice-chart:
       header: true
       headerName: X-Canary
       headerValue: canary
-      weightPercent: 5
+      weightPercent: 20
     image:
       repository: ghcr.io/pagopa/idpay-wallet
-      tag: v1.9.0@sha256:4c32461e70ac17831d0c3b0201b4dcd2baad739541a42c03929a312583fc0ec9
+      tag: v1.9.2@sha256:46dee934ec594b99f7eb50647a1190d6b381bf8544a050653dff0eff2c97be3b
     envSecret: {}
     envConfig: {}
