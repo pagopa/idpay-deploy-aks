@@ -28,7 +28,7 @@ microservice-chart:
       -Djava.security.egd=file:/dev/./urandom
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
-    FORCE_STOPPED: "true"
+    FORCE_STOPPED: "false"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
