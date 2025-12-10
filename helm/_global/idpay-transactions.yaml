@@ -62,6 +62,7 @@ microservice-chart:
     DELETE_DELAY_TIME: "1000"
     HEALTH_MONGO_ENABLED: "false"
     BLOB_STORAGE_CONTAINER_REFERENCE: "invoices"
+    BLOB_STORAGE_CSV_CONTAINER_REFERENCE: "approved-batch"
     INVOICE_STORAGE_SAS_DURATION_SECONDS: "60"
 
   externalConfigMapValues:
