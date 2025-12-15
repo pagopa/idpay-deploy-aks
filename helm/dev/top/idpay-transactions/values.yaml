@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: snapshot-UPBE-471-be-adeguamento-logica-conferma-lotto
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
