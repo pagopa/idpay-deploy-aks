@@ -91,6 +91,7 @@ microservice-chart:
       KAFKA_TOPIC_ERRORS: idpay_error_topic
       KAFKA_REWARD_GROUP_IN: idpay_reward_notification_response_consumer_group
       KAFKA_TOPIC_TIMELINE: idpay_timeline_topic
+      KAFKA_BINDER_BROKER_ENDPOINT_ERRORS: kafka_broker
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
