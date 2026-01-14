@@ -29,7 +29,7 @@ microservice-chart:
       - type: memory
         metadata:
           type: Utilization
-          value: "70"
+          value: "90"
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
@@ -39,7 +39,7 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=75.0
+      -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport

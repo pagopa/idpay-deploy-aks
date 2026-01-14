@@ -6,10 +6,10 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "768Mi"
+      memory: "1Gi"
       cpu: "150m"
     limits:
-      memory: "768Mi"
+      memory: "1Gi"
       cpu: "600m"
 
   deployment:
@@ -33,7 +33,7 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=75.0
+      -XX:InitialRAMPercentage=40.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport

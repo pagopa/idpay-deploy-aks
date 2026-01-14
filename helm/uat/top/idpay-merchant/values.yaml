@@ -32,13 +32,13 @@ microservice-chart:
       - type: memory
         metadata:
           type: Utilization
-          value: "70"
+          value: "90"
 
   envConfig:
     KEYCLOAK_ADMIN_REDIRECT_URI: "https://uat.bonuselettrodomestici.it/esercente"
     MERCHANT_DEFAULT_INITIATIVES: "68dd003ccce8c534d1da22bc"
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=75.0
+      -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport

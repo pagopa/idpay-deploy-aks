@@ -16,12 +16,12 @@ microservice-chart:
       cpu: "2"
 
   deployment:
-    replicas: 6 # This value must be set equal to autoscaling.minReplica
+    replicas: 3 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true
-    minReplica: 6
-    maxReplica: 12
+    minReplica: 3
+    maxReplica: 6
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:

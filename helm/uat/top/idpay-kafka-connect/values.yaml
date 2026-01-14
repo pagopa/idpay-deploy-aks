@@ -14,7 +14,7 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "256Mi"
+      memory: "800Mi"
       cpu: "100m"
     limits:
       memory: "800Mi"
@@ -37,7 +37,7 @@ microservice-chart:
       - type: memory
         metadata:
           type: Utilization
-          value: "70"
+          value: "90"
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
