@@ -39,7 +39,7 @@ microservice-chart:
     LOG_LEVEL_SPRING_BOOT: INFO
     LOG_LEVEL_SPRING_WEB: INFO
     JAVA_TOOL_OPTIONS: >-
-      -XX:InitialRAMPercentage=75.0
+      -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC
       -XX:+UseContainerSupport
