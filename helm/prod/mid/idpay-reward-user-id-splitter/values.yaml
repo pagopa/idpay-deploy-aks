@@ -15,8 +15,23 @@ microservice-chart:
       memory: "1Gi"
       cpu: "600m"
 
+  deployment:
+    replicas: 0 # This value must be set equal to autoscaling.minReplica
+
   autoscaling:
-    enable: false
+    minReplica: 0
+    maxReplica: 0
+    pollingInterval: 30 # seconds
+    cooldownPeriod: 300 # seconds
+    triggers:
+      - type: cpu
+        metadata:
+          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          value: "60"
+      - type: memory
+        metadata:
+          type: Utilization
+          value: "90"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
