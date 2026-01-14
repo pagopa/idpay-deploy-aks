@@ -26,7 +26,7 @@ microservice-chart:
       - type: memory
         metadata:
           type: Utilization
-          value: "70"
+          value: "90"
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url

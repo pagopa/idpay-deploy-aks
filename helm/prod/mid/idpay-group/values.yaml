@@ -35,7 +35,7 @@ microservice-chart:
       - type: memory
         metadata:
           type: Utilization
-          value: "70"
+          value: "90"
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
