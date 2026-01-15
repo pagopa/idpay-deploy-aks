@@ -36,7 +36,7 @@ microservice-chart:
   ingress:
     create: true
     path: /idpaytransactions/(.*)
-
+    proxyBodySize: 2m
   podAnnotations: { }
 
   podSecurityContext:
