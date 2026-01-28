@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: snapshot-uat
+    tag: snapshot-uat@sha256:a7163dcb06bca8ab17914e97df3b0c7499cf8d633bb0185b3bdd59338a04d045
     pullPolicy: Always
 
   ingress:
