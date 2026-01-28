@@ -144,6 +144,6 @@ microservice-chart:
       weightPercent: 10
     image:
       repository: ghcr.io/pagopa/idpay-admissibility-assessor
-      tag: snapshot-LTBE-170 Latest
+      tag: snapshot-LTBE-170
     envSecret: {}
     envConfig: {}
