@@ -98,6 +98,8 @@ microservice-chart:
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
     DATA_FACTORY_RESOURCE_GROUP: data-factory-rg-name
     DATA_FACTORY_NAME: data-factory-name
+    DATA_FACTORY_SUBSCRIPTION_ID: idpay-subscription-id
+    DATA_FACTORY_TENANT_ID: idpay-tenant-id
 
   externalConfigMapFiles:
     create: true
