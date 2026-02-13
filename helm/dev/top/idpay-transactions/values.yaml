@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: snapshot-UPBE-600-data-factory-pipeline-integration
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
