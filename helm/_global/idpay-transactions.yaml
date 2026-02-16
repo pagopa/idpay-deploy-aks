@@ -67,6 +67,7 @@ microservice-chart:
     INVOICE_STORAGE_SAS_DURATION_SECONDS: "60"
     DATA_FACTORY_PIPELINE_NAME: "idpay_transaction_report"
     DATA_FACTORY_RUN_PIPELINE_MAX_RETRIES: "3"
+    PERIOD_LENGTH_TRANSACTIONS_REPORT: "90"
 
   externalConfigMapValues:
     idpay-common:
