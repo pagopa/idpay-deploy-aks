@@ -57,3 +57,6 @@ microservice-chart:
       -Djava.security.egd=file:/dev/./urandom
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
+    INVITALIA_BASE_URL: "https://prod-apim-misure.azure-api.net/pagopa/ce/v1"
+    INVITALIA_TOKEN_BASE_URL: "https://login.microsoftonline.com"
+    SELFCARE_INSTITUTIONS_URL: "https://api.selfcare.pagopa.it/external/v2/institutions"
