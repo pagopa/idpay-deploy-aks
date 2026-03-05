@@ -143,7 +143,7 @@ microservice-chart:
       header: true
       headerName: X-Canary
       headerValue: canary
-      weightPercent: 10
+      weightPercent: 50
     image:
       repository: ghcr.io/pagopa/idpay-wallet
       tag: v1.10.0@sha256:7f7c27fe357313089e1558cb170fd35c286a0861a3d623b9d12010ba72fa3fee
