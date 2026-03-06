@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-calculator
-    tag: snapshot-develop
+    tag: snapshot-LTBE-197-remove-payment-instrument-references
     pullPolicy: Always
 
   ingress:
