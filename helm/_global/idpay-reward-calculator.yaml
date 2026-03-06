@@ -86,6 +86,8 @@ microservice-chart:
       KAFKA_HPAN_UPDATE_TOPIC: idpay_hpan_update_topic
       KAFKA_HPAN_UPDATE_OUTCOME_TOPIC: idpay_hpan_update_outcome_topic
       KAFKA_COMMANDS_TOPIC: idpay_commands_topic
+    rest-client:
+      ONBOARDING_WORKFLOW_BASE_URL: idpay_onboarding_host
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
