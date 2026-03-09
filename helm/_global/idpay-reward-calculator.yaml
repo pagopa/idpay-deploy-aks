@@ -73,6 +73,7 @@ microservice-chart:
     idpay-common:
       TZ: TZ
     idpay-eventhub-00:
+      KAFKA_ONBOARDING_OUTCOME_BROKER: kafka_broker
       KAFKA_REWARD_RESPONSE_BROKER: kafka_broker
       KAFKA_REWARD_RESPONSE_TOPIC: idpay_transaction_topic
     idpay-eventhub-02:
@@ -83,8 +84,6 @@ microservice-chart:
       KAFKA_REWARD_SECURITY_PROTOCOL: kafka_security_protocol
       KAFKA_ERRORS_BROKER: kafka_broker
       KAFKA_ERRORS_TOPIC: idpay_error_topic
-      KAFKA_HPAN_UPDATE_TOPIC: idpay_hpan_update_topic
-      KAFKA_HPAN_UPDATE_OUTCOME_TOPIC: idpay_hpan_update_outcome_topic
       KAFKA_COMMANDS_TOPIC: idpay_commands_topic
     rest-client:
       ONBOARDING_WORKFLOW_BASE_URL: idpay_onboarding_host
@@ -98,8 +97,7 @@ microservice-chart:
     KAFKA_REWARD_RULE_REQUEST_SASL_JAAS_CONFIG: evh-idpay-rule-update-idpay-rule-update-consumer-jaas-config-idpay-01
     KAFKA_TRANSACTION_USER_ID_SPLITTER_SASL_JAAS_CONFIG: evh-idpay-transaction-user-id-splitter-idpay-transaction-user-id-splitter-consumer-jaas-config-idpay-01
     KAFKA_TRANSACTION_USER_ID_SPLITTER_PRODUCER_SASL_JAAS_CONFIG: evh-idpay-transaction-user-id-splitter-idpay-transaction-user-id-splitter-producer-jaas-config-idpay-01
-    KAFKA_HPAN_UPDATE_SASL_JAAS_CONFIG: evh-idpay-hpan-update-idpay-hpan-update-consumer-jaas-config-idpay-01
-    KAFKA_HPAN_UPDATE_OUTCOME_SASL_JAAS_CONFIG: evh-idpay-hpan-update-outcome-idpay-hpan-update-outcome-producer-jaas-config-idpay-01
+    KAFKA_ONBOARDING_OUTCOME_SASL_JAAS_CONFIG: evh-idpay-onboarding-outcome-idpay-onboarding-outcome-consumer-jaas-config-idpay-00
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
     KAFKA_COMMANDS_SASL_JAAS_CONFIG: evh-idpay-commands-idpay-commands-consumer-jaas-config-idpay-01
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
