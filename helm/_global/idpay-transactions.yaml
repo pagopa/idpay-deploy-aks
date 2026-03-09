@@ -114,6 +114,7 @@ microservice-chart:
     INVITALIA_CLIENT_SECRET: invitalia-client-secret
     INVITALIA_SCOPE: invitalia-scope
     INVITALIA_TENANT_ID: invitalia-tenant-id
+    EROGAZIONI_AUTHORIZER: erogazioni-authorizer
 
   externalConfigMapFiles:
     create: true
