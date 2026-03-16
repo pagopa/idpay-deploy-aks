@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-wallet
-    tag: snapshot-remove-payment-instrument-enroll-and-create-user-counters
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
