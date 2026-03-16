@@ -72,6 +72,7 @@ microservice-chart:
       PAYMENT_URI: idpay_payment_host
       ONBOARDING_URI: idpay_onboarding_host
       IDPAY_INITIATIVE_BASE_URL: initiative_ms_base_url
+      IDPAY_REWARD_CALCULATOR_BASE_URL: idpay-reward-calculator-baseurl
     idpay-eventhub-00:
       KAFKA_BINDER_BROKER_ENDPOINT_LIST: kafka_broker
       KAFKA_SASL_MECHANISM: kafka_sasl_mechanism
