@@ -50,6 +50,10 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.authenticate=false
       -Dcom.sun.management.jmxremote.ssl=false
 
+  externalConfigMapValues:
+    idpay-payment:
+      SPRING_APPLICATION_JSON: spring_application_json
+
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
