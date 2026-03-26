@@ -51,7 +51,7 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   externalConfigMapValues:
-    idpay-payment:
+    idpay-payment-initiatives-property-validation:
       SPRING_APPLICATION_JSON: spring_application_json
 
   envSecret:

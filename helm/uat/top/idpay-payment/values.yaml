@@ -45,7 +45,7 @@ microservice-chart:
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
 
   externalConfigMapValues:
-    idpay-payment:
+    idpay-payment-initiatives-property-validation:
       SPRING_APPLICATION_JSON: spring_application_json
 
   envSecret:
