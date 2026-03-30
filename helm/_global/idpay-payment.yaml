@@ -90,6 +90,10 @@ microservice-chart:
       KAFKA_TRANSACTION_OUTCOME_BROKER: kafka_broker
       KAFKA_TOPIC_TRANSACTION: idpay_transaction_topic
 
+    externalConfigMapValues:
+      idpay-payment-initiatives-property-validation:
+        SPRING_APPLICATION_JSON: spring_application_json
+
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
     KAFKA_ERRORS_SASL_JAAS_CONFIG: evh-idpay-errors-idpay-errors-producer-jaas-config-idpay-01
