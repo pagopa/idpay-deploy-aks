@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-timeline
-    tag: snapshot-migrate-to-native-compilation
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
