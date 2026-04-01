@@ -89,6 +89,9 @@ microservice-chart:
     idpay-eventhub-00:
       KAFKA_TRANSACTION_OUTCOME_BROKER: kafka_broker
       KAFKA_TOPIC_TRANSACTION: idpay_transaction_topic
+    
+    idpay-payment-initiatives-property-validation:
+      SPRING_APPLICATION_JSON: spring_application_json
 
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
