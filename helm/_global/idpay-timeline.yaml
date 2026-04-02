@@ -64,6 +64,7 @@ microservice-chart:
     DELETE_PAGINATION_SIZE: "100"
     DELETE_DELAY_TIME: "1000"
     APPLICATIONINSIGHTS_PREVIEW_PROFILER_ENABLED: "false"
+    HEALTH_MONGO_ENABLED: "false"
 
   externalConfigMapValues:
     idpay-common:
