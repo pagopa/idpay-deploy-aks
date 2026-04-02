@@ -33,6 +33,7 @@ microservice-chart:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
+    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 
   keyvault:
     name: "cstar-d-itn-idpay-kv"
