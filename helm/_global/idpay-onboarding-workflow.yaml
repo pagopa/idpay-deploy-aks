@@ -63,6 +63,7 @@ microservice-chart:
     HEALTH_MONGO_ENABLED: "false"
     INITIATIVE_IDS: "68dd003ccce8c534d1da22bc,68de7fc681ce9e35a476e985"
     INITIATIVE_START_TIME: "07:00:00"
+    KAFKA_TOPIC_ONBOARDING: idpay-onboarding-request-session
 
 
   externalConfigMapValues:
@@ -77,7 +78,6 @@ microservice-chart:
       KAFKA_BINDER_BROKER_ENDPOINT_LIST: kafka_broker
       KAFKA_ONBOARDING_SASL_MECHANISM: kafka_sasl_mechanism
       KAFKA_ONBOARDING_SECURITY_PROTOCOL: kafka_security_protocol
-      KAFKA_TOPIC_ONBOARDING: idpay_onboarding_request_topic
       KAFKA_TOPIC_OUTCOME: idpay_onboarding_outcome_topic
       KAFKA_OUTCOME_GROUP_IN: idpay-onboarding-outcome-onboarding-consumer-group
       KAFKA_TOPIC_ONBOARDING_NOTIFICATION: idpay_onboarding_notification_topic
