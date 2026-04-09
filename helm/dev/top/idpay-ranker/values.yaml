@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranker
-    tag: snapshot-develop
+    tag: snapshot-UPBE-686-be-introduzione-delle-sessioni-su-idpay-ranker
     pullPolicy: Always
 
   ingress:
