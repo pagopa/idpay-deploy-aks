@@ -6,7 +6,7 @@ microservice-chart:
   livenessProbe:
     handlerType: httpGet
     httpGet:
-      path: /actuator/health
+      path: /actuator/health/liveness
       port: 8080
     initialDelaySeconds: 0
     failureThreshold: 15
@@ -15,7 +15,7 @@ microservice-chart:
   readinessProbe:
     handlerType: httpGet
     httpGet:
-      path: /actuator/health
+      path: /actuator/health/readiness
       port: 8080
     initialDelaySeconds: 0
     failureThreshold: 15
@@ -49,11 +49,16 @@ microservice-chart:
     runAsUser: 10000
     runAsGroup: 10000
 
+  container:
+    args:
+      - "-XX:MaximumHeapSizePercent=60"
+
   envConfig:
     MONGODB_DBNAME: "idpay-beneficiari"
+    APPLICATIONINSIGHTS_CONFIGURATION_FILE: "/mnt/file-config-external/appinsights-config/applicationinsights.json"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaytimeline"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
-    APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
+    OTEL_INSTRUMENTATION_MICROMETER_ENABLED: "false"
     APPLICATIONINSIGHTS_SAMPLING_ENABLED: "false"
     APPLICATIONINSIGHTS_SAMPLING_PERCENTAGE: "100"
     DELETE_PAGINATION_SIZE: "100"
