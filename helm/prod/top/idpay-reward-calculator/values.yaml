@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-reward-calculator
-    tag: v2.5.0@sha256:c8335ce6dc082f72d986cba7ff266a2cb5c4af55514be326e5f11a0b4e440a4d
+    tag: v2.5.1@sha256:4589c7cc4f628212461adb5498246179c937ec9cd34c3981e30af27b7dc42aea
     pullPolicy: Always
 
   ingress:
