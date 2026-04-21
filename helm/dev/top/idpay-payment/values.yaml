@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: snapshot-EBE-557-delete-tip
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
