@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-UPBE-682-design-review-verifica-gestione-isee_analisi
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
