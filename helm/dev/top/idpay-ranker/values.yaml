@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranker
-    tag: snapshot-develop
+    tag: snapshot-UPBE-682-design-review-verifica-gestione-isee_analisi
     pullPolicy: Always
 
   ingress:
