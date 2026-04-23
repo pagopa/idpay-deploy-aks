@@ -93,6 +93,7 @@ microservice-chart:
       KAFKA_TRANSACTION_GROUP_ID: idpay_transaction_consumer_group
 
     rest-client:
+      IDPAY_INITIATIVE_BASE_URL: initiative_ms_base_url
       PDV_BASE_URL: pdv_decrypt_base_url
       MERCHANT_BASE_URL: idpay_merchant_host
       IDPAY_PAYMENT_BASE_URL: idpay_payment_host
