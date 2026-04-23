@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: snapshot-EBE-585-remove-initiativeEndDate
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
