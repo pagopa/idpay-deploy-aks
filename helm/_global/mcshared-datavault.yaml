@@ -50,7 +50,7 @@ microservice-chart:
   envConfig:
     json-logs: "true"
     quarkus-log-level: "WARN"
-    app-log-level: "DEBUG"
+    app-log-level: "WARN"
     mongodb-connect-timeout: "5"
     mongodb-read-timeout: "10"
     mongodb-server-selection-timeout: "5"
@@ -62,6 +62,12 @@ microservice-chart:
     try-to-find-first: "true"
     cache-enabled: "true"
     cache-expire-after-write: "1d"
+    redis-reconnect-attempts: "5"
+    redis-reconnect-interval: "1s"
+    redis-tcp-connection-timeout: "10s"
+    redis-tcp-keep-alive: "true"
+    vertx-resolver-cache-max-ttl: "30"
+    redis-health-enabled: "false"
 
   externalConfigMapValues:
 
