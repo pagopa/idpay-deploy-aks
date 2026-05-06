@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-admissibility-assessor
-    tag: v1.8.3@sha256:a4cd17fd77c14d92257eafaea08f16d3a008172a25765bdfb70cd1a0dc38fdf5
+    tag: v1.8.4@sha256:9dabe94670633f9c531a0523db161fd1d5ea87ad05eda0ad351f4426b92fc2ca
     pullPolicy: Always
 
   ingress:
