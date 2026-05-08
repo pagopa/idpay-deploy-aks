@@ -9,10 +9,10 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "2Gi"
+      memory: "1536Mi"
       cpu: "250m"
     limits:
-      memory: "4Gi"
+      memory: "2048Mi"
       cpu: "500m"
 
   deployment:
