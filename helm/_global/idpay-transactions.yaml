@@ -70,11 +70,9 @@ microservice-chart:
     DATA_FACTORY_USER_DETAILS_REPORT_PIPELINE_NAME: "idpay_user_details_report"
     DATA_FACTORY_RUN_PIPELINE_MAX_RETRIES: "3"
     PERIOD_LENGTH_TRANSACTIONS_REPORT: "90"
-    INVITALIA_BASE_URL: "https://dev-apim-misure.azure-api.net/pagopa/ce/v1"
     INVITALIA_TOKEN_BASE_URL: "https://login.microsoftonline.com"
     INVITALIA_TOKEN_URI: "/oauth2/v2.0/token"
     INVITALIA_GRANTTYPE: "client_credentials"
-    SELFCARE_INSTITUTIONS_URL: "https://api.dev.selfcare.pagopa.it/external/v2/institutions"
 
   externalConfigMapValues:
     idpay-common:
