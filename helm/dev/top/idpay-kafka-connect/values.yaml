@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-kafka-connect
-    tag: snapshot-develop
+    tag: snapshot-develop@sha256:da207933c18f57985f058d36e861438bf00537252e4e5c107afd7b71a0962a52
     pullPolicy: Always
 
   ingress:
