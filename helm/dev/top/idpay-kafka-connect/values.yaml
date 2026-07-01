@@ -50,7 +50,7 @@ microservice-chart:
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
-    postgres-host: postgres-connection-string
+    postgres-host: postgres-host
     postgres-password: postgres-password
 
   keyvault:
