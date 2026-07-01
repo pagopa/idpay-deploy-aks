@@ -50,6 +50,9 @@ microservice-chart:
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
+    postgres-host: postgres-connection-string
+    postgres-password: postgres-password
+
   keyvault:
     name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
