@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: snapshot-PPIW-25-analisi-su-payment-come-orchestratore-del-flusso-multi-transazione
+    tag: snapshot-poc-it-wallet
     pullPolicy: Always
 
   ingress:
