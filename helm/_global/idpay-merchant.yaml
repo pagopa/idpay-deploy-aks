@@ -100,6 +100,23 @@ microservice-chart:
     PDV_ENCRYPT_API_KEY: pdv-api-key
     PDV_DECRYPT_API_KEY: pdv-api-key
 
+    PDND_INFOCAMERE_SERVICE_CODE: da-definire
+    PDND_INFOCAMERE_URL: da-definire
+    PDND_INFOCAMERE_PRIVATE_KEY: da-definire
+    PDND_INFOCAMERE_CLIENT_ID: da-definire
+    PDND_INFOCAMERE_KID: da-definire
+    PDND_INFOCAMERE_AUDIENCE: da-definire
+    PDND_INFOCAMERE_PURPOSE_ID: da-definire
+
+    PDND_INVITALIA_INFOCAMERE_CLIENT_ID: da-definire
+    PDND_INVITALIA_INFOCAMERE_KID: da-definire
+    PDND_INVITALIA_INFOCAMERE_PURPOSE_ID: da-definire
+
+    REST_CLIENT_CONNECT_TIMEOUT: da-definire
+    REST_CLIENT_READ_TIMEOUT: da-definire
+    REST_CLIENT_LOG_LEVEL: da-definire
+
+
   nodeSelector: {}
 
   tolerations:
