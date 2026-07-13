@@ -99,6 +99,7 @@ microservice-chart:
     KEYCLOAK_ADMIN_CLIENT_SECRET: keycloak-merchant-op-client-secret
     PDV_ENCRYPT_API_KEY: pdv-api-key
     PDV_DECRYPT_API_KEY: pdv-api-key
+    REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
 
   nodeSelector: {}
 
