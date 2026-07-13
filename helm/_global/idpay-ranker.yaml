@@ -66,6 +66,7 @@ microservice-chart:
     SESSIONS_MAX_PARALLEL: "3"
     SESSIONS_IDLE_TIMEOUT_SECONDS: "120"
     SESSIONS_WAIT_MESSAGE_SECONDS: "5"
+    INITIATIVE_ID: "69e7a546c1d997edabe7c55d,69e8c500c4f1a4b7dcf24b39,69e8dd3de22e09b7379674a8,68dd003ccce8c534d1da22bc,69e0fa95e21efa516c7b8659,6a54f28db4be4fff595b4db3"
 
   externalConfigMapValues:
     idpay-common:
