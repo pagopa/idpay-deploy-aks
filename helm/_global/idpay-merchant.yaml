@@ -65,6 +65,8 @@ microservice-chart:
     HEALTH_MONGO_ENABLED: "false"
     KEYCLOAK_ADMIN_USER_ACTIONS_EMAIL_LIFESPAN: "604800"
     DATA_WEB_PAGEABLE_MAX_PAGE_SIZE: "3000"
+    PDND_BASE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
+    PDND_INFOCAMERE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
 
   externalConfigMapValues:
     idpay-common:
@@ -75,8 +77,7 @@ microservice-chart:
       IDPAY_TRANSACTIONS_BASE_URL: idpay_transactions_host
       PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
       PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
-      PDND_BASE_URL: idpay_mock_base_url
-      PDND_INFOCAMERE_URL: idpay_mock_base_url
+
 
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
