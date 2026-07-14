@@ -65,8 +65,6 @@ microservice-chart:
     HEALTH_MONGO_ENABLED: "false"
     KEYCLOAK_ADMIN_USER_ACTIONS_EMAIL_LIFESPAN: "604800"
     DATA_WEB_PAGEABLE_MAX_PAGE_SIZE: "3000"
-    PDND_BASE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
-    PDND_INFOCAMERE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
 
   externalConfigMapValues:
     idpay-common:
@@ -102,21 +100,7 @@ microservice-chart:
     KEYCLOAK_ADMIN_CLIENT_SECRET: keycloak-merchant-op-client-secret
     PDV_ENCRYPT_API_KEY: pdv-api-key
     PDV_DECRYPT_API_KEY: pdv-api-key
-
-    # PDND_INFOCAMERE_PRIVATE_KEY: da-definire
-    # PDND_INFOCAMERE_CLIENT_ID: da-definire
-    # PDND_INFOCAMERE_KID: da-definire
-    # PDND_INFOCAMERE_AUDIENCE: da-definire
-    # PDND_INFOCAMERE_PURPOSE_ID: da-definire
-
-    # PDND_INVITALIA_INFOCAMERE_PRIVATE_KEY: da-definire
-    # PDND_INVITALIA_INFOCAMERE_CLIENT_ID: da-definire
-    # PDND_INVITALIA_INFOCAMERE_KID: da-definire
-    # PDND_INVITALIA_INFOCAMERE_AUDIENCE: da-definire
-    # PDND_INVITALIA_INFOCAMERE_PURPOSE_ID: da-definire
-
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
-
     #  MERCHANT_ENCRYPTION_KEY: da-definire
     #  MERCHANT_ENCRYPTION_IV: da-definire
 
