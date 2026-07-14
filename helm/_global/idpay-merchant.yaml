@@ -76,6 +76,7 @@ microservice-chart:
       PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
       PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
+
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
       KAFKA_ERRORS_BROKER: kafka_broker
@@ -100,8 +101,11 @@ microservice-chart:
     PDV_ENCRYPT_API_KEY: pdv-api-key
     PDV_DECRYPT_API_KEY: pdv-api-key
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
+    #  MERCHANT_ENCRYPTION_KEY: da-definire
+    #  MERCHANT_ENCRYPTION_IV: da-definire
 
   nodeSelector: {}
+
 
   tolerations:
     - key: "idpayOnly"
