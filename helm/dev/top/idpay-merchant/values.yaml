@@ -34,8 +34,8 @@ microservice-chart:
   envConfig:
     KEYCLOAK_ADMIN_REDIRECT_URI: "https://dev.bonuselettrodomestici.it/esercente"
     MERCHANT_DEFAULT_INITIATIVES: "68dd003ccce8c534d1da22bc"
-    PDND_BASE_URL: "https://auth.interop.pagopa.it"
-    PDND_INFOCAMERE_URL: "https://pdnd.registroimprese.it/rest/pcad/v1"
+    PDND_BASE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
+    PDND_INFOCAMERE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
@@ -56,11 +56,6 @@ microservice-chart:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
-    PDND_INFOCAMERE_PRIVATE_KEY: pagopa-pdnd-infocamere-pvt-key
-    PDND_INVITALIA_INFOCAMERE_CLIENT_ID: pagopa-pdnd-infocamere-client-id
-    PDND_INVITALIA_INFOCAMERE_KID: pagopa-pdnd-infocamere-kid
-    PDND_INFOCAMERE_AUDIENCE: pagopa-pdnd-infocamere-audience
-    PDND_INVITALIA_INFOCAMERE_PURPOSE_ID: pagopa-pdnd-infocamere-purpose-id
   keyvault:
     name: "cstar-d-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
