@@ -65,6 +65,10 @@ microservice-chart:
     HEALTH_MONGO_ENABLED: "false"
     KEYCLOAK_ADMIN_USER_ACTIONS_EMAIL_LIFESPAN: "604800"
     DATA_WEB_PAGEABLE_MAX_PAGE_SIZE: "3000"
+    CACHE_PDND_TOKEN_TTL_SECONDS: "60"
+    CACHE_PDND_CLIENT_ASSERTION_TTL_SECONDS: "3300"
+    CACHE_PDND_ATECO_CODES_TTL_SECONDS: "28800"
+    REDIS_CACHE_ENABLED: "true"
 
   externalConfigMapValues:
     idpay-common:
@@ -75,6 +79,7 @@ microservice-chart:
       IDPAY_TRANSACTIONS_BASE_URL: idpay_transactions_host
       PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
       PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
+
 
     idpay-eventhub-01:
       KAFKA_BROKER: kafka_broker
@@ -99,8 +104,12 @@ microservice-chart:
     KEYCLOAK_ADMIN_CLIENT_SECRET: keycloak-merchant-op-client-secret
     PDV_ENCRYPT_API_KEY: pdv-api-key
     PDV_DECRYPT_API_KEY: pdv-api-key
+    REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
+    #  MERCHANT_ENCRYPTION_KEY: da-definire
+    #  MERCHANT_ENCRYPTION_IV: da-definire
 
   nodeSelector: {}
+
 
   tolerations:
     - key: "idpayOnly"
