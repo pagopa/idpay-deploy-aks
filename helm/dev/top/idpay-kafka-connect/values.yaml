@@ -21,9 +21,7 @@ microservice-chart:
       cpu: "500m"
 
   autoscaling:
-    enable: true
-    minReplica: 1
-    maxReplica: 2
+    enable: false
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
