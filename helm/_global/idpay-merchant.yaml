@@ -105,8 +105,9 @@ microservice-chart:
     PDV_ENCRYPT_API_KEY: pdv-api-key
     PDV_DECRYPT_API_KEY: pdv-api-key
     REDIS_CONNECTION_URL: idpay-redis-primary-connection-url
-    #  MERCHANT_ENCRYPTION_KEY: da-definire
-    #  MERCHANT_ENCRYPTION_IV: da-definire
+    MERCHANT_ENCRYPTION_KEY: merchant-enc-key
+    MERCHANT_ENCRYPTION_IV: merchant-enc-iv
+
 
   nodeSelector: {}
 
