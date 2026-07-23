@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: snapshot-develop
+    tag: snapshot-BND-1459-be-adeguamento-api-preview
     pullPolicy: Always
 
   ingress:
