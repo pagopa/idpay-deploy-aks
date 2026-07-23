@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-kafka-connect
-    tag: snapshot-develop
+    tag: v1.1.0
     pullPolicy: Always
 
   ingress:
@@ -21,9 +21,7 @@ microservice-chart:
       cpu: "500m"
 
   autoscaling:
-    enable: true
-    minReplica: 1
-    maxReplica: 2
+    enable: false
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
