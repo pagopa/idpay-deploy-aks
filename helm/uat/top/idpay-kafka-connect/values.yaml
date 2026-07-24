@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-kafka-connect
-    tag: v1.1.0
+    tag: v1.1.0@sha256:b92bb32f1c3ac8d7a4032117aa4f6b753325ecc34a9e31c0b13840379a5a47cd
     pullPolicy: Always
 
   ingress:
