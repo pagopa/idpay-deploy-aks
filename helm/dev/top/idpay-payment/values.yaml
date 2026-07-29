@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: snapshot-migrate-payment-mongo-to-postgres
+    tag: snapshot-BND-1530
     pullPolicy: Always
 
   ingress:
