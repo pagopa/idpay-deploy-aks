@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-payment
-    tag: snapshot-LPBD-33
+    tag: snapshot-develop
     pullPolicy: Always
 
   ingress:
