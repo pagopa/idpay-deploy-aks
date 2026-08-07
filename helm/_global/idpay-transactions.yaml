@@ -51,6 +51,7 @@ microservice-chart:
 
   envConfig:
     POSTGRES_USERNAME: "idpaydbadmin"
+    POSTGRES_SCHEMA: "idpay-pagamenti"
     MONGODB_DBNAME: "idpay-pagamenti"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaytransactions"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
