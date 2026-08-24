@@ -67,6 +67,7 @@ microservice-chart:
     EXPIRY_SEND_BATCH_SIZE: "1000"
     EXPIRY_UPDATE_BATCH_SIZE: "10000"
     PAYMENT_AUTH_EXPIRE_MINUTES: "15"
+    REWARD_BATCH_IMPACT_ELIGIBILITY_ENABLED: "true"
 
   externalConfigMapValues:
     idpay-common:
@@ -78,6 +79,7 @@ microservice-chart:
       IDPAY_WALLET: idpay_wallet_host
       IDPAY_PAYMENT_INSTRUMENT: idpay_payment_instrument_host
       IDPAY_REGISTER: idpay_register_host
+      IDPAY_TRANSACTIONS: idpay_transactions_host
       PDV_ENCRYPT_BASE_URL: pdv_decrypt_base_url
       PDV_DECRYPT_BASE_URL: pdv_decrypt_base_url
 
