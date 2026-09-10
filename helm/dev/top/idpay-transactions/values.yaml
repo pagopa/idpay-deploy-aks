@@ -33,6 +33,9 @@ microservice-chart:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
+    POSTGRES_URL_JDBC: idpay-postgres-connection-string
+    POSTGRES_URL_R2DBC: idpay-postgres-connection-string-r2dbc
+    POSTGRES_PASSWORD: idpay-postgres-admin-password
 
   keyvault:
     name: "cstar-d-itn-idpay-kv"
