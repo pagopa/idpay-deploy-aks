@@ -80,6 +80,9 @@ microservice-chart:
       KAFKA_TRANSACTIONS_SASL_MECHANISM_00: kafka_sasl_mechanism
       KAFKA_TRANSACTION_TOPIC: idpay_transaction_topic
 
+    rest-client:
+      IDPAY_PAYMENT_BASE_URL: idpay_payment_host
+
   envSecret:
     MONGODB_URI: mongodb-primary-connection-string
     SERVICEBUS_ONBOARDING_CONNECTION_STRING: idpay-onboarding-request-session-processor-sas-key
