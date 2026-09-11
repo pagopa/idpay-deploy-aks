@@ -14,10 +14,14 @@ microservice-chart:
       memory: "1Gi"
       cpu: "1"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 6
+    minReplica: 2
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
