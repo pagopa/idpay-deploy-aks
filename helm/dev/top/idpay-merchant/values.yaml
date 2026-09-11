@@ -56,6 +56,8 @@ microservice-chart:
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
+    MERCHANT_ENCRYPTION_KEY: merchant-enc-key
+    MERCHANT_ENCRYPTION_IV: merchant-enc-iv
 
   keyvault:
     name: "cstar-d-itn-idpay-kv"

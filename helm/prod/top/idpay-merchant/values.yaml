@@ -55,11 +55,7 @@ microservice-chart:
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
-    PDND_INVITALIA_INFOCAMERE_PRIVATE_KEY: pagopa-pdnd-infocamere-pvt-key
-    PDND_INVITALIA_INFOCAMERE_CLIENT_ID: pagopa-pdnd-infocamere-client-id
-    PDND_INVITALIA_INFOCAMERE_KID: pagopa-pdnd-infocamere-kid
-    PDND_INVITALIA_INFOCAMERE_AUDIENCE: pagopa-pdnd-infocamere-audience
-    PDND_INVITALIA_INFOCAMERE_PURPOSE_ID: pagopa-pdnd-infocamere-purpose-id
+
   keyvault:
     name: "cstar-p-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"

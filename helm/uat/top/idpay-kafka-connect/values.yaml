@@ -57,6 +57,8 @@ microservice-chart:
   envSecret:
     aks-api-url: cstar-u-itn-uat-aks-apiserver-url
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
+    POSTGRES_HOST: idpay-postgres-host
+    POSTGRES_PASSWORD: idpay-postgres-admin-password
 
   keyvault:
     name: "cstar-u-itn-idpay-kv"
