@@ -50,6 +50,8 @@ microservice-chart:
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
+    MERCHANT_ENCRYPTION_KEY: merchant-enc-key
+    MERCHANT_ENCRYPTION_IV: merchant-enc-iv
 
   keyvault:
     name: "cstar-u-itn-idpay-kv"
