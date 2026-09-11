@@ -46,6 +46,8 @@ microservice-chart:
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
+    POSTGRES_URL: idpay-postgres-connection-string
+    POSTGRES_PASSWORD: idpay-postgres-admin-password
 
   keyvault:
     name: "cstar-u-itn-idpay-kv"
