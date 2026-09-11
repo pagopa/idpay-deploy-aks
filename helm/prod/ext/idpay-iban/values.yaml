@@ -18,6 +18,10 @@ microservice-chart:
   deployment:
     replicas: 0 # This value must be set equal to autoscaling.minReplica
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   autoscaling:
     minReplica: 0
     maxReplica: 0

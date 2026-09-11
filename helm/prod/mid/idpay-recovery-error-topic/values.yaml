@@ -12,8 +12,12 @@ microservice-chart:
       memory: "1Gi"
       cpu: "600m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
-    replicas: 3
+    replicas: 2
 
   autoscaling:
     enable: false
