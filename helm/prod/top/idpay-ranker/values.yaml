@@ -33,7 +33,6 @@ microservice-chart:
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
     FORCE_STOPPED: "true"
-    INITIATIVE_ID: "68dd003ccce8c534d1da22bc,69e0fa95e21efa516c7b8dec,6a9921bc8b29fef67e2629f0,6a994f751e7955f5e4e7829e,6a99684c8b29fef67e262a04,6a9989d18b29fef67e262a05"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
