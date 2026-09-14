@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: snapshot-develop
+    tag: snapshot-D5-Align-single-batch-aggregate-affecting-writers
     pullPolicy: Always
 
   ingress:
