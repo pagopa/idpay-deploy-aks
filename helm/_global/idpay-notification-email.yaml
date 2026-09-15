@@ -90,8 +90,8 @@ microservice-chart:
       TZ: TZ
 
   envSecret:
-    AWS_ACCESS_KEY_ID: aws-ses-mail-user-access-key
-    AWS_SECRET_ACCESS_KEY: aws-ses-mail-user-secret-key
+    AWS_ACCESS_KEY_ID: aws-pari-ses-mail-user-access-key
+    AWS_SECRET_ACCESS_KEY: aws-pari-ses-mail-user-secret-key
     NO_REPLY_MAIL: aws-pari-ses-mail-from
 
   externalConfigMapFiles:
