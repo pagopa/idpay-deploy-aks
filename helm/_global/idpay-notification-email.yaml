@@ -89,11 +89,6 @@ microservice-chart:
     idpay-common:
       TZ: TZ
 
-  envSecret:
-    AWS_ACCESS_KEY_ID: aws-ses-mail-user-access-key
-    AWS_SECRET_ACCESS_KEY: aws-ses-mail-user-secret-key
-    NO_REPLY_MAIL: aws-ses-mail-from
-
   externalConfigMapFiles:
     create: true
     configMaps:

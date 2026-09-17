@@ -52,7 +52,9 @@ microservice-chart:
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
-
+    AWS_ACCESS_KEY_ID: aws-pari-ses-mail-user-access-key
+    AWS_SECRET_ACCESS_KEY: aws-pari-ses-mail-user-secret-key
+    NO_REPLY_MAIL: aws-pari-ses-mail-from
   keyvault:
     name: "cstar-u-itn-idpay-kv"
     tenantId: "7788edaf-0346-4068-9d79-c868aed15b3d"
