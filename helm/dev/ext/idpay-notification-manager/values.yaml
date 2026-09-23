@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-notification-manager
-    tag: snapshot-develop
+    tag: snapshot-BND-1532-cittadino-cambiare-i-template-e-from-delle-mail-del-voucher
     pullPolicy: Always
 
   ingress:
