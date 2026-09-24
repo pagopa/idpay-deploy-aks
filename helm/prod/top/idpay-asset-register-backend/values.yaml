@@ -39,6 +39,7 @@ microservice-chart:
           value: "90"
 
   envConfig:
+    PORTAL_RDB_URL: "https://rdb.cstar.pagopa.it/registro-dei-beni"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=40.0
       -XX:MaxRAMPercentage=85.0
