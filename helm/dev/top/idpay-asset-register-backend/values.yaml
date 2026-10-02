@@ -52,6 +52,7 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   envSecret:
+    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
 
   keyvault:
