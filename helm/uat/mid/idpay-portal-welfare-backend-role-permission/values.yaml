@@ -5,7 +5,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-portal-welfare-backend-role-permission
-    tag: snapshot-uat
+    tag: snapshot-uat@sha256:633464293ca3033d9cb7ccb8dcbfdbe26deabeb20871cf76160f511ed96f3fe9
     pullPolicy: Always
 
   ingress:
