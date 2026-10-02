@@ -50,7 +50,6 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    POSTGRES_USERNAME: "idpaydbadmin"
     POSTGRES_SCHEMA: "idpay-rimborsi"
     MONGODB_DBNAME: "idpay-pagamenti"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaytransactions"
@@ -117,6 +116,10 @@ microservice-chart:
     INVITALIA_SCOPE: invitalia-scope
     INVITALIA_TENANT_ID: invitalia-tenant-id
     EROGAZIONI_AUTHORIZER: invitalia-authorizer
+    POSTGRES_USERNAME: idpay-postgres-transactions-user
+    POSTGRES_PASSWORD: idpay-postgres-transactions-password
+    POSTGRES_URL_JDBC: idpay-postgres-connection-string
+    POSTGRES_URL_R2DBC: idpay-postgres-connection-string-r2dbc
 
   externalConfigMapFiles:
     create: true
