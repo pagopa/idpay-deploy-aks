@@ -48,7 +48,6 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    POSTGRES_USERNAME: "idpaydbadmin"
     MONGODB_DBNAME: "idpay-beneficiari"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaypayment"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
@@ -106,6 +105,9 @@ microservice-chart:
     AZURE_SERVICEBUS_CONNECTION_STRING: idpay-service-bus-ns-manager-sas-key
     AZURE_SERVICEBUS_PAYMENT_TIMEOUT_CONNECTION_STRING: idpay-payment-timeout-consumer-sas-key
     BLOB_STORAGE_ACCOUNT_NAME: refund-storage-account-name
+    POSTGRES_URL: idpay-postgres-connection-string
+    POSTGRES_USERNAME: idpay-postgres-payment-user
+    POSTGRES_PASSWORD: idpay-postgres-payment-password
 
   # nodeSelector: {}
 
