@@ -85,6 +85,11 @@ microservice-chart:
     AWS_REGION: "eu-central-1"
     ASSISTED_LINK: "https://bonuselettrodomestici.it/utente/assistenza"
 
+  envSecret:
+    AWS_ACCESS_KEY_ID: aws-pari-ses-mail-user-access-key
+    AWS_SECRET_ACCESS_KEY: aws-pari-ses-mail-user-secret-key
+    NO_REPLY_MAIL: aws-pari-ses-mail-from
+
   externalConfigMapValues:
     idpay-common:
       TZ: TZ
