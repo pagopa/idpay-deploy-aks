@@ -53,7 +53,6 @@ microservice-chart:
     IS_IBAN_FORMAL_CONTROL_ACTIVE: "false"
 
   envSecret:
-    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
   keyvault:
     name: "cstar-d-itn-idpay-kv"

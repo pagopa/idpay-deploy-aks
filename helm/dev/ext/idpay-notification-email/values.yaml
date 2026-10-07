@@ -57,7 +57,6 @@ microservice-chart:
       -Dcom.sun.management.jmxremote.ssl=false
 
   envSecret:
-    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
     AWS_ACCESS_KEY_ID: aws-pari-ses-mail-user-access-key
     AWS_SECRET_ACCESS_KEY: aws-pari-ses-mail-user-secret-key

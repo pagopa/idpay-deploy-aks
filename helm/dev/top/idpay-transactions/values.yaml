@@ -32,7 +32,6 @@ microservice-chart:
           value: "90"
 
   envSecret:
-    APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
     POSTGRES_URL_JDBC: idpay-postgres-connection-string
     POSTGRES_URL_R2DBC: idpay-postgres-connection-string-r2dbc
