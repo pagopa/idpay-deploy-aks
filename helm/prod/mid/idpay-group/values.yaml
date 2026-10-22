@@ -19,6 +19,10 @@ microservice-chart:
       memory: "1.5Gi"
       cpu: "750m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
     replicas: 0 # This value must be set equal to autoscaling.minReplica
 

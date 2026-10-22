@@ -100,6 +100,9 @@ microservice-chart:
     COSMOS_CONNECTION_STRING: mongodb-primary-connection-string
     CONNECT_SASL_JAAS_CONFIG: evh-root-sasl-jaas-config-idpay-00
     CONNECT_PRODUCER_SASL_JAAS_CONFIG: evh-root-sasl-jaas-config-idpay-00
+    POSTGRES_HOST: idpay-postgres-host
+    POSTGRES_USERNAME: idpay-postgres-kafka-connect-user
+    POSTGRES_PASSWORD: idpay-postgres-kafka-connect-password
 
   # nodeSelector: {}
 

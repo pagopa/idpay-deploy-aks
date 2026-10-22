@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: v1.2.2@sha256:92bed067ab794ade775ed5e1473a24fae3056dfb0b98678ceefbe3747bb90c22
+    tag: v1.5.0@sha256:462605c027049f505fe8e8fefa91998820f4f62ecaa247655ef802692e47786a
     pullPolicy: Always
 
   ingress:
@@ -15,13 +15,17 @@ microservice-chart:
       memory: "1536Mi"
       cpu: "1000m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
-    replicas: 3 # This value must be set equal to autoscaling.minReplica
+    replicas: 2 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 6
+    minReplica: 2
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -35,6 +39,7 @@ microservice-chart:
           value: "90"
 
   envConfig:
+    PORTAL_RDB_URL: "https://rdb.cstar.pagopa.it/registro-dei-beni"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=40.0
       -XX:MaxRAMPercentage=85.0

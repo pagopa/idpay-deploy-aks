@@ -18,6 +18,10 @@ microservice-chart:
   autoscaling:
     enable: false
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 

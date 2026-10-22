@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: v1.18.0@sha256:3cf66441d14ffa16f0998912e39afd7492eb65e8dbb7417881fb1de7c2f490a5
+    tag: v1.20.0@sha256:f26dc9e592febf0272ae75f4155da1a862078947e13fc61795a9d30c35498ac2
     pullPolicy: Always
 
   ingress:
@@ -9,19 +9,23 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "1Gi"
+      memory: "1.5Gi"
       cpu: "200m"
     limits:
-      memory: "1.5Gi"
+      memory: "2Gi"
       cpu: "600m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
-    replicas: 3 # This value must be set equal to autoscaling.minReplica
+    replicas: 2 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 6
+    minReplica: 2
+    maxReplica: 5
     pollingInterval: 20 # seconds
     cooldownPeriod: 300 # seconds
     triggers:

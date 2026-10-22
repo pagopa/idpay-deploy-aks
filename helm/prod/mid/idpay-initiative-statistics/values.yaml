@@ -15,13 +15,17 @@ microservice-chart:
       memory: "768Mi"
       cpu: "600m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
-    replicas: 3 # This value must be set equal to autoscaling.minReplica
+    replicas: 2 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 6
+    minReplica: 2
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:
@@ -29,10 +33,6 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "60"
-      - type: memory
-        metadata:
-          type: Utilization
-          value: "90"
 
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key

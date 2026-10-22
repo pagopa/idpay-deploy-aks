@@ -45,6 +45,7 @@ microservice-chart:
   # affinity: {}
 
   envConfig:
+    TEST_SUPPORT_ENABLED: "true"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
@@ -62,3 +63,5 @@ microservice-chart:
       -Djava.rmi.server.hostname=127.0.0.1
       -Dcom.sun.management.jmxremote.authenticate=false
       -Dcom.sun.management.jmxremote.ssl=false
+    INVITALIA_BASE_URL: "https://dev-apim-misure.azure-api.net/pagopa/ce/v1"
+    SELFCARE_INSTITUTIONS_URL: "https://api.dev.selfcare.pagopa.it/external/v2/institutions"

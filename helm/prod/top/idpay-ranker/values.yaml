@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-ranker
-    tag: v1.6.0@sha256:fe9514212a16c6101584e5aac52088a9859c19911cf1b72fe6a50a34c81cb12f
+    tag: v1.8.0@sha256:d380aa8b9c5f5dfee08b5c0e86ea75d3b41570dff8a783036ac84912d716e508
     pullPolicy: Always
 
   ingress:
@@ -14,6 +14,10 @@ microservice-chart:
     limits:
       memory: "1.5Gi"
       cpu: "1"
+
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
 
 # Never enable autoscaling because is used for service bus queue processing
   autoscaling:

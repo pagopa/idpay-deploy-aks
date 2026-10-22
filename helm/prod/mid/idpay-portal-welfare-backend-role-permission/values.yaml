@@ -5,7 +5,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-portal-welfare-backend-role-permission
-    tag: v1.3.3@sha256:9abcb63f0a138051b2b9b086a41e9bdaa5ed2c2587b726b2f56fea0231fbb482
+    tag: v1.4.0@sha256:02bb529c717d78a9458410344c6778018b38b910b4ad7a858946915c1e0ccb1b
     pullPolicy: Always
 
   ingress:
@@ -19,13 +19,17 @@ microservice-chart:
       memory: "768Mi"
       cpu: "600m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
-    replicas: 3 # This value must be set equal to autoscaling.minReplica
+    replicas: 2 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
     enable: true
-    minReplica: 3
-    maxReplica: 6
+    minReplica: 2
+    maxReplica: 5
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
     triggers:

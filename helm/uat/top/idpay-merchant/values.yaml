@@ -29,14 +29,12 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
-      - type: memory
-        metadata:
-          type: Utilization
-          value: "90"
 
   envConfig:
-    KEYCLOAK_ADMIN_REDIRECT_URI: "https://uat.bonuselettrodomestici.it/esercente"
+    KEYCLOAK_ADMIN_REDIRECT_URI: "https://uat.pari.pagopa.it/esercente"
     MERCHANT_DEFAULT_INITIATIVES: "68dd003ccce8c534d1da22bc"
+    PDND_BASE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
+    PDND_INFOCAMERE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0

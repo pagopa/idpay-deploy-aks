@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-recovery-error-topic
-    tag: v1.3.1@sha256:38cffdbc7a99b6e2b22de99066eaddaca49d057def42f2778442346603c57392
+    tag: v1.4.0@sha256:20248724c88e4bc1065f326e83524bf12429a76ef570d351f5eca9d815fd1383
     pullPolicy: Always
 
   resources:
@@ -12,8 +12,12 @@ microservice-chart:
       memory: "1Gi"
       cpu: "600m"
 
+  podDisruptionBudget:
+    create: true
+    maxUnavailable: 1
+
   deployment:
-    replicas: 3
+    replicas: 2
 
   autoscaling:
     enable: false

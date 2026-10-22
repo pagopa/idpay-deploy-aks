@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-kafka-connect
-    tag: snapshot-uat
+    tag: v1.1.0
     pullPolicy: Always
 
   ingress:
@@ -34,10 +34,6 @@ microservice-chart:
         metadata:
           type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "70"
-      - type: memory
-        metadata:
-          type: Utilization
-          value: "90"
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
