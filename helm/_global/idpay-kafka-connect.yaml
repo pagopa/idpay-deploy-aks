@@ -10,16 +10,20 @@ microservice-chart:
       command:
        - sh
        - -c
-       - sh /scripts/liveness.sh
+       - sh /scripts/healthcheck.sh
     initialDelaySeconds: 60
     periodSeconds: 30
-    failureThreshold: 2
+    failureThreshold: 15
     timeoutSeconds: 5
 
   readinessProbe:
-    httpGet:
-      path: /connectors
-      port: 8083
+    create: true
+    handlerType: 'exec'
+    exec:
+      command:
+       - sh
+       - -c
+       - sh /scripts/healthcheck.sh
     initialDelaySeconds: 65
     failureThreshold: 15
     periodSeconds: 30
@@ -127,9 +131,9 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
-      - name: idpay-kafka-connect-liveness
-        key: liveness.sh
-        mountPath: /scripts/liveness.sh
+      - name: idpay-kafka-connect-healthcheck
+        key: healthcheck.sh
+        mountPath: /scripts/healthcheck.sh
 
   tmpVolumeMount:
     create: true

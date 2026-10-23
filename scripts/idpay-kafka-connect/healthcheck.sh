@@ -1,19 +1,19 @@
 #!/bin/sh
 
 log_failure() {
-  message="$(date -u '+%Y-%m-%dT%H:%M:%SZ') ERROR [liveness] $*"
+  message="$(date -u '+%Y-%m-%dT%H:%M:%SZ') ERROR [healthcheck] $*"
   printf '%s\n' "$message" >&2
   # Exec probe output is not included in container logs.
   printf '%s\n' "$message" > /proc/1/fd/1
 }
 
 if ! response=$(curl -fsS http://localhost:8083/connectors); then
-  log_failure "Cannot retrieve connectors from Kafka Connect REST API. Probe failed; Kubernetes restarts the container after 2 consecutive failures."
+  log_failure "Cannot retrieve connectors from Kafka Connect REST API. Health check failed."
   exit 1
 fi
 connectors=$(printf '%s' "$response" | grep -Eo '[^]",\[]+')
 if [ -z "$connectors" ]; then
-  log_failure "No connectors returned by Kafka Connect REST API. Probe failed; Kubernetes restarts the container after 2 consecutive failures."
+  log_failure "No connectors returned by Kafka Connect REST API. Health check failed."
   exit 1
 fi
 
@@ -29,6 +29,6 @@ for connector in $connectors; do
 done
 
 if [ "$failed" -ne 0 ]; then
-  log_failure "Probe failed; Kubernetes restarts the container after 2 consecutive failures (period: 30s)."
+  log_failure "Health check failed. Kubernetes applies the failure threshold and action configured for each probe."
 fi
 exit "$failed"
