@@ -10,7 +10,7 @@ microservice-chart:
       command:
        - sh
        - -c
-       - sh /scripts/healthcheck.sh
+       - sh /scripts/healthcheck.sh liveness
     initialDelaySeconds: 60
     periodSeconds: 30
     failureThreshold: 15
@@ -23,7 +23,7 @@ microservice-chart:
       command:
        - sh
        - -c
-       - sh /scripts/healthcheck.sh
+       - sh /scripts/healthcheck.sh readiness
     initialDelaySeconds: 60
     failureThreshold: 2
     periodSeconds: 30
