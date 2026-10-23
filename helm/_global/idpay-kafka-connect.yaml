@@ -13,7 +13,7 @@ microservice-chart:
        - sh /scripts/healthcheck.sh
     initialDelaySeconds: 60
     periodSeconds: 30
-    failureThreshold: 15
+    failureThreshold: 2
     timeoutSeconds: 5
 
   readinessProbe:
@@ -24,8 +24,8 @@ microservice-chart:
        - sh
        - -c
        - sh /scripts/healthcheck.sh
-    initialDelaySeconds: 65
-    failureThreshold: 15
+    initialDelaySeconds: 60
+    failureThreshold: 2
     periodSeconds: 30
 
   deployment:
