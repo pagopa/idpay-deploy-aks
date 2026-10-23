@@ -1,6 +1,11 @@
 # idpay-deploy-aks
 Container repository for all idpay manifest files.
 
+The Kafka Connect liveness script is maintained in `scripts/idpay-kafka-connect/liveness.sh`.
+This directory is a shared Helm dependency of the dev, uat and prod Kafka Connect charts:
+it creates the ConfigMap mounted read-only at `/scripts/liveness.sh` in the container.
+The probe runs it with `sh`, so executable permissions are not required.
+
 # How to add a new app
 
 These are the steps needed to add a new app:
