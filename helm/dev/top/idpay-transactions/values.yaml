@@ -46,6 +46,8 @@ microservice-chart:
 
   envConfig:
     TEST_SUPPORT_ENABLED: "true"
+    LOG_LEVEL_PAGOPA: "DEBUG"
+    LOG_LEVEL_IDPAY: "DEBUG"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
