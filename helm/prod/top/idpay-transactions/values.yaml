@@ -53,6 +53,8 @@ microservice-chart:
   # affinity: {}
 
   envConfig:
+    LOG_LEVEL_PAGOPA: "INFO"
+    LOG_LEVEL_IDPAY: "INFO"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=40.0
       -XX:MaxRAMPercentage=85.0

@@ -50,8 +50,6 @@ microservice-chart:
     runAsGroup: 10000
 
   envConfig:
-    LOG_LEVEL_PAGOPA: "INFO"
-    LOG_LEVEL_IDPAY: "INFO"
     POSTGRES_SCHEMA: "idpay-rimborsi"
     MONGODB_DBNAME: "idpay-pagamenti"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaytransactions"
