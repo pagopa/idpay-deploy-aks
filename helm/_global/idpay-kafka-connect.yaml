@@ -57,7 +57,11 @@ microservice-chart:
     runAsUser: 1001
     runAsGroup: 1001
 
+  envFieldRef:
+    ADVERTISED_HOST_NAME: status.podIP
+
   envConfig:
+    REST_HOST_NAME: "0.0.0.0"
     APPLICATIONINSIGHTS_ROLE_NAME: "idpaykafkaconnect"
     APPLICATIONINSIGHTS_INSTRUMENTATION_LOGGING_LEVEL: "INFO"
     APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED: "false"
