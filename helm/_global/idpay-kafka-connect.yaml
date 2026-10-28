@@ -4,23 +4,27 @@ microservice-chart:
   fullnameOverride: ""
 
   livenessProbe:
-    create: false
-#    handlerType: 'exec'
-#    exec:
-#      command:
-#       - sh
-#       - -c
-#       - for connector in $(curl -s -X GET http://localhost:8083/connectors | grep -Eo '[^]",\[]+'); do curl -s -X GET http://localhost:8083/connectors/$connector/status | grep FAILED | wc -l; done | grep -Ez '^(0[[:space:]])+$'
-#    initialDelaySeconds: 60
-#    periodSeconds: 30
-#   failureThreshold: 15
-#   timeoutSeconds: 5
+    create: true
+    handlerType: 'exec'
+    exec:
+      command:
+       - sh
+       - -c
+       - sh /scripts/healthcheck.sh liveness
+    initialDelaySeconds: 60
+    periodSeconds: 30
+    failureThreshold: 15
+    timeoutSeconds: 5
 
   readinessProbe:
-    httpGet:
-      path: /connectors
-      port: 8083
-    initialDelaySeconds: 65
+    create: true
+    handlerType: 'exec'
+    exec:
+      command:
+       - sh
+       - -c
+       - sh /scripts/healthcheck.sh readiness
+    initialDelaySeconds: 60
     failureThreshold: 15
     periodSeconds: 30
 
@@ -131,6 +135,9 @@ microservice-chart:
     configMaps:
       - name: appinsights-config
         key: applicationinsights.json
+      - name: idpay-kafka-connect-healthcheck
+        key: healthcheck.sh
+        mountPath: /scripts/healthcheck.sh
 
   tmpVolumeMount:
     create: true

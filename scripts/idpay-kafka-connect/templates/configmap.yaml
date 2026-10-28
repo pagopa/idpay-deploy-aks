@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: idpay-kafka-connect-healthcheck
+  namespace: {{ .Values.namespace | default "idpay" }}
+data:
+  healthcheck.sh: |
+    {{- .Files.Get "healthcheck.sh" | nindent 4 }}

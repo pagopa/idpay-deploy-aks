@@ -4,12 +4,14 @@ on:
  pull_request:
    paths:
      - 'helm/**'
+     - 'scripts/idpay-kafka-connect/**'
      - 'ct.yaml'
  push:
    branches:
      - main
    paths:
      - 'helm/**'
+     - 'scripts/idpay-kafka-connect/**'
      - 'ct.yaml'
 
 jobs:
