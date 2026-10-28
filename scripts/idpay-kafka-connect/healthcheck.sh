@@ -40,7 +40,7 @@ for connector in $connectors; do
   if ! status=$(curl -fsS "http://localhost:8083/connectors/$connector/status"); then
     log_failure "Cannot retrieve status for connector '$connector'."
     failed=1
-  elif printf '%s' "$status" | grep -q FAILED; then
+  elif printf '%s' "$status" | tr -d '\r\n' | grep -Eq '"state"[[:space:]]*:[[:space:]]*"FAILED"'; then
     log_failure "Connector '$connector' or one of its tasks is FAILED. Status: $status"
     failed=1
   fi
