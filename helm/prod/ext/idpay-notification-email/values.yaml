@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-notification-email
-    tag: v1.9.0@sha256:760e2affb64595367229891e30485a21defed4ce5269681f302a45e23ba72735
+    tag: v1.10.0@sha256:95eb3c009d9794134bf075048ffa7714dcc5057ca66a98019f6d44ca8e5b0a89
     pullPolicy: Always
 
   ingress:
