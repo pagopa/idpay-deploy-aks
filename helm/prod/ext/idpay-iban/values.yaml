@@ -30,11 +30,11 @@ microservice-chart:
     triggers:
       - type: cpu
         metadata:
-          type: Utilization # Allowed types are 'Utilization' or 'AverageValue'
+          metricType: Utilization # Allowed types are 'Utilization' or 'AverageValue'
           value: "60"
       - type: memory
         metadata:
-          type: Utilization
+          metricType: Utilization
           value: "90"
 
   envConfig:
