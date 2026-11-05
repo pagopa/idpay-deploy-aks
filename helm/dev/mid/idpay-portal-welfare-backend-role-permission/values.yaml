@@ -21,10 +21,6 @@ microservice-chart:
 
   autoscaling:
     enable: true
-    triggerAuthentications:
-      - name: idpay-portal-welfare-backend-role-permission-microservice-chart
-        podIdentity:
-          provider: none
     minReplica: 1
     maxReplica: 2
     pollingInterval: 30 # seconds
