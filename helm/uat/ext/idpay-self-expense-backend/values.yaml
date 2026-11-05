@@ -19,7 +19,7 @@ microservice-chart:
     replicas: 0 # This value must be set equal to autoscaling.minReplica
 
   autoscaling:
-    minReplica: 1
+    minReplica: 0
     maxReplica: 1
     pollingInterval: 30 # seconds
     cooldownPeriod: 300 # seconds
