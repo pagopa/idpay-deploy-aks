@@ -14,9 +14,9 @@ microservice-chart:
   resources:
     requests:
       memory: "512Mi"
-      cpu: "200m"
+      cpu: "175m"
     limits:
-      memory: "1Gi"
+      memory: "560Mi"
       cpu: "600m"
 
   autoscaling:
