@@ -60,4 +60,4 @@ microservice-chart:
       -javaagent:/app/applicationinsights-agent.jar
       -Dapplicationinsights.configuration.file=/mnt/file-config-external/appinsights-config/applicationinsights.json
     INVITALIA_BASE_URL: "https://dev-apim-misure.azure-api.net/pagopa/ce/v1"
-    SELFCARE_INSTITUTIONS_URL: "https://api.dev.selfcare.pagopa.it/external/v2/institutions"
+    SELFCARE_INSTITUTIONS_URL: "https://api.uat.selfcare.pagopa.it/external/v2/institutions"
