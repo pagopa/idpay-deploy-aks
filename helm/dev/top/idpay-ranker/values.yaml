@@ -13,7 +13,7 @@ microservice-chart:
       cpu: "10m"
     limits:
       memory: "656Mi"
-      cpu: "20m"
+      cpu: "200m"
 
 # Never enable autoscaling because is used for service bus queue processing
   autoscaling:
