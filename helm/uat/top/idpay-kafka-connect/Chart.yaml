@@ -2,12 +2,12 @@ apiVersion: v2
 name: idpay-kafka-connect
 description: IDPay Kafka Connect
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: 1.0.0
 dependencies:
   - name: idpay-kafka-connect-scripts
     version: 1.0.0
     repository: "file://../../../../scripts/idpay-kafka-connect"
   - name: microservice-chart
-    version: 8.1.1
+    version: 8.9.1
     repository: "https://pagopa.github.io/aks-microservice-chart-blueprint"
