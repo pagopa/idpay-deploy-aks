@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-asset-register-backend
-    tag: snapshot-develop
+    tag: snapshot-develop@sha256:63a4d033ebadee941bf829c022d66ee82f722dfcd194e55f76e7e5c8251847df
     pullPolicy: Always
 
   ingress:
