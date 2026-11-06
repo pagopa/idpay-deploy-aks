@@ -10,11 +10,11 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "1Gi"
-      cpu: "150m"
+      memory: "768Mi"
+      cpu: "200m"
     limits:
-      memory: "1Gi"
-      cpu: "600m"
+      memory: "896Mi"
+      cpu: "750m"
 
   podDisruptionBudget:
     create: true
