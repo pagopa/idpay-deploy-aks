@@ -9,11 +9,11 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "1536Mi"
-      cpu: "400m"
+      memory: "1088Mi"
+      cpu: "100m"
     limits:
-      memory: "2048Mi"
-      cpu: "800m"
+      memory: "1536Mi"
+      cpu: "750m"
 
   podDisruptionBudget:
     create: true

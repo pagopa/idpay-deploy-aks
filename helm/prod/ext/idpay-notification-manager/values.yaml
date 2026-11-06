@@ -8,11 +8,11 @@ microservice-chart:
     host: idpay.itn.internal.cstar.pagopa.it
   resources:
     requests:
-      memory: "1Gi"
-      cpu: "500m"
+      memory: "768Mi"
+      cpu: "100m"
     limits:
-      memory: "1Gi"
-      cpu: "1"
+      memory: "896Mi"
+      cpu: "650m"
 
   podDisruptionBudget:
     create: true
