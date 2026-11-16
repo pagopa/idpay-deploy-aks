@@ -35,6 +35,7 @@ microservice-chart:
           value: "90"
 
   envConfig:
+    TEST_SUPPORT_ENABLED: "true"
     JAVA_TOOL_OPTIONS: >-
       -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
