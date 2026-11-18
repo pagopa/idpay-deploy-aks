@@ -34,11 +34,6 @@ microservice-chart:
         metadata:
           value: "90"
 
-  envConfig:
-    JAVA_TOOL_OPTIONS: >-
-      -XX:-UseBASE64Intrinsics
-      -XX:UseAVX=2
-
   envSecret:
     APPLICATIONINSIGHTS_CONNECTION_STRING: appinsights-instrumentation-key
 

@@ -9,10 +9,10 @@ microservice-chart:
 
   resources:
     requests:
-      memory: "64Mi"
-      cpu: "10m"
+      memory: "150Mi"
+      cpu: "100m"
     limits:
-      memory: "64Mi"
+      memory: "200Mi"
       cpu: "200m"
 
   autoscaling:
@@ -30,11 +30,6 @@ microservice-chart:
         metricType: Utilization
         metadata:
           value: "90"
-
-  envConfig:
-    JAVA_TOOL_OPTIONS: >-
-      -XX:-UseBASE64Intrinsics
-      -XX:UseAVX=2
 
   envSecret:
     aks-api-url: cstar-d-itn-dev-aks-apiserver-url
