@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: v1.21.0@sha256:22f0b77f6bfd36bb4834b50b1429e6fe468d4d5ff07e7aa22218eeaa62470bbb
+    tag: v1.22.0@sha256:59fed5835bf8512a6e4b86b956615d69e6e1ec235a5e1e7829b74fd340cdc69e
     pullPolicy: Always
 
   ingress:
