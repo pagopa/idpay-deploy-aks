@@ -8,6 +8,28 @@ Both probes run the same script with `sh`, so executable permissions are not req
 Each probe passes its name (`liveness` or `readiness`) to identify failure logs and describe the corresponding Kubernetes action.
 The script checks REST API availability and connector/task failures; each probe keeps its own timing and failure threshold.
 
+## Temporary Java mitigation (CVE-2026-114938)
+
+The DEV, UAT, and PROD Java service values, plus `helm/dev/ext/values.yaml`,
+set both `-XX:-UseBASE64Intrinsics` and `-XX:UseAVX=2` in `JAVA_TOOL_OPTIONS`,
+preserving existing JVM options. The isolated Go candidate is excluded.
+
+These are alternative workarounds; both are configured here as requested for
+amd64 deployments. Disabling Base64 intrinsics targets the vulnerable decoder;
+limiting AVX to AVX2 also disables unrelated AVX-512 optimizations. Performance
+may decrease. Do not reuse these settings on ARM64, where `UseAVX` can prevent
+JVM startup.
+
+Before rollout, confirm both options are supported by each image's actual JVM
+vendor/build. Native executables do not consume `JAVA_TOOL_OPTIONS` as JVM
+startup options. After restarting every JVM instance, query its live process
+with `jcmd <pid> VM.flags -all` and confirm `UseBASE64Intrinsics = false` and
+`UseAVX = 2`. The manifests alone do not establish exposure or running protection.
+
+These flags do not replace a patched JVM. Rebuild and redeploy images using a
+vendor-confirmed fixed runtime, then remove the workarounds after verification.
+See the [vendor advisory](https://access.redhat.com/security/vulnerabilities/RHSB-2026-018).
+
 # How to add a new app
 
 These are the steps needed to add a new app:

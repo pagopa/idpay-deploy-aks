@@ -56,6 +56,8 @@ microservice-chart:
     LOG_LEVEL_PAGOPA: "INFO"
     LOG_LEVEL_IDPAY: "INFO"
     JAVA_TOOL_OPTIONS: >-
+      -XX:-UseBASE64Intrinsics
+      -XX:UseAVX=2
       -XX:InitialRAMPercentage=40.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC

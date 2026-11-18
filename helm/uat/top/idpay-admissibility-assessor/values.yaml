@@ -56,6 +56,8 @@ microservice-chart:
 
   envConfig:
     JAVA_TOOL_OPTIONS: >-
+      -XX:-UseBASE64Intrinsics
+      -XX:UseAVX=2
       -XX:InitialRAMPercentage=30.0
       -XX:MaxRAMPercentage=65.0
       -XX:+UseG1GC
