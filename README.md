@@ -10,9 +10,10 @@ The script checks REST API availability and connector/task failures; each probe 
 
 ## Temporary Java mitigation (CVE-2026-114938)
 
-The DEV, UAT, and PROD Java service values, plus `helm/dev/ext/values.yaml`,
+The DEV, UAT, and PROD JVM service values, plus `helm/dev/ext/values.yaml`,
 set both `-XX:-UseBASE64Intrinsics` and `-XX:UseAVX=2` in `JAVA_TOOL_OPTIONS`,
-preserving existing JVM options. The isolated Go candidate is excluded.
+preserving existing JVM options. Native Timeline and the isolated Go candidate
+are excluded.
 
 These are alternative workarounds; both are configured here as requested for
 amd64 deployments. Disabling Base64 intrinsics targets the vulnerable decoder;
@@ -29,6 +30,15 @@ with `jcmd <pid> VM.flags -all` and confirm `UseBASE64Intrinsics = false` and
 These flags do not replace a patched JVM. Rebuild and redeploy images using a
 vendor-confirmed fixed runtime, then remove the workarounds after verification.
 See the [vendor advisory](https://access.redhat.com/security/vulnerabilities/RHSB-2026-018).
+
+The DEV resources for onboarding-workflow, wallet, payment-instrument, ranker,
+and Timeline match their last healthy live revision. The mitigation rollout
+reapplied lower repository resource settings: Timeline was OOM-killed at a
+64Mi memory limit, while the four JVM services hit liveness restarts during
+startup at a 200m CPU limit. They retain the JVM mitigations with a 600m CPU
+and 1024Mi memory limit; native Timeline uses a 200m CPU and 200Mi memory limit.
+Before rollout, compare resource settings with the live revision as well as
+checking JVM option compatibility.
 
 # How to add a new app
 
