@@ -41,6 +41,8 @@ microservice-chart:
     PDND_BASE_URL: "https://auth.interop.pagopa.it"
     PDND_INFOCAMERE_URL: "https://pdnd.registroimprese.it/rest/pcad/v1"
     JAVA_TOOL_OPTIONS: >-
+      -XX:-UseBASE64Intrinsics
+      -XX:UseAVX=2
       -XX:InitialRAMPercentage=40.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC

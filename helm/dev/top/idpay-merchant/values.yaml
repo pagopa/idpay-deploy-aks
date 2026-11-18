@@ -37,6 +37,8 @@ microservice-chart:
     PDND_BASE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
     PDND_INFOCAMERE_URL: "http://idpay-mock-microservice-chart:8080/idpay/mock/pdnd"
     JAVA_TOOL_OPTIONS: >-
+      -XX:-UseBASE64Intrinsics
+      -XX:UseAVX=2
       -XX:InitialRAMPercentage=50.0
       -XX:MaxRAMPercentage=85.0
       -XX:+UseG1GC

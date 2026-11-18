@@ -32,6 +32,9 @@ microservice-chart:
           value: "90"
 
   envConfig:
+    JAVA_TOOL_OPTIONS: >-
+      -XX:-UseBASE64Intrinsics
+      -XX:UseAVX=2
 
   envSecret:
 
