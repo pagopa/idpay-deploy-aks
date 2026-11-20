@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-transactions
-    tag: snapshot-uat
+    tag: snapshot-uat@sha256:76ca9f2e04b1e80f7c1db6894184b612972975502b542d42bc9c1a11f17e1589
     pullPolicy: Always
 
   ingress:
