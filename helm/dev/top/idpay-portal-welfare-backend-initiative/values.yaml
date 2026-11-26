@@ -2,7 +2,7 @@ microservice-chart:
 
   image:
     repository: ghcr.io/pagopa/idpay-portal-welfare-backend-initiative
-    tag: snapshot-develop
+    tag: snapshot-develop@sha256:a7334fce096aeaf0b5f81ae33db1c494287a887d97fd227a9cd551d18cee797e
     pullPolicy: Always
 
   ingress:

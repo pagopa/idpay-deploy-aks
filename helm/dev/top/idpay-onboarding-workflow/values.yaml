@@ -1,7 +1,7 @@
 microservice-chart:
   image:
     repository: ghcr.io/pagopa/idpay-onboarding-workflow
-    tag: snapshot-develop
+    tag: snapshot-develop@sha256:05429fea6b440a24eb910bec06c899e070189aa6b62afc2d0f72421110fa3fa2
     pullPolicy: Always
 
   ingress:
